@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -228,10 +225,10 @@
             <a href="#subscription-and-unsubscription" class="toc-h1 toc-link" data-title="Subscription and Unsubscription">Subscription and Unsubscription</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#subscribe-kitchen-device" class="toc-h2 toc-link" data-title="Subscribe kitchen device">Subscribe kitchen device</a>
+                    <a href="#subscribtion" class="toc-h2 toc-link" data-title="Subscribtion">Subscribtion</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#unsubscription" class="toc-h2 toc-link" data-title="Unsubscription">Unsubscription</a>
                   </li>
                   <li>
                     <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
@@ -253,32 +250,40 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Kitchen API!This guide describes how to compose and send commands and queries to the IOT platform using the Kitchen REST API. The guide provides examples for a set of common tasks, but it does not describe how to configure the full feature set of the Kitchen Application and it does not list the classes, methods of the API
 .We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='subscription-and-unsubscription'>Subscription and Unsubscription</h1><h2 id='subscribe-kitchen-device'>Subscribe kitchen device</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='subscription-and-unsubscription'>Subscription and Unsubscription</h1><h2 id='subscribtion'>Subscribtion</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui=0220731000000127&amp;deveui=d02544fffef42720&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="gp">&gt; </span>The above <span class="nb">command </span>returns JSON structured like this:
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="sb">```</span>json
+<span class="o">{</span>
+<span class="s2">"appeui"</span>: <span class="s2">"0220731000000127"</span>,
+<span class="s2">"deviceeui"</span>: <span class="s2">"d02544fffef42720"</span>,
+<span class="s2">"thingplug_resp"</span>: 201,
+<span class="s2">"status"</span>: <span class="s2">"Success"</span>
+<span class="o">}</span>
+<span class="o">{</span>
+<span class="s2">"appeui"</span>: <span class="s2">"0220731000000127"</span>,
+<span class="s2">"deviceeui"</span>: <span class="s2">"d02544fffef42720"</span>,
+<span class="s2">"thingplug_resp"</span>: 409,
+<span class="s2">"status"</span>: <span class="s2">"Fail,Please check thingplug response code"</span>
+<span class="o">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="o">{</span>
+<span class="s2">"appeui"</span>: <span class="s2">"02207310000001271"</span>,
+<span class="s2">"deviceeui"</span>: <span class="s2">" d02544fffef42720"</span>,
+<span class="s2">"thingplug_resp"</span>: 0,
+<span class="s2">"status"</span>: <span class="s2">"Fail:appeui/deveui length/format is wrong"</span>
+<span class="o">}</span>
+
+<span class="o">{</span>
+<span class="s2">"error"</span>: <span class="s2">"unauthorized"</span>,
+<span class="s2">"error_description"</span>: <span class="s2">"An Authentication object was not found in the SecurityContext"</span>
+<span class="o">}</span>
+
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestap/iapi/subscribe_device?appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}</code></p>
+<p>This api Subscribe  kitchen device </p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -307,37 +312,32 @@
 <aside class="success">
 Remember — acess_token is an access token to be used only if authentication is enabled!
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='unsubscription'>Unsubscription</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui=0220731000000127&amp;deveui=d02544fffef42720&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02207310000001271"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">" d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail:appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This API UnSubscribe  kitchen device. </p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code>DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -350,11 +350,14 @@ Remember — acess_token is an access token to be used only if authentication is
 <td>The ID of the kitten to retrieve</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2>
+<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="sb">`GET http://example.com/kittens/&lt;ID&gt;`</span>
+<span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -450,9 +453,6 @@ Remember — acess_token is an access token to be used only if authentication is
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
