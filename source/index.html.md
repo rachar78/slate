@@ -243,8 +243,11 @@ offset  | Offset to get no of device information
 # Device Configuration
 # Device Statistics
 # User Management
-# Push Notification
+# Serious/Warning Notification
+# Weather Notification
 # Firmware Management
+# Share Device Management
+
 
 
 
