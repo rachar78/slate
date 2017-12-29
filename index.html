@@ -1,0 +1,576 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#device-subscription-unsubscription" class="toc-h1 toc-link" data-title="Device Subscription/Unsubscription">Device Subscription/Unsubscription</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#subscription" class="toc-h2 toc-link" data-title="Subscription">Subscription</a>
+                  </li>
+                  <li>
+                    <a href="#unsubscription" class="toc-h2 toc-link" data-title="Unsubscription">Unsubscription</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#device-information" class="toc-h1 toc-link" data-title="Device Information">Device Information</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-latest-device-data" class="toc-h2 toc-link" data-title="Get Latest Device data">Get Latest Device data</a>
+                  </li>
+                  <li>
+                    <a href="#get-device-history-data" class="toc-h2 toc-link" data-title="Get Device History data">Get Device History data</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Kitchen API!This guide describes how to compose and send commands and queries to the IOT platform using the Kitchen REST API. The guide provides examples for a set of common tasks, but it does not describe how to configure the full feature set of the Kitchen Application and it does not list the classes, methods of the API
+.We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id='device-subscription-unsubscription'>Device Subscription/Unsubscription</h1><h2 id='subscription'>Subscription</h2><pre class="highlight shell tab-shell"><code>curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef42720&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,Please check thingplug response code"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02207310000001271"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">" d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail:appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unauthorized"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An Authentication object was not found in the SecurityContext"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This api Subscribe  kitchen device </p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device.</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — acess_token is an access token to be used only if authentication is enabled!
+</aside>
+<h2 id='unsubscription'>Unsubscription</h2><pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef42720&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02207310000001271"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">" d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail:appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<p>This API UnSubscribe  kitchen device.
+<aside class="warning">Unsubscribed devices have to be resubscribed to recieve data</aside></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p>&#39;DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}`</p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device.</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h1 id='device-information'>Device Information</h1><h2 id='get-latest-device-data'>Get Latest Device data</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest/ --data '</span><span class="nv">appeui</span><span class="o">=</span>0220731000000127&amp;deveui<span class="o">=</span>d02544fffef4bd1d &amp;access_token<span class="o">=</span>19f5ad9e-bf82-493e-aef0-d09daac55222<span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenlatestdeviceinfo"</span><span class="p">:{</span><span class="w">
+</span><span class="s2">"receive_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:10"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4bd20"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4764</span><span class="p">,</span><span class="w">
+</span><span class="s2">"resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">527</span><span class="p">,</span><span class="w">
+</span><span class="s2">"tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+</span><span class="s2">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19115</span><span class="p">,</span><span class="w">
+</span><span class="s2">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">16568</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:10.040528"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:08"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:08"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+</span><span class="s2">"temp_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenlatestdeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<p>Get Device latest information</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest?appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device.</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='get-device-history-data'>Get Device History data</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd1f&amp;appeui=0220731000000127&amp;begindate=201707260100&amp;enddate=201707262059&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKitchendevices"</span><span class="p">:[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"receive_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:10"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4bd20"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4680</span><span class="p">,</span><span class="w">
+</span><span class="s2">"resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1773</span><span class="p">,</span><span class="w">
+</span><span class="s2">"tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
+</span><span class="s2">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19137</span><span class="p">,</span><span class="w">
+</span><span class="s2">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">27560</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:10.011255"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:06"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:06"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+</span><span class="s2">"temp_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKitchendevices"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,begindate/enddate format is wrong.Valid format(YYYYMMDDHHMM)"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKitchendevices"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenlatestdeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<p>Get Device history information for a specific date </p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata?appeui={appeui}&amp;deveui={deveui}&amp;beginedate={begindatae}&amp;enddate={enddate}
+&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device.</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Begin date in the format YYYYMMDDHHMM.</td>
+</tr>
+<tr>
+<td>begindate</td>
+<td>Access token to be used with api.</td>
+</tr>
+<tr>
+<td>enddate</td>
+<td>end date in the format YYYYMMDDHHMM</td>
+</tr>
+<tr>
+<td>pgindex</td>
+<td>Page index for the pagination support</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Offset to get no of device information</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">This error codes are used across the API responses</aside>
+
+<p>The Kitchen API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request sucks.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
