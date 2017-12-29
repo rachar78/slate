@@ -1,6 +1,6 @@
 # Errors
 
-<aside class="notice">This error codes are used across the API reponses</aside>
+<aside class="notice">This error codes are used across the API responses</aside>
 
 The Kitchen API uses the following error codes:
 
