@@ -20,7 +20,7 @@ Welcome to the Kitchen API!This guide describes how to compose and send commands
 
 # Device Subscription/Unsubscription
 
-## Subscription
+## Device Subscription
 
 ```shell
 curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device/' --data 'appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
