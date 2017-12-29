@@ -23,7 +23,7 @@ Welcome to the Kitchen API!This guide describes how to compose and send commands
 ## Subscription
 
 ```shell
-curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device/' --data 'appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 ```
 > The above command returns JSON structured like this:
 
@@ -76,7 +76,7 @@ Remember — acess_token is an access token to be used only if authentication is
 ## Unsubscription
 
 ```shell
-curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device/' --data 'appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 
 ```
 > The above command returns JSON structured like this:
@@ -105,7 +105,7 @@ This API UnSubscribe  kitchen device.
 
 ### HTTP Request
 
-`DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
+'DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -120,7 +120,7 @@ access_token | Access token to be used with api.
 ## Get Latest Device data
 
 ```shell
-curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest?appeui=0220731000000127&deveui=d02544fffef4bd1d &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222"
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest/ --data 'appeui=0220731000000127&deveui=d02544fffef4bd1d &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 ```
 > The above command returns JSON structured like this:
 
@@ -171,9 +171,7 @@ access_token | Access token to be used with api.
 ## Get Device History data
 
 ```shell
-curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
-&pgindex={pgindex}&offset={offset}&access_token={access_token}
-"
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd1f&appeui=0220731000000127&begindate=201707260100&enddate=201707262059&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 ```
 > The above command returns JSON structured like this:
 
