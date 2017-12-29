@@ -3,9 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -25,34 +22,11 @@ Welcome to the Kitchen API!This guide describes how to compose and send commands
 
 # Subscription and Unsubscription
 
-## Subscribe kitchen device
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Subscribtion
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
+curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"
+  
 > The above command returns JSON structured like this:
 
 ```json
@@ -62,11 +36,31 @@ let kittens = api.kittens.get();
 "thingplug_resp": 201,
 "status": "Success"
 }
+{
+"appeui": "0220731000000127",
+"deviceeui": "d02544fffef42720",
+"thingplug_resp": 409,
+"status": "Fail,Please check thingplug response code"
+}
+
+{
+"appeui": "02207310000001271",
+"deviceeui": " d02544fffef42720",
+"thingplug_resp": 0,
+"status": "Fail:appeui/deveui length/format is wrong"
+}
+
+{
+"error": "unauthorized",
+"error_description": "An Authentication object was not found in the SecurityContext"
+}
+
 ```
+This api Subscribe  kitchen device 
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestap/iapi/subscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -81,53 +75,38 @@ access_token | NA | Access token to be used with api.
 Remember — acess_token is an access token to be used only if authentication is enabled!
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Unsubscription
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"
 ```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+"appeui": "0220731000000127",
+"deviceeui": "d02544fffef42720",
+"thingplug_resp": 200,
+"status": "Success"
 }
+
+{
+"appeui": "02207310000001271",
+"deviceeui": " d02544fffef42720",
+"thingplug_resp": 0,
+"status": "Fail:appeui/deveui length/format is wrong"
+}
+
+
 ```
 
-This endpoint retrieves a specific kitten.
+This API UnSubscribe  kitchen device. 
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
 
 ### URL Parameters
 
@@ -136,6 +115,7 @@ Parameter | Description
 ID | The ID of the kitten to retrieve
 
 ## Delete a Specific Kitten
+`GET http://example.com/kittens/<ID>`
 
 ```ruby
 require 'kittn'
@@ -145,6 +125,7 @@ api.kittens.delete(2)
 ```
 
 ```python
+`GET http://example.com/kittens/<ID>`
 import kittn
 
 api = kittn.authorize('meowmeowmeow')
