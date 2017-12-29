@@ -11,16 +11,11 @@ includes:
 
 search: true
 ---
-
 # Introduction
-
 Welcome to the Kitchen API!This guide describes how to compose and send commands and queries to the IOT platform using the Kitchen REST API. The guide provides examples for a set of common tasks, but it does not describe how to configure the full feature set of the Kitchen Application and it does not list the classes, methods of the API.We have language bindings in CURL! You can view code examples in the dark area to the right. 
 
-
 # Device Subscription/Unsubscription
-
 ## Subscription
-
 ```shell
 curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device/' --data 'appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 ```
@@ -67,7 +62,6 @@ appeui | Application eui of the device.
 deveui | Device eui of the device.
 access_token | Access token to be used with api.
 
-
 <aside class="success">
 Remember — acess_token is an access token to be used only if authentication is enabled!
 </aside>
@@ -94,13 +88,9 @@ curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/u
 "thingplug_resp": 0,
 "status": "Fail:appeui/deveui length/format is wrong"
 }
-
-
 ```
-
 This API UnSubscribe  kitchen device.
 <aside class="warning">Unsubscribed devices have to be resubscribed to recieve data</aside>
-
 
 ### HTTP Request
 
@@ -150,8 +140,6 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getk
 "kitchenlatestdeviceinfo": null,
 "status": "Fail,appeui/deveui length/format is wrong"
 }
-
-
 ```
 Get Device latest information
 
@@ -212,13 +200,10 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getk
 "listKitchendevices": null
 }
 
-
 {
 "kitchenlatestdeviceinfo": null,
 "status": "Fail,appeui/deveui length/format is wrong"
 }
-
-
 ```
 Get Device history information for a specific date 
 
