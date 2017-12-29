@@ -54,7 +54,7 @@ curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?a
 }
 
 ```
-This api UnSubscribe  kitchen device 
+This api Subscribe  kitchen device 
 
 ### HTTP Request
 
@@ -117,10 +117,10 @@ access_token | Access token to be used with api.
 
 # Device Information
 
-## device Latest data
+## Get Latest Device data
 
 ```shell
-curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata?appeui=0220731000000127&deveui=d02544fffef4bd1d &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222"
+curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest?appeui=0220731000000127&deveui=d02544fffef4bd1d &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222"
 ```
 > The above command returns JSON structured like this:
 
@@ -158,7 +158,7 @@ Get Device latest information
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest?appeui={appeui}&deveui={deveui}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest?appeui={appeui}&deveui={deveui}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -167,3 +167,77 @@ Parameter | Description
 appeui | Application eui of the device.
 deveui | Device eui of the device.
 access_token | Access token to be used with api.
+
+## Get Device History data
+
+```shell
+curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
+&pgindex={pgindex}&offset={offset}&access_token={access_token}
+"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "Success",
+"total": 137,
+"listKitchendevices":[
+{
+"receive_time": "2017-09-27 23:57:10",
+"app_eui": "0220731000000127",
+"version": "1 ",
+"device_id": "d02544fffef4bd20",
+"seq": 4680,
+"resistance": 1773,
+"tvoc": 209,
+"temperature": 19137,
+"humidity": 27560,
+"status": 31,
+"created_at": "2017-09-27 23:57:10.011255",
+"ct": "2017-09-27 23:57:06",
+"lt": "2017-09-27 23:57:06",
+"cs": 50,
+"temp_threshold": 50,
+"fw_ver": "0.3.2 "
+}
+]
+}
+
+{
+"status": "Fail,appeui/deveui length/format is wrong",
+"total": 0,
+"listKitchendevices": null
+}
+
+{
+"status": "Fail,begindate/enddate format is wrong.Valid format(YYYYMMDDHHMM)",
+"total": 0,
+"listKitchendevices": null
+}
+
+
+{
+"kitchenlatestdeviceinfo": null,
+"status": "Fail,appeui/deveui length/format is wrong"
+}
+
+
+```
+Get Device history information for a specific date 
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
+&pgindex={pgindex}&offset={offset}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+deveui | Device eui of the device.
+access_token | Begin date in the format YYYYMMDDHHMM.
+begindate  | Access token to be used with api.
+enddate  | end date in the format YYYYMMDDHHMM
+pgindex  | Page index for the pagination support
+offset  | Offset to get no of device information
