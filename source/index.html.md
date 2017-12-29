@@ -240,3 +240,11 @@ enddate  | end date in the format YYYYMMDDHHMM
 pgindex  | Page index for the pagination support
 offset  | Offset to get no of device information
 
+# Device Configuration
+# Device Statistics
+# User Management
+# Push Notification
+# Firmware Management
+
+
+
