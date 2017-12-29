@@ -26,7 +26,7 @@ Welcome to the Kitchen API!This guide describes how to compose and send commands
 
 ```shell
 curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"
-  
+```
 > The above command returns JSON structured like this:
 
 ```json
@@ -112,57 +112,6 @@ This API UnSubscribe  kitchen device.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-`GET http://example.com/kittens/<ID>`
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-`GET http://example.com/kittens/<ID>`
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+appeui | NA | Application eui of the device.
+deveui | NA | Device eui of the device.
+access_token | NA | Access token to be used with api.
