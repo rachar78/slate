@@ -4,7 +4,6 @@ title: API Reference
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -21,7 +20,7 @@ Welcome to the Kitchen API!This guide describes how to compose and send commands
 
 # Subscription and Unsubscription
 
-## Subscribtion
+## Subscription
 
 ```shell
 curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522"
@@ -63,11 +62,11 @@ This api Subscribe  kitchen device
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-appeui | NA | Application eui of the device.
-deveui | NA | Device eui of the device.
-access_token | NA | Access token to be used with api.
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+deveui | Device eui of the device.
+access_token | Access token to be used with api.
 
 
 <aside class="success">
@@ -108,10 +107,10 @@ This API UnSubscribe  kitchen device.
 
 `DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
---------- | -----------
-appeui | NA | Application eui of the device.
-deveui | NA | Device eui of the device.
-access_token | NA | Access token to be used with api.
+--------- |  -----------
+appeui | Application eui of the device.
+deveui | Device eui of the device.
+access_token | Access token to be used with api.
