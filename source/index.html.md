@@ -54,7 +54,7 @@ curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/subscribe_device?a
 }
 
 ```
-This api Subscribe  kitchen device 
+This api UnSubscribe  kitchen device 
 
 ### HTTP Request
 
@@ -100,9 +100,7 @@ curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device
 ```
 
 This API UnSubscribe  kitchen device.
-<!---
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
---> 
+<aside class="warning">Unsubscribed devices have to be resubscribed to recieve data</aside>
 
 
 ### HTTP Request
@@ -113,6 +111,59 @@ This API UnSubscribe  kitchen device.
 
 Parameter | Description
 --------- |  -----------
+appeui | Application eui of the device.
+deveui | Device eui of the device.
+access_token | Access token to be used with api.
+
+# Device Information
+
+## device Latest data
+
+```shell
+curl "http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata?appeui=0220731000000127&deveui=d02544fffef4bd1d &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"kitchenlatestdeviceinfo":{
+"receive_time": "2017-09-28 13:57:10",
+"app_eui": "0220731000000127",
+"version": "0.3.2 ",
+"device_id": "d02544fffef4bd20",
+"seq": 4764,
+"resistance": 527,
+"tvoc": 19,
+"temperature": 19115,
+"humidity": 16568,
+"status": 31,
+"created_at": "2017-09-28 13:57:10.040528",
+"ct": "2017-09-28 13:57:08",
+"lt": "2017-09-28 13:57:08",
+"cs": 50,
+"temp_threshold": 50,
+"fw_ver": "0.3.2 "
+},
+"status": "Success"
+}
+
+{
+"kitchenlatestdeviceinfo": null,
+"status": "Fail,appeui/deveui length/format is wrong"
+}
+
+
+```
+Get Device latest information
+
+### HTTP Request
+
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendata/latest?appeui={appeui}&deveui={deveui}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
 appeui | Application eui of the device.
 deveui | Device eui of the device.
 access_token | Access token to be used with api.
