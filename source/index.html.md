@@ -398,7 +398,203 @@ Parameter | Description
 deveui  | Device eui.
 access_token | Access token to be used with api.
 
+
+## Change valid date of device
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/changekitchendevicevaliddate/' --data 'deveui =d02544fffef42fc0&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+ "Status": "Success,valid date is 2017-12-14"
+}
+
+{
+ "Status": "Fail,appeui/deveui length/format is wrong"
+}
+
+```
+change kitchen valid date of device
+
+### HTTP Request
+
+`PUT http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/changekitchendevicevaliddate?deveui={deveui}&appeui={appeui}&numofdays={numofdays}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+deveui  | Device eui.
+numofdays | No of days to be incremented/decremeneted eg:2, -2
+access_token | Access token to be used with api.
+
+## Update kitchen device name
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicename/' --data 'appeui=0220731000000127&userkey=011c945f30ce2cbafc452f39840f025693339c42&devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&devicename=device1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+ "Status": "Device 995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749 updated with device1
+Successfully"
+}
+
+{
+ "Status": "Fail,appeui/deveui length/format is wrong"
+}
+
+```
+Update kitchen device name
+
+### HTTP Request
+
+`PUT http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicename?appeui={appeui}&userkey={userkey}&devicekey={devicekey}&devicename={ devicename}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+Devicekey  | Device key of the device.
+devicename | Device name of the device
+access_token | Access token to be used with api.
+
 # Device Statistics
+## Get Device Day Statistics
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendaystats/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd1d &begindate=20170711&enddate=20170713&pgindex=1&offset=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"kitchenstatsdaydeviceinfo":[
+{
+"st_date": "2017-09-24",
+"dev_eui": "d02544fffef47f89",
+"min_resistance": 26,
+"min_tvoc": 0,
+"min_temperature": 18998,
+"min_humidity": 29630,
+"max_resistance": 71,
+"max_tvoc": 554,
+"max_temperature": 19176,
+"max_humidity": 36415,
+"avg_resistance": 58,
+"avg_tvoc": 31,
+"avg_humidity": 33424
+}
+],
+"status": "Success",
+"total": 1
+}
+
+{
+"kitchenstatsdaydeviceinfo": null,
+"status": "Fail,appeui/deveui length/format is wrong",
+"total": 0
+}
+
+{
+"kitchenstatsdaydeviceinfo": null,
+"status": "Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)",
+"total": 0
+}
+
+```
+Get Device Statistics Information for date range 
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendaystats?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
+&pgindex={pgindex}&offset={offset}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui  | Application eui of the device
+begindate  | Begin date in the format YYYYMMDD.
+enddate  | end date in the format YYYYMMDD.
+pgindex  | Page index for the pagination support.
+offset  | Offset to get no of device information.
+access_token | Access token to be used with api.
+
+## Get Device hourly Statistics
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenhourstats/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd1d &begindate=2017071116&enddate=2017071320&pgindex=1&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"kitchenstatsdaydeviceinfo":[
+{
+"st_date": "2017-09-24",
+"dev_eui": "d02544fffef47f89",
+"min_resistance": 26,
+"min_tvoc": 0,
+"min_temperature": 18998,
+"min_humidity": 29630,
+"max_resistance": 71,
+"max_tvoc": 554,
+"max_temperature": 19176,
+"max_humidity": 36415,
+"avg_resistance": 58,
+"avg_tvoc": 31,
+"avg_humidity": 33424
+}
+],
+"status": "Success",
+"total": 1
+}
+
+{
+"kitchenstatsdaydeviceinfo": null,
+"status": "Fail,appeui/deveui length/format is wrong",
+"total": 0
+}
+
+{
+"kitchenstatsdaydeviceinfo": null,
+"status": "Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)",
+"total": 0
+}
+
+```
+Get Device statistics information based on specific hour range in a day
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenhourstats?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
+&pgindex={pgindex}&offset={offset}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui  | Application eui of the device
+begindate | Begin date in the format YYYYMMDDHH.
+enddate  | end date in the format YYYYMMDDHH.
+pgindex  | Page index for the pagination support.
+offset  | Offset to get no of device information.
+access_token | Access token to be used with api.
+
 # User Management
 # Serious/Warning Notification
 # Weather Notification
