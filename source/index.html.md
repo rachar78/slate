@@ -290,12 +290,12 @@ curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/u
 ```json
 
 {
- Status: “Device 4390be338981c3971bf9fa82fb4efc90ea9c5c83 unlinked from 
- 076f7293f63e3eb7bb84c35473a0e457f541e179 Successfully”
+ "Status": "Device 4390be338981c3971bf9fa82fb4efc90ea9c5c83 unlinked from 
+ 076f7293f63e3eb7bb84c35473a0e457f541e179 Successfully"
 }
 
 {
-Status: “Fail,userkey/devicekey format is wrong”
+"Status": "Fail,userkey/devicekey format is wrong"
 }
 
 ```
@@ -326,19 +326,19 @@ curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/d
 
 ```json
 {
- Status: “Success,Device d02544fffef42fc0 Deleted Successfully”
+ "Status": "Success,Device d02544fffef42fc0 Deleted Successfully"
 }
 
 {
- Status: “Fail, linking exists,Please unlink device before deleting”
+ "Status": "Fail, linking exists,Please unlink device before deleting"
 }
 
 {
-Status: “Fail,subscription information for the device d02544fffef42fc0 not found”
+"Status": "Fail,subscription information for the device d02544fffef42fc0 not found"
 }
 
 {
-Status: “Fail,deviceeui format is wrong”
+"Status": "Fail,deviceeui format is wrong"
 }
 
 ```
