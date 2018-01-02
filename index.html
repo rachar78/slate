@@ -241,6 +241,9 @@
                   <li>
                     <a href="#get-device-history-data" class="toc-h2 toc-link" data-title="Get Device History data">Get Device History data</a>
                   </li>
+                  <li>
+                    <a href="#get-appeui-of-the-kitchen-device" class="toc-h2 toc-link" data-title="Get appeui of the kitchen device">Get appeui of the kitchen device</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -345,7 +348,7 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 </tbody></table>
 
 <aside class="success">
-Remember — acess_token is an access token to be used only if authentication is enabled!
+Remember — access_token is an access token to be used only if authentication is enabled!
 </aside>
 <h2 id='unsubscription'>Unsubscription</h2><pre class="highlight shell tab-shell"><code>
 curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unsubscribe_device/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef42720&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
@@ -540,6 +543,51 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <td>Offset to get no of device information</td>
 </tr>
 </tbody></table>
+<h2 id='get-appeui-of-the-kitchen-device'>Get appeui of the kitchen device</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenappeui/'</span> --data <span class="s1">'deveui=d02544fffef44b98&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef44b98"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef44b981"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d12544fffef44b98"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,d12544fffef44b98 not ready for registration"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get appeui of the specific kitchen device </p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenappeui?deveui={deveui}access_token={access_token}</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>access_token Access token to be used with api</td>
+</tr>
+</tbody></table>
 <h1 id='device-configuration'>Device Configuration</h1><h2 id='register-kitchen-device'>Register Kitchen Device</h2><pre class="highlight shell tab-shell"><code>
 curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchendevice/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef40cc4&amp;devname=test&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
 
@@ -568,10 +616,10 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 
 </span></code></pre>
 <p>This api Register kitchen device</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchendevice?userkey={userkey}&amp;deveui={deveui}&amp;devname={devname}&amp;  
 access_token={access_token}</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -614,10 +662,10 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen
 
 </span></code></pre>
 <p>Unlink registered kitchen device mapping information from user</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unlink_kitchendevice?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
 {access_token}</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -662,9 +710,9 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen
 
 </span></code></pre>
 <p>Delete registered kitchen device information from device table</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchendevice?deveui={deveui}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
