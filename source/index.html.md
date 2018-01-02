@@ -67,7 +67,7 @@ appeui | Application eui of the device.
 deveui | Device eui of the device.
 access_token | Access token to be used with api.
 <aside class="success">
-Remember — acess_token is an access token to be used only if authentication is enabled!
+Remember — access_token is an access token to be used only if authentication is enabled!
 </aside>
 
 ## Unsubscription
@@ -229,6 +229,48 @@ begindate  | Access token to be used with api.
 enddate  | end date in the format YYYYMMDDHHMM
 pgindex  | Page index for the pagination support
 offset  | Offset to get no of device information
+
+## Get appeui of the kitchen device
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenappeui/' --data 'deveui=d02544fffef44b98&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"app_eui": "0220731000000127",
+"device_eui": "d02544fffef44b98",
+"status": "success"
+}
+
+{
+"app_eui": null,
+"device_eui": "d02544fffef44b981",
+"status": "Fail,appeui length/format is wrong"
+}
+
+{
+"app_eui": null,
+"device_eui": "d12544fffef44b98",
+"status": "Fail,d12544fffef44b98 not ready for registration"
+}
+
+```
+Get appeui of the specific kitchen device 
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenappeui?deveui={deveui}access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+deveui | Device eui of the device.
+access_token | access_token Access token to be used with api
 
 # Device Configuration
 ## Register Kitchen Device
