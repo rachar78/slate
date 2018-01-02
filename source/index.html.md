@@ -468,6 +468,83 @@ Devicekey  | Device key of the device.
 devicename | Device name of the device
 access_token | Access token to be used with api.
 
+## Update client group id
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/updatekitchendeviceclientgroupid/' --data 'appeui=0220731000000127&deveui=d02544fffef47f85&clientgroupid=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "Success,clientgroupid of d02544fffef47f85 is changed to 1"
+}
+
+
+{
+ "Status": "Fail,appeui/deveui length/format is wrong"
+}
+
+```
+Change the value of client group id of kitchen device
+
+### HTTP Request
+
+`PUT http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/updatekitchendeviceclientgroupid?deveui={deveui}&appeui={appeui}&clientgroupid={clientgroupid }`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+deveui  | Device eui of the device.
+clientgroupid | Client group id  eg:1,2,3
+access_token | Access token to be used with api.
+
+## Update the kitchen device settings.
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicesettings/' --data 'deveui=d02544fffef4bd20&appeui=0220731000000127&latitude=13.456&longitude=17.567&temperature_threshold=50&password=123456&client_group_id=1101&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicesettings/' --data 'deveui=d02544fffef4bd20&appeui=0220731000000127&password=123456&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"statuscode": 200,
+"status": " Success,Setting information updated"
+}
+
+{
+ "statuscode": 500,
+ "Status": "Fail,invalid userkey"
+}
+
+```
+Update the kitchen device settings.
+
+### HTTP Request
+
+`PUT http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicesettings?deveui={deveui}&appeui={appeui}&latitude={latitude}&longitude ={longitude}&temperature_threshold = {temperature_threshold}&client_group_id ={client_group_id}&password={paswsword}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+deveui  | Device eui of the device.
+latitude | optional latitude of the device
+longitude  | optional longitude  of the device
+temperature_threshold | Set optional temperature_threshold for the device
+client_group_id  | Set optional client_group_id of the device
+password  | Optional Password for the device
+access_token | Access token to be used with api.
+
 # Device Statistics
 ## Get Device Day Statistics
 
@@ -596,6 +673,153 @@ offset  | Offset to get no of device information.
 access_token | Access token to be used with api.
 
 # User Management
+## Register Kitchen user
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchenuser/' --data '{"pin_code":"560018","user_name":"guru","user_phone_num":"9900217610","phone_type":"Android", "email":"r.achar@solu-m.com"}&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The JSON body and response of JSON structured like this:
+
+```json
+{"pin_code":"560018","user_name":"guru","user_phone_num":"9900217610","phone_type":"Android", "email":"r.achar@solu-m.com"}
+
+{
+"kitchenuserinfo":{
+"user_key": "73a102d5663ca9fffd2a6738ea3da353f8edc3b1",
+"pin_code": "560018",
+"user_name": "guru",
+"user_phone_num": "9900217610",
+"phone_type": "Android",
+"email": "r.achar@solu-m.com",
+"register_date": "2017-08-24 21:07:02.0"
+},
+"status": "Success"
+}
+
+```
+This api Register kitchen user
+
+### HTTP Request
+
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchenuser?&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+pin_code  | Pin code of the user.
+user_name  | Username of user.
+user_phone_num | Phone no of user
+email | Email id of the user
+access_token | Access token to be used with api.
+
+## Delete Kitchen user
+
+```shell
+
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchenuser/' --data 'userkey=a1872e333d0e52644f6125da2276530f7ebe5e77&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+  "status": “Success, User a1872e333d0e52644f6125da2276530f7ebe5e77 Deleted Successfully”
+}
+
+```
+Delete registered kitchen user
+
+### HTTP Request
+
+`DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchenuser?userkey={userkey}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user.
+access_token | Access token to be used with api.
+
+## Update the kitchen user settings
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenusersettings/' --data 'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&push_notification_state=1&periodic_notification_state=1&weather_notification_state=1&notification_time_start=21&notification_time_end=22&notification_period=1&notification_interval=1&refresh_interval=1& one_signal_key=dea0c442-090a-4835-83a9-c1a276117b32&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+  "status": “Success, User a1872e333d0e52644f6125da2276530f7ebe5e77 Deleted Successfully”
+}
+
+```
+Update the kitchen user settings
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenusersettings?userkey={userkey}&devicekey={devicekey}& push_notification_state={push_notification_state}&weather_notification_state ={ weather_notification_state }& notification_time_start ={ notification_time_start
+}&notification_time_end={notification_time_end}&notification_period=={ notification_period}&notification_interval ={notification_interval}&refresh_interval ={refresh_interval }& one_signal_key={one_signal_key}access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user.
+devicekey | Device key of the device
+push_notification_state | Enable/Disable optional push notification state 1/0.
+weather_notification_state | Enable/Disable optional weather notification state 1/0
+notification_time_start | Set optional notification time start in hour
+notification_time_end | Set optional notification time end in hour
+notification_period | set values for optional notification period 
+notification_interval | set values for optional notification interval 
+refresh_interval | set values for optional refresh interval
+one_signal_key | set one_signal_key
+access_token | Access token to be used with api.
+
+## Update active login user
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin/' --data 'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+  "status": “Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully”
+  "statuscode":200
+}
+
+{
+"status": "Fail,invalid userkey",
+"statuscode":500
+}
+
+
+```
+update kitchen active login user for push notification
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin?userkey={userkey}&onesignalkey={onesignalkey }&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user.
+one_signal_key | One signal key of the kitchen user
+access_token | Access token to be used with api.
+
 # Serious/Warning Notification
 # Weather Notification
 # Firmware Management
