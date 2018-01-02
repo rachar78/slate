@@ -258,10 +258,24 @@
                   <li>
                     <a href="#delete-kitchen-device" class="toc-h2 toc-link" data-title="Delete kitchen device">Delete kitchen device</a>
                   </li>
+                  <li>
+                    <a href="#change-valid-date-of-device" class="toc-h2 toc-link" data-title="Change valid date of device">Change valid date of device</a>
+                  </li>
+                  <li>
+                    <a href="#update-kitchen-device-name" class="toc-h2 toc-link" data-title="Update kitchen device name">Update kitchen device name</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#device-statistics" class="toc-h1 toc-link" data-title="Device Statistics">Device Statistics</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-device-day-statistics" class="toc-h2 toc-link" data-title="Get Device Day Statistics">Get Device Day Statistics</a>
+                  </li>
+                  <li>
+                    <a href="#get-device-hourly-statistics" class="toc-h2 toc-link" data-title="Get Device hourly Statistics">Get Device hourly Statistics</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#user-management" class="toc-h1 toc-link" data-title="User Management">User Management</a>
@@ -728,7 +742,250 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h1 id='device-statistics'>Device Statistics</h1><h1 id='user-management'>User Management</h1><h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h1 id='firmware-management'>Firmware Management</h1><h1 id='share-device-management'>Share Device Management</h1><h1 id='errors'>Errors</h1>
+<h2 id='change-valid-date-of-device'>Change valid date of device</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/changekitchendevicevaliddate/'</span> --data <span class="s1">'deveui =d02544fffef42fc0&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,valid date is 2017-12-14"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+ </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>change kitchen valid date of device</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>PUT http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/changekitchendevicevaliddate?deveui={deveui}&amp;appeui={appeui}&amp;numofdays={numofdays}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device.</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui.</td>
+</tr>
+<tr>
+<td>numofdays</td>
+<td>No of days to be incremented/decremeneted eg:2, -2</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='update-kitchen-device-name'>Update kitchen device name</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicename/'</span> --data <span class="s1">'appeui=0220731000000127&amp;userkey=011c945f30ce2cbafc452f39840f025693339c42&amp;devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&amp;devicename=device1&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device 995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749 updated with device1
+Successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+ </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Update kitchen device name</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>PUT http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchendevicename?appeui={appeui}&amp;userkey={userkey}&amp;devicekey={devicekey}&amp;devicename={ devicename}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device.</td>
+</tr>
+<tr>
+<td>Devicekey</td>
+<td>Device key of the device.</td>
+</tr>
+<tr>
+<td>devicename</td>
+<td>Device name of the device</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h1 id='device-statistics'>Device Statistics</h1><h2 id='get-device-day-statistics'>Get Device Day Statistics</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendaystats/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd1d &amp;begindate=20170711&amp;enddate=20170713&amp;pgindex=1&amp;offset=1&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenstatsdaydeviceinfo"</span><span class="p">:[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"st_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-24"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"dev_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef47f89"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">18998</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">29630</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">554</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19176</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">36415</span><span class="p">,</span><span class="w">
+</span><span class="s2">"avg_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
+</span><span class="s2">"avg_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+</span><span class="s2">"avg_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">33424</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenstatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenstatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get Device Statistics Information for date range </p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendaystats?appeui={appeui}&amp;deveui={deveui}&amp;beginedate={begindatae}&amp;enddate={enddate}
+&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device</td>
+</tr>
+<tr>
+<td>begindate</td>
+<td>Begin date in the format YYYYMMDD.</td>
+</tr>
+<tr>
+<td>enddate</td>
+<td>end date in the format YYYYMMDD.</td>
+</tr>
+<tr>
+<td>pgindex</td>
+<td>Page index for the pagination support.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Offset to get no of device information.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='get-device-hourly-statistics'>Get Device hourly Statistics</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenhourstats/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd1d &amp;begindate=2017071116&amp;enddate=2017071320&amp;pgindex=1&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenstatsdaydeviceinfo"</span><span class="p">:[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"st_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-24"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"dev_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef47f89"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">18998</span><span class="p">,</span><span class="w">
+</span><span class="s2">"min_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">29630</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">554</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19176</span><span class="p">,</span><span class="w">
+</span><span class="s2">"max_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">36415</span><span class="p">,</span><span class="w">
+</span><span class="s2">"avg_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
+</span><span class="s2">"avg_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+</span><span class="s2">"avg_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">33424</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenstatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchenstatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get Device statistics information based on specific hour range in a day</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenhourstats?appeui={appeui}&amp;deveui={deveui}&amp;beginedate={begindatae}&amp;enddate={enddate}
+&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-12'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device</td>
+</tr>
+<tr>
+<td>begindate</td>
+<td>Begin date in the format YYYYMMDDHH.</td>
+</tr>
+<tr>
+<td>enddate</td>
+<td>end date in the format YYYYMMDDHH.</td>
+</tr>
+<tr>
+<td>pgindex</td>
+<td>Page index for the pagination support.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Offset to get no of device information.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h1 id='user-management'>User Management</h1><h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h1 id='firmware-management'>Firmware Management</h1><h1 id='share-device-management'>Share Device Management</h1><h1 id='errors'>Errors</h1>
 <aside class="notice">This error codes are used across the API responses</aside>
 
 <p>The Kitchen API uses the following error codes:</p>
