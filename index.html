@@ -298,6 +298,12 @@
                   <li>
                     <a href="#update-active-login-user" class="toc-h2 toc-link" data-title="Update active login user">Update active login user</a>
                   </li>
+                  <li>
+                    <a href="#get-kitchen-user-count" class="toc-h2 toc-link" data-title="Get kitchen user count">Get kitchen user count</a>
+                  </li>
+                  <li>
+                    <a href="#get-kitchen-user-list" class="toc-h2 toc-link" data-title="Get kitchen user list">Get kitchen user list</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1175,7 +1181,7 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="err">“Success</span><span class="p">,</span><span class="w"> </span><span class="err">User</span><span class="w"> </span><span class="err">a</span><span class="mi">1872</span><span class="err">e</span><span class="mi">333</span><span class="err">d</span><span class="mi">0</span><span class="err">e</span><span class="mi">52644</span><span class="err">f</span><span class="mi">6125</span><span class="err">da</span><span class="mi">2276530</span><span class="err">f</span><span class="mi">7</span><span class="err">ebe</span><span class="mi">5</span><span class="err">e</span><span class="mi">77</span><span class="w"> </span><span class="err">Deleted</span><span class="w"> </span><span class="err">Successfully”</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success, User a1872e333d0e52644f6125da2276530f7ebe5e77 Deleted Successfully"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -1207,8 +1213,14 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="err">“Success</span><span class="p">,</span><span class="w"> </span><span class="err">User</span><span class="w"> </span><span class="err">a</span><span class="mi">1872</span><span class="err">e</span><span class="mi">333</span><span class="err">d</span><span class="mi">0</span><span class="err">e</span><span class="mi">52644</span><span class="err">f</span><span class="mi">6125</span><span class="err">da</span><span class="mi">2276530</span><span class="err">f</span><span class="mi">7</span><span class="err">ebe</span><span class="mi">5</span><span class="err">e</span><span class="mi">77</span><span class="w"> </span><span class="err">Deleted</span><span class="w"> </span><span class="err">Successfully”</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="err">Success</span><span class="p">,</span><span class="err">User</span><span class="w"> </span><span class="err">Settings</span><span class="w"> </span><span class="err">updated</span><span class="s2">"
+}
+{
+"</span><span class="err">status</span><span class="s2">": "</span><span class="err">Fail</span><span class="p">,</span><span class="err">invalid</span><span class="w"> </span><span class="err">userkey</span><span class="s2">",
+"</span><span class="err">statuscode</span><span class="s2">": 500
+
+}
 
 </span></code></pre>
 <p>Update the kitchen user settings</p>
@@ -1285,7 +1297,6 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">500</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-
 </span></code></pre>
 <p>update kitchen active login user for push notification</p>
 <h3 id='http-request-18'>HTTP Request</h3>
@@ -1304,6 +1315,112 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <tr>
 <td>one_signal_key</td>
 <td>One signal key of the kitchen user</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='get-kitchen-user-count'>Get kitchen user count</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenusercount/'</span> --data <span class="s1">'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3073</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get total no of kitchen user count</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenusercount?access_token={access_token}</code></p>
+<h3 id='query-parameters-19'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='get-kitchen-user-list'>Get kitchen user list</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/'</span> --data <span class="s1">'pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/'</span> --data <span class="s1">'register_date_begin=20170901&amp;register_date_end=20170904&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/'</span> --data <span class="s1">'register_date_begin=20170901&amp;register_date_end=20170904&amp;keyword=IOS&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/'</span> --data <span class="s1">'keyword=IOS&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">87</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKitchenuserinfo"</span><span class="p">:[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b2cf342c9ef18d3aab0bca414a64e59639eca7fd"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"579588867"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Android"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-02 09:42:40"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"active_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1eec752b78c21e6683237caec24c60836df14b38"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"109177169338710333041,zweiwelten75@gmail.com"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOS"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-02 09:23:03"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"active_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get kitchen user list by condition</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition?appeui={appeui}&amp;pgindex={pgindex}&amp;offset={offset}&amp;
+&amp;register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword={keyword&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-20'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>register_date_begin</td>
+<td>Register date begin in YYYYMMDD eg: 20170801</td>
+</tr>
+<tr>
+<td>register_date_end</td>
+<td>Register date end in YYYYMMDD eg: 20170802</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>keyword for user_key,user_name, phone_number or phone type</td>
+</tr>
+<tr>
+<td>pgindex</td>
+<td>Page index for the pagination support</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Offset to get no of device information</td>
 </tr>
 <tr>
 <td>access_token</td>
