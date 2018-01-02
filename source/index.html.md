@@ -231,6 +231,131 @@ pgindex  | Page index for the pagination support
 offset  | Offset to get no of device information
 
 # Device Configuration
+## Register Kitchen Device
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchendevice/' --data 'appeui=0220731000000127&deveui=d02544fffef40cc4&devname=test&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+"kitchendeviceinfo":{
+"device_key": "136da34fe3cefe6b11f4b08013c866f190c226c2",
+"device_eui": " d02544fffef40cc4",
+"app_eui": "0220731000000127",
+"device_name": "Device-2",
+"keyco_kitchen_num": "3773508",
+"register_date": "2017-09-27 20:56:52.0",
+"valid_date": "2017-12-27 20:56:52.0"
+},
+"status": "Success"
+}
+
+{
+"kitchendeviceinfo": null,
+"status": "Fail,userkey/deveui length/format is wrong"
+}
+
+```
+
+This api Register kitchen device
+
+### HTTP Request
+
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchendevice?userkey={userkey}&deveui={deveui}&devname={devname}&  
+access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey | User key of the user who wants to register device.
+deveui | Device eui of the device.
+devname | Device name
+access_token | Access token to be used with api.
+
+## Unlink kitchen device
+
+```shell
+
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unlink_kitchendevice/' --data 'userkey==076f7293f63e3eb7bb84c35473a0e457f541e179&devicekey=4390be338981c3971bf9fa82fb4efc90ea9c5c83&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+ Status: “Device 4390be338981c3971bf9fa82fb4efc90ea9c5c83 unlinked from 
+ 076f7293f63e3eb7bb84c35473a0e457f541e179 Successfully”
+}
+
+{
+Status: “Fail,userkey/devicekey format is wrong”
+}
+
+```
+
+Unlink registered kitchen device mapping information from user
+
+### HTTP Request
+
+`DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unlink_kitchendevice?userkey={userkey}&devicekey={devicekey}&access_token=
+{access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey | User key of the user who wants to register device.
+devicekey  | Device key of the device.
+access_token | Access token to be used with api.
+
+## Delete kitchen device
+
+```shell
+
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchendevice/' --data 'deveui =d02544fffef42fc0&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+ Status: “Success,Device d02544fffef42fc0 Deleted Successfully”
+}
+
+{
+ Status: “Fail, linking exists,Please unlink device before deleting”
+}
+
+{
+Status: “Fail,subscription information for the device d02544fffef42fc0 not found”
+}
+
+{
+Status: “Fail,deviceeui format is wrong”
+}
+
+```
+
+Delete registered kitchen device information from device table
+
+### HTTP Request
+
+`DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchendevice?deveui={deveui}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+deveui  | Device eui.
+access_token | Access token to be used with api.
+
 # Device Statistics
 # User Management
 # Serious/Warning Notification
