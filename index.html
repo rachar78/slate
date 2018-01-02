@@ -245,6 +245,17 @@
           </li>
           <li>
             <a href="#device-configuration" class="toc-h1 toc-link" data-title="Device Configuration">Device Configuration</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register-kitchen-device" class="toc-h2 toc-link" data-title="Register Kitchen Device">Register Kitchen Device</a>
+                  </li>
+                  <li>
+                    <a href="#unlink-kitchen-device" class="toc-h2 toc-link" data-title="Unlink kitchen device">Unlink kitchen device</a>
+                  </li>
+                  <li>
+                    <a href="#delete-kitchen-device" class="toc-h2 toc-link" data-title="Delete kitchen device">Delete kitchen device</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#device-statistics" class="toc-h1 toc-link" data-title="Device Statistics">Device Statistics</a>
@@ -529,7 +540,147 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <td>Offset to get no of device information</td>
 </tr>
 </tbody></table>
-<h1 id='device-configuration'>Device Configuration</h1><h1 id='device-statistics'>Device Statistics</h1><h1 id='user-management'>User Management</h1><h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h1 id='firmware-management'>Firmware Management</h1><h1 id='share-device-management'>Share Device Management</h1><h1 id='errors'>Errors</h1>
+<h1 id='device-configuration'>Device Configuration</h1><h2 id='register-kitchen-device'>Register Kitchen Device</h2><pre class="highlight shell tab-shell"><code>
+curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchendevice/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef40cc4&amp;devname=test&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchendeviceinfo"</span><span class="p">:{</span><span class="w">
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"136da34fe3cefe6b11f4b08013c866f190c226c2"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">" d02544fffef40cc4"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device-2"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"keyco_kitchen_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3773508"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 20:56:52.0"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-27 20:56:52.0"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchendeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,userkey/deveui length/format is wrong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This api Register kitchen device</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchendevice?userkey={userkey}&amp;deveui={deveui}&amp;devname={devname}&amp;  
+access_token={access_token}</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userkey</td>
+<td>User key of the user who wants to register device.</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device.</td>
+</tr>
+<tr>
+<td>devname</td>
+<td>Device name</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='unlink-kitchen-device'>Unlink kitchen device</h2><pre class="highlight shell tab-shell"><code>
+curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unlink_kitchendevice/'</span> --data <span class="s1">'userkey==076f7293f63e3eb7bb84c35473a0e457f541e179&amp;devicekey=4390be338981c3971bf9fa82fb4efc90ea9c5c83&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+ </span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">“Device</span><span class="w"> </span><span class="mi">4390</span><span class="err">be</span><span class="mi">338981</span><span class="err">c</span><span class="mi">3971</span><span class="err">bf</span><span class="mi">9</span><span class="err">fa</span><span class="mi">82</span><span class="err">fb</span><span class="mi">4</span><span class="err">efc</span><span class="mi">90</span><span class="err">ea</span><span class="mi">9</span><span class="err">c</span><span class="mi">5</span><span class="err">c</span><span class="mi">83</span><span class="w"> </span><span class="err">unlinked</span><span class="w"> </span><span class="err">from</span><span class="w"> 
+ </span><span class="mi">076</span><span class="err">f</span><span class="mi">7293</span><span class="err">f</span><span class="mi">63</span><span class="err">e</span><span class="mi">3</span><span class="err">eb</span><span class="mi">7</span><span class="err">bb</span><span class="mi">84</span><span class="err">c</span><span class="mi">35473</span><span class="err">a</span><span class="mi">0</span><span class="err">e</span><span class="mi">457</span><span class="err">f</span><span class="mi">541</span><span class="err">e</span><span class="mi">179</span><span class="w"> </span><span class="err">Successfully”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">“Fail</span><span class="p">,</span><span class="err">userkey/devicekey</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">wrong”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Unlink registered kitchen device mapping information from user</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/unlink_kitchendevice?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
+{access_token}</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userkey</td>
+<td>User key of the user who wants to register device.</td>
+</tr>
+<tr>
+<td>devicekey</td>
+<td>Device key of the device.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-kitchen-device'>Delete kitchen device</h2><pre class="highlight shell tab-shell"><code>
+curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchendevice/'</span> --data <span class="s1">'deveui =d02544fffef42fc0&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">“Success</span><span class="p">,</span><span class="err">Device</span><span class="w"> </span><span class="err">d</span><span class="mi">02544</span><span class="err">fffef</span><span class="mi">42</span><span class="err">fc</span><span class="mi">0</span><span class="w"> </span><span class="err">Deleted</span><span class="w"> </span><span class="err">Successfully”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+ </span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">“Fail</span><span class="p">,</span><span class="w"> </span><span class="err">linking</span><span class="w"> </span><span class="err">exists</span><span class="p">,</span><span class="err">Please</span><span class="w"> </span><span class="err">unlink</span><span class="w"> </span><span class="err">device</span><span class="w"> </span><span class="err">before</span><span class="w"> </span><span class="err">deleting”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">“Fail</span><span class="p">,</span><span class="err">subscription</span><span class="w"> </span><span class="err">information</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">device</span><span class="w"> </span><span class="err">d</span><span class="mi">02544</span><span class="err">fffef</span><span class="mi">42</span><span class="err">fc</span><span class="mi">0</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">found”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">“Fail</span><span class="p">,</span><span class="err">deviceeui</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">wrong”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Delete registered kitchen device information from device table</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>DELETE  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/delete_kitchendevice?deveui={deveui}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deveui</td>
+<td>Device eui.</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h1 id='device-statistics'>Device Statistics</h1><h1 id='user-management'>User Management</h1><h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h1 id='firmware-management'>Firmware Management</h1><h1 id='share-device-management'>Share Device Management</h1><h1 id='errors'>Errors</h1>
 <aside class="notice">This error codes are used across the API responses</aside>
 
 <p>The Kitchen API uses the following error codes:</p>
