@@ -727,7 +727,7 @@ curl --request DELETE 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/d
 ```json
 
 {
-  "status": “Success, User a1872e333d0e52644f6125da2276530f7ebe5e77 Deleted Successfully”
+  "status": "Success, User a1872e333d0e52644f6125da2276530f7ebe5e77 Deleted Successfully"
 }
 
 ```
@@ -756,7 +756,13 @@ curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upda
 ```json
 
 {
-  "status": “Success, User a1872e333d0e52644f6125da2276530f7ebe5e77 Deleted Successfully”
+"statuscode": 200,
+"status": Success,User Settings updated"
+}
+{
+"status": "Fail,invalid userkey",
+"statuscode": 500
+
 }
 
 ```
@@ -804,7 +810,6 @@ curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upda
 "statuscode":500
 }
 
-
 ```
 update kitchen active login user for push notification
 
@@ -820,6 +825,96 @@ userkey   | Userkey of the user.
 one_signal_key | One signal key of the kitchen user
 access_token | Access token to be used with api.
 
+## Get kitchen user count
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenusercount/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+"total": 3073,
+"status": "success"
+}
+
+```
+Get total no of kitchen user count
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenusercount?access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+access_token | Access token to be used with api.
+
+## Get kitchen user list
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/' --data 'pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition/' --data 'keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "Success",
+"total": 87,
+"listKitchenuserinfo":[
+{
+"user_key": "b2cf342c9ef18d3aab0bca414a64e59639eca7fd",
+"pin_code": "",
+"user_name": "579588867",
+"user_phone_num": "",
+"phone_type": "Android",
+"register_date": "2018-01-02 09:42:40",
+"device_alias": "",
+"active_login": ""
+},
+{
+"user_key": "1eec752b78c21e6683237caec24c60836df14b38",
+"pin_code": "",
+"user_name": "109177169338710333041,zweiwelten75@gmail.com",
+"user_phone_num": null,
+"phone_type": "iOS",
+"register_date": "2018-01-02 09:23:03",
+"device_alias": "",
+"active_login": ""
+}
+]
+}
+
+```
+Get kitchen user list by condition
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition?appeui={appeui}&pgindex={pgindex}&offset={offset}&
+&register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword={keyword&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+register_date_begin | Register date begin in YYYYMMDD eg: 20170801
+register_date_end | Register date end in YYYYMMDD eg: 20170802
+keyword | keyword for user_key,user_name, phone_number or phone type
+pgindex | Page index for the pagination support
+offset | Offset to get no of device information
+access_token | Access token to be used with api.
 # Serious/Warning Notification
 # Weather Notification
 # Firmware Management
