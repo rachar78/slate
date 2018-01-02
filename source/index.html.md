@@ -757,7 +757,7 @@ curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upda
 
 {
 "statuscode": 200,
-"status": Success,User Settings updated"
+"status": "Success,User Settings updated"
 }
 {
 "status": "Fail,invalid userkey",
@@ -801,7 +801,7 @@ curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upda
 ```json
 
 {
-  "status": “Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully”
+  "status": "Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully"
   "statuscode":200
 }
 
