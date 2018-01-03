@@ -1028,7 +1028,230 @@ notificationtime  | User specified time
 access_token | Access token to be used with api.
 
 # Firmware Management
+## Upload kitchen firmware
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upload_kitchenfirmware/' --data 'name=KEYCO_Kitchen0810.zip&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+status:“ successfully uploaded file= KEYCO_Kitchen0810.zip”,
+statuscode:200
+}
+
+{
+status: “failed to upload KEYCO_Kitchen0810.zip”
+statuscode:500
+}
+
+```
+Upload kitchen firmware to server
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upload_kitchenfirmware?name={name}?access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+name   | Firmware filename with file extension
+file   | Select the file to be uploaded to Server in Body
+access_token | Access token to be used with api.
+
+## Get latest kitchen firmware information
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenfirmwareinfo/' --data 'userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"filename": "KEYCO_Kitchen0810.zip",
+"md5": "a74e93ba98898dbece58dc8d1ff380f2",
+"creationtime": "2017-11-24T11:09:34.649244Z",
+"device_type": "kitchen",
+"version": "0810",
+"status": "Success",
+"statuscode": 200
+} 
+
+{
+status: “Fail,User does not have previlege to download firmware”
+statuscode:500
+}
+
+```
+Get the latest kitchen firmware information from server
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenfirmwareinfo?&userkey={userkey}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user
+access_token | Access token to be used with api.
+
+## Download latest kitchen firmware file
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/download_kitchenfirmware/' --data 'name=KEYCO_Kitchen0810.zip&userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+status:“ successfully downloaded file= KEYCO_Kitchen0810.zip”,
+statuscode:200
+}
+
+{
+status: “Fail,User does not have previlege to download firmware”
+statuscode:500
+}
+
+
+```
+Download kitchen firmware file from server
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/download_kitchenfirmware?name={KEYCO_Kitchen0810.zip}&userkey ={userkey}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+name    | Firmware filename with file extension
+userkey    | Userkey of the user
+access_token | Access token to be used with api.
+
 # Share Device Management
+
+## Generate kitchen device share link
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/generate_kitchensharelink/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command includes JSON body and  returns JSON structured like this:
+
+```json
+{
+ "user_key":"172bc36c250aa965446af93d3a17edd9fe325c4d",
+ "device_eui":"d0255c86c10001b8",
+ "app_eui":"0190691000000340"
+}
+
+{
+"user_key": "172bc36c250aa965446af93d3a17edd9fe325c4d",
+"device_eui": "d0255c86c10001b8",
+"app_eui": "0190691000000340",
+"link": "TWAbB4Kr",
+"creation_date": "2017-12-13 10:11:59.0",
+"expiry_date": "2017-12-16 10:11:59.0",
+"count": 1,
+"status": "Success",
+"statuscode": 200
+}
+
+{
+  "status": "Fail,User does not exists", 
+  "statuscode": 404
+}
+
+{
+  "status": " Fail,maximum shared users exceeded", 
+  "statuscode": 429
+}
+
+{
+  "status": “Fail,deveui/userkey length/format is wrong", 
+  "statuscode": 500
+}
+
+```
+Generate kitchen device share link.
+
+### HTTP Request
+
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/generate_kitchensharelink?access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+deveui  | Device eui
+userkey | Userkey of the user
+app_eui | App eui of the device
+access_token | Access token to be used with api.
+
+## Register kitchen share device
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchensharedevice/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command includes JSON body and  returns JSON structured like this:
+
+```json
+{"user_key":"eab6105a6ed3df61483d99f6447f594038e0006a",
+ "link" :"RPoD0yBu",
+ "one_signal_key":"dea0c442-090a-4835-83a9-c1a276117b32"
+}
+
+{
+"user_key": "eab6105a6ed3df61483d99f6447f594038e0006a",
+"link": "RPoD0yBu",
+"one_signal_key": "dea0c442-090a-4835-83a9-c1a276117b32",
+"status": "Success",
+"statuscode": 200
+}
+
+{
+  "status": " Fail,Primary user cannot share himself ", 
+  "statuscode": 409
+}
+
+{
+  "status": " Fail,Link is expired ", 
+  "statuscode": 408
+}
+
+{
+  "status": " Fail,userkey length/format is wrong”, 
+  "statuscode": 500
+}
+
+```
+Register kitchen share device.
+
+### HTTP Request
+
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchensharedevice?access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+deveui  | Device eui
+userkey | Userkey of the user
+app_eui | App eui of the device
+access_token | Access token to be used with api.
 
 
 
