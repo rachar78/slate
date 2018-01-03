@@ -311,6 +311,14 @@
           </li>
           <li>
             <a href="#weather-notification" class="toc-h1 toc-link" data-title="Weather Notification">Weather Notification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-weather-information" class="toc-h2 toc-link" data-title="Get Weather Information">Get Weather Information</a>
+                  </li>
+                  <li>
+                    <a href="#push-weather-notification-to-user" class="toc-h2 toc-link" data-title="Push weather notification to user">Push weather notification to user</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#firmware-management" class="toc-h1 toc-link" data-title="Firmware Management">Firmware Management</a>
@@ -1427,7 +1435,129 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h1 id='firmware-management'>Firmware Management</h1><h1 id='share-device-management'>Share Device Management</h1><h1 id='errors'>Errors</h1>
+<h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h2 id='get-weather-information'>Get Weather Information</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather/'</span> --data <span class="s1">'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&amp;devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&amp;language=kor
+&amp;access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather/'</span> --data <span class="s1">'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&amp;devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&amp;language=eng&amp;
+access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.4831368714460851"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.132857792502961"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1567c7a74d13f2441876b1f7558afaee4b249627"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d14f0a82310144f410019cbe92eb17ea87871435"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"grid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">city</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">서울</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">latitude</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">37.48645</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">county</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">송파구</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">village</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">문정2동</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">longitude</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">127.10414</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentTemp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">tmax</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0.00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">tmin</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">-6.00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">tc</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">-0.40</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentSky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_O01</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Sunny</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentHumidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentWind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">wdir</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">297.00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">wspd</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">1.60</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"rainForecast"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentPm25"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">grade</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Moderate</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">17</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentPm10"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">grade</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Moderate</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">33</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"currentO3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">grade</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Good</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0.023</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast2dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast2dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-7.00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast2daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_M04</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">흐림</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast3dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast3dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-4.00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast3daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_M04</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">흐림</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast4dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast4dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-6"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast4daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_W02</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Partly Cloudy</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast5dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast5dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast5daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_W03</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Mostly Cloudy</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast6dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast6dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"forecast6daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_W12</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Snow</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"timeRelease"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-03 15:00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get the weather of kitchen device location by language</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather?userkey={user_key}&amp;devicekey={device_key}&amp;language={language}
+&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-21'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userkey</td>
+<td>Userkey of the user</td>
+</tr>
+<tr>
+<td>devicekey</td>
+<td>Device key of the device</td>
+</tr>
+<tr>
+<td>language</td>
+<td>Language – kor, eng</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='push-weather-notification-to-user'>Push weather notification to user</h2><pre class="highlight shell tab-shell"><code>
+curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/pushkitchenWeatherNotification/'</span> --data <span class="s1">'notificationtime=13&amp;access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchennotification"</span><span class="p">:[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"one_signal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30541824-866b-4394-a550-b095abe9128c"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c1479753d82a541a14e75e303c3f08385a19745"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"오늘은 어제보다 0.6°C 높아요.(-1.0°C~5.0°C)"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"kitchennotification"</span><span class="p">:[],</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail, SK Plannet API has an error."</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Push weather notification to the kitchen user mobile device at the specified time</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/pushkitchenWeatherNotification?notificationtime={notification_time}
+&amp;access_token={access_token}
+</code></p>
+<h3 id='query-parameters-22'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>notificationtime</td>
+<td>User specified time</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h1 id='firmware-management'>Firmware Management</h1><h1 id='share-device-management'>Share Device Management</h1><h1 id='errors'>Errors</h1>
 <aside class="notice">This error codes are used across the API responses</aside>
 
 <p>The Kitchen API uses the following error codes:</p>
