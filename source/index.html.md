@@ -917,6 +917,116 @@ offset | Offset to get no of device information
 access_token | Access token to be used with api.
 # Serious/Warning Notification
 # Weather Notification
+## Get Weather Information
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather/' --data 'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&language=kor
+&access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather/' --data 'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&language=eng&
+access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "Success",
+"latitude": "37.4831368714460851",
+"longitude": "127.132857792502961",
+"user_key": "1567c7a74d13f2441876b1f7558afaee4b249627",
+"device_key": "d14f0a82310144f410019cbe92eb17ea87871435",
+"grid": "{\"city\":\"서울\",\"latitude\":\"37.48645\",\"county\":\"송파구\",\"village\":\"문정2동\",\"longitude\":\"127.10414\"}",
+"currentTemp": "{\"tmax\":\"0.00\",\"tmin\":\"-6.00\",\"tc\":\"-0.40\"}",
+"currentSky": "{\"code\":\"SKY_O01\",\"name\":\"Sunny\"}",
+"currentHumidity": "30.00",
+"currentWind": "{\"wdir\":\"297.00\",\"wspd\":\"1.60\"}",
+"rainForecast": "10.00",
+"currentPm25": "{\"grade\":\"Moderate\",\"value\":\"17\"}",
+"currentPm10": "{\"grade\":\"Moderate\",\"value\":\"33\"}",
+"currentO3": "{\"grade\":\"Good\",\"value\":\"0.023\"}",
+"forecast2dayTempMax": "0.00",
+"forecast2dayTempMin": "-7.00",
+"forecast2daySky": "{\"code\":\"SKY_M04\",\"name\":\"흐림\"}",
+"forecast3dayTempMax": "2.00",
+"forecast3dayTempMin": "-4.00",
+"forecast3daySky": "{\"code\":\"SKY_M04\",\"name\":\"흐림\"}",
+"forecast4dayTempMax": "2",
+"forecast4dayTempMin": "-6",
+"forecast4daySky": "{\"code\":\"SKY_W02\", \"name\":\"Partly Cloudy\"}",
+"forecast5dayTempMax": "2",
+"forecast5dayTempMin": "-5",
+"forecast5daySky": "{\"code\":\"SKY_W03\", \"name\":\"Mostly Cloudy\"}",
+"forecast6dayTempMax": "2",
+"forecast6dayTempMin": "-2",
+"forecast6daySky": "{\"code\":\"SKY_W12\", \"name\":\"Snow\"}",
+"timeRelease": "2018-01-03 15:00:00"
+}
+
+```
+Get the weather of kitchen device location by language
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather?userkey={user_key}&devicekey={device_key}&language={language}
+&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey  | Userkey of the user
+devicekey | Device key of the device
+language | Language – kor, eng
+access_token | Access token to be used with api.
+
+## Push weather notification to user
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/pushkitchenWeatherNotification/' --data 'notificationtime=13&access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"kitchennotification":[
+{
+"one_signal_key": "30541824-866b-4394-a550-b095abe9128c",
+"user_key": "1c1479753d82a541a14e75e303c3f08385a19745",
+"message": "오늘은 어제보다 0.6°C 높아요.(-1.0°C~5.0°C)",
+"severity": "0",
+"status": "Success"
+}
+],
+"status": "Success",
+"total": 1
+}
+
+{
+"kitchennotification":[],
+"status": "Fail, SK Plannet API has an error.",
+"total": 0
+}
+
+```
+Push weather notification to the kitchen user mobile device at the specified time
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/pushkitchenWeatherNotification?notificationtime={notification_time}
+&access_token={access_token}
+`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+notificationtime  | User specified time
+access_token | Access token to be used with api.
+
 # Firmware Management
 # Share Device Management
 
