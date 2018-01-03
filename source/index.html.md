@@ -1039,12 +1039,12 @@ curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upl
 
 ```json
 {
-status:“ successfully uploaded file= KEYCO_Kitchen0810.zip",
-statuscode:200
+"status":" successfully uploaded file= KEYCO_Kitchen0810.zip",
+"statuscode":200
 }
 
 {
-status:"failed to upload KEYCO_Kitchen0810.zip"
+"status":"failed to upload KEYCO_Kitchen0810.zip"
 statuscode:500
 }
 
@@ -1084,8 +1084,8 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_
 } 
 
 {
-status:"Fail,User does not have previlege to download firmware”
-statuscode:500
+"status":"Fail,User does not have previlege to download firmware"
+"statuscode":500
 }
 
 ```
@@ -1113,13 +1113,13 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/down
 
 ```json
 {
-status:“ successfully downloaded file= KEYCO_Kitchen0810.zip”,
-statuscode:200
+"status": "successfully downloaded file= KEYCO_Kitchen0810.zip",
+"statuscode":200
 }
 
 {
-status:"Fail,User does not have previlege to download firmware"
-statuscode:500
+"status":"Fail,User does not have previlege to download firmware"
+"statuscode":500
 }
 
 
