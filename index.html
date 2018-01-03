@@ -1584,14 +1584,14 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="err">status</span><span class="p">:</span><span class="err">“</span><span class="w"> </span><span class="err">successfully</span><span class="w"> </span><span class="err">uploaded</span><span class="w"> </span><span class="err">file=</span><span class="w"> </span><span class="err">KEYCO_Kitchen</span><span class="mi">0810</span><span class="err">.zip</span><span class="s2">",
-statuscode:200
-}
+</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">" successfully uploaded file= KEYCO_Kitchen0810.zip"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-{
-status:"</span><span class="err">failed</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">upload</span><span class="w"> </span><span class="err">KEYCO_Kitchen</span><span class="mi">0810</span><span class="err">.zip</span><span class="s2">"
-statuscode:500
-}
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"failed to upload KEYCO_Kitchen0810.zip"</span><span class="w">
+</span><span class="err">statuscode</span><span class="p">:</span><span class="mi">500</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p>Upload kitchen firmware to server</p>
@@ -1635,9 +1635,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 </span><span class="p">}</span><span class="w"> 
 
 </span><span class="p">{</span><span class="w">
-</span><span class="err">status</span><span class="p">:</span><span class="s2">"Fail,User does not have previlege to download firmware”
-statuscode:500
-}
+</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Fail,User does not have previlege to download firmware"</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">500</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p>Get the latest kitchen firmware information from server</p>
@@ -1667,13 +1667,13 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="err">status</span><span class="p">:</span><span class="err">“</span><span class="w"> </span><span class="err">successfully</span><span class="w"> </span><span class="err">downloaded</span><span class="w"> </span><span class="err">file=</span><span class="w"> </span><span class="err">KEYCO_Kitchen</span><span class="mi">0810</span><span class="err">.zip”</span><span class="p">,</span><span class="w">
-</span><span class="err">statuscode</span><span class="p">:</span><span class="mi">200</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"successfully downloaded file= KEYCO_Kitchen0810.zip"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-</span><span class="err">status</span><span class="p">:</span><span class="s2">"Fail,User does not have previlege to download firmware"</span><span class="w">
-</span><span class="err">statuscode</span><span class="p">:</span><span class="mi">500</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Fail,User does not have previlege to download firmware"</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">500</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
