@@ -272,6 +272,92 @@ Parameter | Description
 deveui | Device eui of the device.
 access_token | access_token Access token to be used with api
 
+## Get total kitchen device count
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendevicecount/' --data 'appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"total": 1523,
+"status": "success"
+}
+
+{
+"total": 0,
+"status": "Fail,appeui length/format is wrong"
+}
+
+```
+Get total no of of kitchen devices count 
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendevicecount?appeui={appeui}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+access_token | access_token Access token to be used with api
+
+## Get the user lists of specific device
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchendeviceuserlist/' --data 'appeui=0220731000000127& devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "Success",
+"total": 2,
+"listKitchenuserinfo":[
+{
+"user_key": "1567c7a74d13f2441876b1f7558afaee4b249627",
+"pin_code": "",
+"user_name": "567034643",
+"user_phone_num": "",
+"phone_type": "Android",
+"register_date": "2018-01-04 21:50:57",
+"device_alias": "bruce office 1f0e",
+"active_login": "1"
+},
+{
+"user_key": "bd991840970e8005468094bb160e42845197b565",
+"pin_code": "",
+"user_name": "100439623793991393326,vudamalapati@gmail.com",
+"user_phone_num": null,
+"phone_type": "Android",
+"register_date": "2017-12-30 12:19:40",
+"device_alias": "bala-office2",
+"active_login": "0"
+}
+]
+}
+
+```
+Get the kitchen user lists of specific device
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchendeviceuserlist?{appeui}&devicekey={devicekey}&access_token={access_token`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device.
+devicekey | Device key of the device
+access_token | access_token Access token to be used with api
+
 # Device Configuration
 ## Register Kitchen Device
 
@@ -880,6 +966,142 @@ keyword | keyword for user_key,user_name, phone_number or phone type
 pgindex | Page index for the pagination support
 offset | Offset to get no of device information
 access_token | Access token to be used with api.
+
+## Get kitchen device lists of specific user
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserdevicelist/' --data 'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "Success",
+"total": 1,
+"listKitchendeviceinfo":[
+{
+"device_key": "b54b6b0a296e996b665f05313a2b87a918691945",
+"device_eui": "d02544fffef71f0f",
+"app_eui": "0190691000000340",
+"device_name": "Bala",
+"keyco_kitchen_num": "3612431",
+"register_date": "2017-12-05 13:38:14",
+"valid_date": "2018-03-05 13:38:14",
+"fw_ver": "0.5.2 ",
+"client_group_id": 20001,
+"password": null,
+"linking": 1
+}
+]
+}
+```
+Get the kitchen device lists of specific user
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserdevicelist?userkey={userkey}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey | User key of the user
+access_token | access_token Access token to be used with api
+
+## Get kitchen device data attribute
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&&deveui=d02544fffef44b98&
+pgindex=0&offset=0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170801&register_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170801&valid_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170901&register_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170901&valid_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&receive_time_begin=20170801&receive_time_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute/' --data 'appeui=0220731000000127&clientgroupid=1&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"kitchendataAttribute":[
+{
+"appeui": "0220731000000127",
+"device_key": "6cc9afa018259ae5f2ce25c5211913ed0ccaebdc",
+"device_eui": "d02544fffef4bd20",
+"keyco_kitchen_num": "3456288",
+"register_date": "2017-09-27 19:41:43",
+"valid_date": "2017-12-27 19:41:43",
+"client_group_id": 0,
+"receive_time": "2017-09-28 16:17:10",
+"seq": 4778,
+"resistance": 466,
+"tvoc": 10,
+"temperature": 19101,
+"humidity": 16861,
+"status": 31,
+"created_at": "2017-09-28 16:17:10.096811",
+"ct": "2017-09-28 16:17:09",
+"lt": "2017-09-28 16:17:09",
+"cs": 50,
+"temp_threshold": 50,
+"fw_ver": "0.3.2 ",
+"version": "1 "
+}
+],
+"status": "Success",
+"total": 1
+}
+
+{
+"kitchendataAttribute": null,
+"status": "Fail,deveui length/format is wrong",
+"total": 0
+}
+
+```
+Get kitchen device data attribute information by specifying various condition
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchendataattribute?appeui={appeui}&deveui={deveui}& pgindex={pgindex}&offset={offset}&register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword=
+{keyword}&valid_date_begin={valid_date_begin}&valid_date_end={valid_date_end}&clientgroupid
+={ clientgroupid}& receive_time_begin={ receive_time_begin}& receive_time_end ={receive_time_end }
+access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device
+deveui | Device eui of the device
+register_date_begin | Register date begin in YYYYMMDD eg: 20170801
+register_date_end | Register date end in YYYYMMDD eg: 20170802
+valid_date_begin | valid date begin in YYYYMMDD eg: 20170801
+valid_date_end | valid date end in YYYYMMDD eg: 20170802
+keyword | keyword for device_key, firmware_version, device_eui, device_name and keyco_number. 
+client_group_id | Client group id
+receive_time_begin | Receive time begin date in YYYYMMDD eg: 20170801
+receive_time_end | Receive time end date in YYYYMMDD eg: 20170801
+pgindex | Page index for the pagination support
+offset | Offset to get no of device information
+access_token | Access token to be used with api
+
 # Serious/Warning Notification
 ## Push Serious/Warning notification to mobile device
 
@@ -923,7 +1145,7 @@ message | Alert Message to be sent to device
 severity | Severity of the message eg:2,3,10,12
 access_token | Access token to be used with api.
 
-## update one signal key of the kitchen user
+## Update one signal key
 
 ```shell
 
@@ -1031,7 +1253,7 @@ Get one signal key of the kitchen user
 Parameter | Description
 --------- | ------------
 userkey   | Userkey of the user.
-devicekey| Device key of the user device
+devicekey| One signal key of the kitchen user
 access_token | Access token to be used with api.
 
 # Weather Notification
