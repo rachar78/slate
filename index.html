@@ -296,9 +296,6 @@
                     <a href="#update-the-kitchen-user-settings" class="toc-h2 toc-link" data-title="Update the kitchen user settings">Update the kitchen user settings</a>
                   </li>
                   <li>
-                    <a href="#update-active-login-user" class="toc-h2 toc-link" data-title="Update active login user">Update active login user</a>
-                  </li>
-                  <li>
                     <a href="#get-kitchen-user-count" class="toc-h2 toc-link" data-title="Get kitchen user count">Get kitchen user count</a>
                   </li>
                   <li>
@@ -308,6 +305,20 @@
           </li>
           <li>
             <a href="#serious-warning-notification" class="toc-h1 toc-link" data-title="Serious/Warning Notification">Serious/Warning Notification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#push-serious-warning-notification-to-mobile-device" class="toc-h2 toc-link" data-title="Push Serious/Warning notification to mobile device">Push Serious/Warning notification to mobile device</a>
+                  </li>
+                  <li>
+                    <a href="#update-one-signal-key-of-the-kitchen-user" class="toc-h2 toc-link" data-title="update one signal key of the kitchen user">update one signal key of the kitchen user</a>
+                  </li>
+                  <li>
+                    <a href="#update-active-login-user" class="toc-h2 toc-link" data-title="Update active login user">Update active login user</a>
+                  </li>
+                  <li>
+                    <a href="#get-one-signal-key-of-the-kitchen-user" class="toc-h2 toc-link" data-title="Get one signal key of the kitchen user">Get one signal key of the kitchen user</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#weather-notification" class="toc-h1 toc-link" data-title="Weather Notification">Weather Notification</a>
@@ -1306,48 +1317,6 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h2 id='update-active-login-user'>Update active login user</h2><pre class="highlight shell tab-shell"><code>
-curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin/'</span> --data <span class="s1">'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&amp;onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully"</span><span class="w">
-  </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">200</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">500</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>update kitchen active login user for push notification</p>
-<h3 id='http-request-18'>HTTP Request</h3>
-<p><code>PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin?userkey={userkey}&amp;onesignalkey={onesignalkey }&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-18'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userkey</td>
-<td>Userkey of the user.</td>
-</tr>
-<tr>
-<td>one_signal_key</td>
-<td>One signal key of the kitchen user</td>
-</tr>
-<tr>
-<td>access_token</td>
-<td>Access token to be used with api.</td>
-</tr>
-</tbody></table>
 <h2 id='get-kitchen-user-count'>Get kitchen user count</h2><pre class="highlight shell tab-shell"><code>
 curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenusercount/'</span> --data <span class="s1">'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
@@ -1363,9 +1332,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 
 </span></code></pre>
 <p>Get total no of kitchen user count</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenusercount?access_token={access_token}</code></p>
-<h3 id='query-parameters-19'>Query Parameters</h3>
+<h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1419,10 +1388,10 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 
 </span></code></pre>
 <p>Get kitchen user list by condition</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenuserlistbycondition?appeui={appeui}&amp;pgindex={pgindex}&amp;offset={offset}&amp;
 &amp;register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword={keyword&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-20'>Query Parameters</h3>
+<h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1454,7 +1423,196 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h1 id='weather-notification'>Weather Notification</h1><h2 id='get-weather-information'>Get Weather Information</h2><pre class="highlight shell tab-shell"><code>
+<h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h2 id='push-serious-warning-notification-to-mobile-device'>Push Serious/Warning notification to mobile device</h2><pre class="highlight shell tab-shell"><code>
+curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/push_kitchennotification/'</span> --data <span class="s1">'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&amp;message=Alert kitchen&amp;severity=12 
+&amp;deveui=d02544fffef4bd20&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&amp;state=0'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command includes JSON body and  returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"one_signal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dea0c442-090a-4835-83a9-c1a276117b32"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b1b3e65ca74a45e3525ee7642f4623e6f9800a5"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alert kitchen"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Push notification to the kitchen user mobile device</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/push_kitchennotification?userkey={userkey&amp;onesignalkey={onesignalkey}&amp;message
+ ={ message }&amp;severity={severity}access_token={access_token}</code></p>
+<h3 id='query-parameters-20'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deveui</td>
+<td>Device eui</td>
+</tr>
+<tr>
+<td>userkey</td>
+<td>Userkey of the user</td>
+</tr>
+<tr>
+<td>onesignalkey</td>
+<td>One signal key of the kitchen user</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Alert Message to be sent to device</td>
+</tr>
+<tr>
+<td>severity</td>
+<td>Severity of the message eg:2,3,10,12</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='update-one-signal-key-of-the-kitchen-user'>update one signal key of the kitchen user</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenonesignalkey/'</span> --data <span class="s1">'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&amp;devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&amp;state=0&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Success,userkey 1b1b3e65ca74a45e3525ee7642f4623e6f9800a5 
+ devicekey eff56f0745ba3ed892c56eb964a1c34b1ede52c8 updated  with onesignalkey
+ 3b00fb42-f8e7-4c0c-9808-c7613fe2a1fb state false Successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey/devicekey"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>update one signal key of the kitchen user</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;onesignalkey ={onesignalkey }&amp;state={state}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-21'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userkey</td>
+<td>Userkey of the user.</td>
+</tr>
+<tr>
+<td>one_signal_key</td>
+<td>One signal key of the kitchen user</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Notification state to be  set to true or false. Values should be 0/1. 0:false, 1:true</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='update-active-login-user'>Update active login user</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin/'</span> --data <span class="s1">'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&amp;onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully"</span><span class="w">
+  </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">500</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>update kitchen active login user for push notification</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin?userkey={userkey}&amp;onesignalkey={onesignalkey }&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-22'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userkey</td>
+<td>Userkey of the user.</td>
+</tr>
+<tr>
+<td>one_signal_key</td>
+<td>One signal key of the kitchen user</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='get-one-signal-key-of-the-kitchen-user'>Get one signal key of the kitchen user</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_keycoonesignalkey/'</span> --data <span class="s1">'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&amp;devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"one_signal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3b00fb42-f8e7-4c0c-9808-c7613fe2a1fb"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b1b3e65ca74a45e3525ee7642f4623e6f9800a5"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eff56f0745ba3ed892c56eb964a1c34b1ede52c8"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"notification_state"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey/devicekey"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get one signal key of the kitchen user</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
+{access_token}</code></p>
+<h3 id='query-parameters-23'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userkey</td>
+<td>Userkey of the user.</td>
+</tr>
+<tr>
+<td>devicekey</td>
+<td>Device key of the user device</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h1 id='weather-notification'>Weather Notification</h1><h2 id='get-weather-information'>Get Weather Information</h2><pre class="highlight shell tab-shell"><code>
 curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather/'</span> --data <span class="s1">'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&amp;devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&amp;language=kor
 &amp;access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
 
@@ -1500,10 +1658,10 @@ access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
 
 </span></code></pre>
 <p>Get the weather of kitchen device location by language</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/getkitchenweather?userkey={user_key}&amp;devicekey={device_key}&amp;language={language}
 &amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-21'>Query Parameters</h3>
+<h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1556,11 +1714,11 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 
 </span></code></pre>
 <p>Push weather notification to the kitchen user mobile device at the specified time</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/pushkitchenWeatherNotification?notificationtime={notification_time}
 &amp;access_token={access_token}
 </code></p>
-<h3 id='query-parameters-22'>Query Parameters</h3>
+<h3 id='query-parameters-25'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1590,14 +1748,14 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 
 </span><span class="p">{</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"failed to upload KEYCO_Kitchen0810.zip"</span><span class="w">
-</span><span class="err">statuscode</span><span class="p">:</span><span class="mi">500</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">500</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p>Upload kitchen firmware to server</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upload_kitchenfirmware?name={name}?access_token={access_token}</code></p>
-<h3 id='query-parameters-23'>Query Parameters</h3>
+<h3 id='query-parameters-26'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1641,9 +1799,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 
 </span></code></pre>
 <p>Get the latest kitchen firmware information from server</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_kitchenfirmwareinfo?&amp;userkey={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-24'>Query Parameters</h3>
+<h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1679,9 +1837,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/io
 
 </span></code></pre>
 <p>Download kitchen firmware file from server</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/download_kitchenfirmware?name={KEYCO_Kitchen0810.zip}&amp;userkey ={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-25'>Query Parameters</h3>
+<h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1743,9 +1901,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 
 </span></code></pre>
 <p>Generate kitchen device share link.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/generate_kitchensharelink?access_token={access_token}</code></p>
-<h3 id='query-parameters-26'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1806,9 +1964,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-kitchen/i
 
 </span></code></pre>
 <p>Register kitchen share device.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/register_kitchensharedevice?access_token={access_token}</code></p>
-<h3 id='query-parameters-27'>Query Parameters</h3>
+<h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
