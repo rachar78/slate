@@ -789,41 +789,6 @@ refresh_interval | set values for optional refresh interval
 one_signal_key | set one_signal_key
 access_token | Access token to be used with api.
 
-## Update active login user
-
-```shell
-
-curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin/' --data 'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-
-{
-  "status": "Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully"
-  "statuscode":200
-}
-
-{
-"status": "Fail,invalid userkey",
-"statuscode":500
-}
-
-```
-update kitchen active login user for push notification
-
-### HTTP Request
-
-`PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin?userkey={userkey}&onesignalkey={onesignalkey }&access_token={access_token}`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-userkey   | Userkey of the user.
-one_signal_key | One signal key of the kitchen user
-access_token | Access token to be used with api.
 
 ## Get kitchen user count
 
@@ -916,6 +881,159 @@ pgindex | Page index for the pagination support
 offset | Offset to get no of device information
 access_token | Access token to be used with api.
 # Serious/Warning Notification
+## Push Serious/Warning notification to mobile device
+
+```shell
+
+curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/push_kitchennotification/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&message=Alert kitchen&severity=12 
+&deveui=d02544fffef4bd20&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&state=0'
+
+```
+> The above command includes JSON body and  returns JSON structured like this:
+
+```json
+{
+"one_signal_key": "dea0c442-090a-4835-83a9-c1a276117b32",
+"user_key": "1b1b3e65ca74a45e3525ee7642f4623e6f9800a5",
+"message": "Alert kitchen",
+"severity": "12",
+"status": "Success"
+}
+
+{
+"status": "Fail,invalid userkey"
+}
+
+```
+Push notification to the kitchen user mobile device
+
+### HTTP Request
+
+`POST  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/push_kitchennotification?userkey={userkey&onesignalkey={onesignalkey}&message
+ ={ message }&severity={severity}access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+deveui  | Device eui
+userkey | Userkey of the user
+onesignalkey | One signal key of the kitchen user
+message | Alert Message to be sent to device
+severity | Severity of the message eg:2,3,10,12
+access_token | Access token to be used with api.
+
+## update one signal key of the kitchen user
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenonesignalkey/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&state=0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+"status":"Success,userkey 1b1b3e65ca74a45e3525ee7642f4623e6f9800a5 
+ devicekey eff56f0745ba3ed892c56eb964a1c34b1ede52c8 updated  with onesignalkey
+ 3b00fb42-f8e7-4c0c-9808-c7613fe2a1fb state false Successfully"
+}
+{
+"status": "Fail,invalid userkey/devicekey"
+}
+
+```
+update one signal key of the kitchen user
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenonesignalkey?userkey={userkey}&devicekey={devicekey}&onesignalkey ={onesignalkey }&state={state}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user.
+one_signal_key | One signal key of the kitchen user
+state | Notification state to be  set to true or false. Values should be 0/1. 0:false, 1:true
+access_token | Access token to be used with api.
+
+## Update active login user
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin/' --data 'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+  "status": "Success,userkey user_key c714b1243a731013e18318d46bfc0bb54c39cf33  onesignalkey 79dc9c92-135d-433d-b213-577ee88b7345 active login enabled Successfully"
+  "statuscode":200
+}
+
+{
+"status": "Fail,invalid userkey",
+"statuscode":500
+}
+
+```
+update kitchen active login user for push notification
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/update_kitchenactivelogin?userkey={userkey}&onesignalkey={onesignalkey }&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user.
+one_signal_key | One signal key of the kitchen user
+access_token | Access token to be used with api.
+
+## Get one signal key of the kitchen user
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_keycoonesignalkey/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+"one_signal_key": "3b00fb42-f8e7-4c0c-9808-c7613fe2a1fb",
+"user_key": "1b1b3e65ca74a45e3525ee7642f4623e6f9800a5",
+"device_key": "eff56f0745ba3ed892c56eb964a1c34b1ede52c8",
+"notification_state": false,
+"status": "Success"
+}
+
+{
+"status": "Fail,invalid userkey/devicekey"
+}
+
+```
+Get one signal key of the kitchen user
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&devicekey={devicekey}&access_token=
+{access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+userkey   | Userkey of the user.
+devicekey| Device key of the user device
+access_token | Access token to be used with api.
+
 # Weather Notification
 ## Get Weather Information
 
@@ -1045,7 +1163,7 @@ curl --request POST 'http://keycoiot.solu-m.com/keyco-kitchen/iotrestapi/api/upl
 
 {
 "status":"failed to upload KEYCO_Kitchen0810.zip"
-statuscode:500
+"statuscode":500
 }
 
 ```
