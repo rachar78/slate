@@ -280,18 +280,13 @@
                     <a href="#update-client-group-id" class="toc-h2 toc-link" data-title="Update client group id">Update client group id</a>
                   </li>
                   <li>
-                    <a href="#update-the-keyco-device-settings" class="toc-h2 toc-link" data-title="Update the keyco device settings.">Update the keyco device settings.</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#device-statistics" class="toc-h1 toc-link" data-title="Device Statistics">Device Statistics</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-device-day-statistics" class="toc-h2 toc-link" data-title="Get Device Day Statistics">Get Device Day Statistics</a>
+                    <a href="#set-reporting-location-interval" class="toc-h2 toc-link" data-title="Set Reporting/Location Interval">Set Reporting/Location Interval</a>
                   </li>
                   <li>
-                    <a href="#get-device-hourly-statistics" class="toc-h2 toc-link" data-title="Get Device hourly Statistics">Get Device hourly Statistics</a>
+                    <a href="#reset-the-device" class="toc-h2 toc-link" data-title="Reset the device.">Reset the device.</a>
+                  </li>
+                  <li>
+                    <a href="#set-keyco-device-safety-zone-information" class="toc-h2 toc-link" data-title="Set keyco device safety zone information">Set keyco device safety zone information</a>
                   </li>
               </ul>
           </li>
@@ -303,9 +298,6 @@
                   </li>
                   <li>
                     <a href="#delete-keyco-user" class="toc-h2 toc-link" data-title="Delete keyco user">Delete keyco user</a>
-                  </li>
-                  <li>
-                    <a href="#update-the-keyco-user-settings" class="toc-h2 toc-link" data-title="Update the keyco user settings">Update the keyco user settings</a>
                   </li>
                   <li>
                     <a href="#get-keyco-user-count" class="toc-h2 toc-link" data-title="Get keyco user count">Get keyco user count</a>
@@ -329,17 +321,6 @@
                   </li>
                   <li>
                     <a href="#get-one-signal-key-of-the-keyco-user" class="toc-h2 toc-link" data-title="Get one signal key of the keyco user">Get one signal key of the keyco user</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#weather-notification" class="toc-h1 toc-link" data-title="Weather Notification">Weather Notification</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-weather-information" class="toc-h2 toc-link" data-title="Get Weather Information">Get Weather Information</a>
-                  </li>
-                  <li>
-                    <a href="#push-weather-notification-to-user" class="toc-h2 toc-link" data-title="Push weather notification to user">Push weather notification to user</a>
                   </li>
               </ul>
           </li>
@@ -488,7 +469,7 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrest
 </tr>
 </tbody></table>
 <h1 id='device-information'>Device Information</h1><h2 id='get-latest-device-data'>Get Latest Device data</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/latest/ --data '</span><span class="nv">appeui</span><span class="o">=</span>0220731000000127&amp;deveui<span class="o">=</span>d02544fffef4bd1d &amp;access_token<span class="o">=</span>19f5ad9e-bf82-493e-aef0-d09daac55222<span class="s1">'
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/latest/ --data '</span><span class="nv">appeui</span><span class="o">=</span>0220731000000127&amp;deveui<span class="o">=</span>d02544fffef447c9 &amp;access_token<span class="o">=</span>19f5ad9e-bf82-493e-aef0-d09daac55222<span class="s1">'
 
 </span></code></pre>
 <blockquote>
@@ -496,28 +477,39 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="s2">"keycolatestdeviceinfo"</span><span class="p">:{</span><span class="w">
-</span><span class="s2">"receive_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:10"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4bd20"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4764</span><span class="p">,</span><span class="w">
-</span><span class="s2">"resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">527</span><span class="p">,</span><span class="w">
-</span><span class="s2">"tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-</span><span class="s2">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19115</span><span class="p">,</span><span class="w">
-</span><span class="s2">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">16568</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
-</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:10.040528"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:08"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 13:57:08"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-</span><span class="s2">"temp_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"major"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d11f"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"minor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2400"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef447c9"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 12:46:55"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">1108807628</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">1123912939</span><span class="p">,</span><span class="w">
+</span><span class="s2">"altitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+</span><span class="s2">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w">
+</span><span class="s2">"hdop"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gps_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+</span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+</span><span class="s2">"positioning_mode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"function_operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gps_operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8.10 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_x"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_y"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_z"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 12:47:10"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 12:47:02"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 12:47:02"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
+</span><span class="s2">"location_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
 </span><span class="p">},</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span><span class="p">{</span><span class="w">
 </span><span class="s2">"keycolatestdeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui format is wrong"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -553,25 +545,63 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
-</span><span class="s2">"listkeycodevices"</span><span class="p">:[</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKeycodevices"</span><span class="p">:[</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"receive_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:10"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 "</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4bd20"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4680</span><span class="p">,</span><span class="w">
-</span><span class="s2">"resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1773</span><span class="p">,</span><span class="w">
-</span><span class="s2">"tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
-</span><span class="s2">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19137</span><span class="p">,</span><span class="w">
-</span><span class="s2">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">27560</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
-</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:10.011255"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:06"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 23:57:06"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-</span><span class="s2">"temp_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="w">
+</span><span class="s2">"major"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d033"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"minor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6400"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef40cd9"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 09:03:58"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"altitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"hdop"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gps_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+</span><span class="s2">"positioning_mode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"function_operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gps_operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8.10 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_x"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_y"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_z"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 19:03:50"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 19:03:42"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 19:03:42"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
+</span><span class="s2">"location_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"major"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d033"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"minor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6400"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef40cd9"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 17:00:17"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">1108747670</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">1123960452</span><span class="p">,</span><span class="w">
+</span><span class="s2">"altitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
+</span><span class="s2">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="s2">"hdop"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gps_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+</span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+</span><span class="s2">"positioning_mode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"function_operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gps_operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8.10 "</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_x"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_y"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+</span><span class="s2">"sensor_z"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 17:01:40"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 17:01:30"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 17:01:30"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
+</span><span class="s2">"location_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -836,7 +866,7 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;keyword=0.7.9&amp;pgindex=0&amp;offset=10&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;receive_time_begin=20170801&amp;receive_time_end=20171004&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;timestamp_begin=20170801&amp;timestamp_end=20171004&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;clientgroupid=1&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
@@ -848,44 +878,63 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </span><span class="s2">"keycodataAttribute"</span><span class="p">:[</span><span class="w">
 </span><span class="p">{</span><span class="w">
 </span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6cc9afa018259ae5f2ce25c5211913ed0ccaebdc"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4bd20"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"keyco_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3456288"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-27 19:41:43"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-27 19:41:43"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4432b"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"keyco_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-03 22:30:38"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-03 14:59:59"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"location_interval"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"location_intervaltype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"safetyzone_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"safetyzone_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"safetyzone_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
 </span><span class="s2">"client_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-</span><span class="s2">"receive_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 16:17:10"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4778</span><span class="p">,</span><span class="w">
-</span><span class="s2">"resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">466</span><span class="p">,</span><span class="w">
-</span><span class="s2">"tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="s2">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19101</span><span class="p">,</span><span class="w">
-</span><span class="s2">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">16861</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
-</span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 16:17:10.096811"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 16:17:09"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-28 16:17:09"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"cs"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-</span><span class="s2">"temp_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.2 "</span><span class="p">,</span><span class="w">
-</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 "</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="err">“safetyzone_latitude</span><span class="s2">": 13,
+"</span><span class="err">safetyzone_longitude</span><span class="s2">": 17,
+"</span><span class="err">version</span><span class="s2">": "</span><span class="mi">1</span><span class="w"> </span><span class="s2">",
+"</span><span class="err">major</span><span class="s2">": "</span><span class="err">d</span><span class="mi">10</span><span class="err">c</span><span class="s2">",
+"</span><span class="err">minor</span><span class="s2">": "</span><span class="err">ac</span><span class="mi">00</span><span class="s2">",
+"</span><span class="err">device_id</span><span class="s2">": "</span><span class="err">d</span><span class="mi">02544</span><span class="err">fffef</span><span class="mi">4432</span><span class="err">b</span><span class="s2">",
+"</span><span class="err">timestamp</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">54</span><span class="s2">",
+"</span><span class="err">latitude</span><span class="s2">": 1108134101,
+"</span><span class="err">longitude</span><span class="s2">": 1124081567,
+"</span><span class="err">altitude</span><span class="s2">": 50,
+"</span><span class="err">speed</span><span class="s2">": 0,
+"</span><span class="err">hdop</span><span class="s2">": 1,
+"</span><span class="err">gps_num</span><span class="s2">": 5,
+"</span><span class="err">error</span><span class="s2">": 0,
+"</span><span class="err">battery</span><span class="s2">": 50,
+"</span><span class="err">positioning_mode</span><span class="s2">": 1,
+"</span><span class="err">function_operation</span><span class="s2">": 0,
+"</span><span class="err">gps_operation</span><span class="s2">": 1,
+"</span><span class="err">sensor</span><span class="s2">": 1,
+"</span><span class="err">fw_ver</span><span class="s2">": "</span><span class="mf">0.7</span><span class="err">.</span><span class="mi">9</span><span class="w"> </span><span class="s2">",
+"</span><span class="err">sensor_x</span><span class="s2">": 7,
+"</span><span class="err">sensor_y</span><span class="s2">": 0,
+"</span><span class="err">sensor_z</span><span class="s2">": 19,
+"</span><span class="err">created_at</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">40</span><span class="s2">",
+"</span><span class="err">ct</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">39</span><span class="s2">",
+"</span><span class="err">lt</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">39</span><span class="s2">",
+"</span><span class="err">cs</span><span class="s2">": 0
+}
+],
+"</span><span class="err">status</span><span class="s2">": "</span><span class="err">Success</span><span class="s2">",
+"</span><span class="err">total</span><span class="s2">": 28
+}
 
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"keycodataAttribute"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,deveui length/format is wrong"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
+{
+"</span><span class="err">keycodataAttribute</span><span class="s2">": null,
+"</span><span class="err">status</span><span class="s2">": "</span><span class="err">Fail</span><span class="p">,</span><span class="err">appeui</span><span class="w"> </span><span class="err">length/format</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">wrong</span><span class="s2">"
+Total: 0
+}
+
 
 </span></code></pre>
 <p>Get keyco device data attribute information by specifying various condition</p>
 <h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute?appeui={appeui}&amp;deveui={deveui}&amp; pgindex={pgindex}&amp;offset={offset}&amp;register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword=
 {keyword}&amp;valid_date_begin={valid_date_begin}&amp;valid_date_end={valid_date_end}&amp;clientgroupid
-={ clientgroupid}&amp; receive_time_begin={ receive_time_begin}&amp; receive_time_end ={receive_time_end }
+={ clientgroupid}&amp; timestamp_begin={ timestamp_begin}&amp; timestamp_end ={timestamp_end }
 access_token={access_token}</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
@@ -927,12 +976,12 @@ access_token={access_token}</code></p>
 <td>Client group id</td>
 </tr>
 <tr>
-<td>receive_time_begin</td>
-<td>Receive time begin date in YYYYMMDD eg: 20170801</td>
+<td>timestamp_begin</td>
+<td>Timestamp begin date in YYYYMMDD eg: 20170801</td>
 </tr>
 <tr>
-<td>receive_time_end</td>
-<td>Receive time end date in YYYYMMDD eg: 20170801</td>
+<td>timestamp_end</td>
+<td>Timestamp end date in YYYYMMDD eg: 20170801</td>
 </tr>
 <tr>
 <td>pgindex</td>
@@ -1218,29 +1267,35 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h2 id='update-the-keyco-device-settings'>Update the keyco device settings.</h2><pre class="highlight shell tab-shell"><code>
-curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicesettings/'</span> --data <span class="s1">'deveui=d02544fffef4bd20&amp;appeui=0220731000000127&amp;latitude=13.456&amp;longitude=17.567&amp;temperature_threshold=50&amp;password=123456&amp;client_group_id=1101&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicesettings/'</span> --data <span class="s1">'deveui=d02544fffef4bd20&amp;appeui=0220731000000127&amp;password=123456&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+<h2 id='set-reporting-location-interval'>Set Reporting/Location Interval</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/setinterval/'</span> --data <span class="s1">'deveui=d02544fffef42720&amp;appeui=0220731000000127&amp;interval=2&amp;intervaltype=1&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Success,Setting information updated"</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EI00000000000005470485"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
- </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
- </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey"</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail:Invalid interval.Valid values are 1,2,5,10,30,60,120"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ri"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
+
 </span></code></pre>
-<p>Update the keyco device settings.</p>
+<p>Set reporting/location interval for the device</p>
 <h3 id='http-request-16'>HTTP Request</h3>
-<p><code>PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicesettings?deveui={deveui}&amp;appeui={appeui}&amp;latitude={latitude}&amp;longitude ={longitude}&amp;temperature_threshold = {temperature_threshold}&amp;client_group_id ={client_group_id}&amp;password={paswsword}&amp;access_token={access_token}</code></p>
+<p><code>PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/setinterval?appeui={appeui}&amp;deveui={deveui}&amp;interval={interval}&amp;intervaltype=
+{intervaltype}&amp;access_token={access_token}</code></p>
 <h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1257,76 +1312,44 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 <td>Device eui of the device.</td>
 </tr>
 <tr>
-<td>latitude</td>
-<td>optional latitude of the device</td>
+<td>interval</td>
+<td>To set interval cycle. Valid values are 1,2,5,10,30,60,120</td>
 </tr>
 <tr>
-<td>longitude</td>
-<td>optional longitude  of the device</td>
-</tr>
-<tr>
-<td>temperature_threshold</td>
-<td>Set optional temperature_threshold for the device</td>
-</tr>
-<tr>
-<td>client_group_id</td>
-<td>Set optional client_group_id of the device</td>
-</tr>
-<tr>
-<td>password</td>
-<td>Optional Password for the device</td>
+<td>intervaltype</td>
+<td>To set location/reporting cycle. Valid values are 1,2</td>
 </tr>
 <tr>
 <td>access_token</td>
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h1 id='device-statistics'>Device Statistics</h1><h2 id='get-device-day-statistics'>Get Device Day Statistics</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodaystats/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd1d &amp;begindate=20170711&amp;enddate=20170713&amp;pgindex=1&amp;offset=1&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+<h2 id='reset-the-device'>Reset the device.</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/resetdevice/'</span> --data <span class="s1">'appeui={appeui}&amp;deveui={deveui}&amp;access_token={access_token}'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"keycostatsdaydeviceinfo"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"st_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-24"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"dev_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef47f89"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">18998</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">29630</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">554</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19176</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">36415</span><span class="p">,</span><span class="w">
-</span><span class="s2">"avg_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
-</span><span class="s2">"avg_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
-</span><span class="s2">"avg_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">33424</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef42720"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="s2">"ri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EI00000000000005470739"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"keycostatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"keycostatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"deviceeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef427201"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"thingplug_resp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail:appeui/deveui length/format is wrong"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"ri"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Get Device Statistics Information for date range </p>
+<p>Reset the device.</p>
 <h3 id='http-request-17'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodaystats?appeui={appeui}&amp;deveui={deveui}&amp;beginedate={begindatae}&amp;enddate={enddate}
-&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
+<p><code>PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/resetdevice?deveui=d02544fffef42720&amp;appeui=0220731000000127&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222</code></p>
 <h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1336,75 +1359,37 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </thead><tbody>
 <tr>
 <td>appeui</td>
-<td>Application eui of the device</td>
+<td>Application eui of the device.</td>
 </tr>
 <tr>
-<td>begindate</td>
-<td>Begin date in the format YYYYMMDD.</td>
-</tr>
-<tr>
-<td>enddate</td>
-<td>end date in the format YYYYMMDD.</td>
-</tr>
-<tr>
-<td>pgindex</td>
-<td>Page index for the pagination support.</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>Offset to get no of device information.</td>
+<td>deveui</td>
+<td>Device eui of the device.</td>
 </tr>
 <tr>
 <td>access_token</td>
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h2 id='get-device-hourly-statistics'>Get Device hourly Statistics</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycohourstats/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd1d &amp;begindate=2017071116&amp;enddate=2017071320&amp;pgindex=1&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+<h2 id='set-keyco-device-safety-zone-information'>Set keyco device safety zone information</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/setkeycodevicesafezone/'</span> --data <span class="s1">'deveui={deveui}&amp;appeui={appeui}&amp;safetyzone_name={ safetyzone_name}&amp;safetyzone_limit={safetyzone_limit}&amp;safetyzone_status={ safetyzone_status}&amp;safetyzone_latitude={safetyzone_latitude}&amp;safetyzone_longitude={ safetyzone_longitude}&amp;access_token={access_token}'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"keycostatsdaydeviceinfo"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"st_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-24"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"dev_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef47f89"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">18998</span><span class="p">,</span><span class="w">
-</span><span class="s2">"min_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">29630</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">554</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">19176</span><span class="p">,</span><span class="w">
-</span><span class="s2">"max_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">36415</span><span class="p">,</span><span class="w">
-</span><span class="s2">"avg_resistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
-</span><span class="s2">"avg_tvoc"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
-</span><span class="s2">"avg_humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">33424</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,updated device d02544fffef4bd21 with safetyzone_name=test safetyzone_limit=1500 safetyzone_status=1 safetyzone_latitude=13safetyzone_longitude=17"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"keycostatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,appeui/deveui length/format is wrong"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="err">Status</span><span class="p">:</span><span class="w"> </span><span class="err">Fail</span><span class="p">,</span><span class="err">appeui/deveui</span><span class="w"> </span><span class="err">length/format</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">wrong</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"keycostatsdaydeviceinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Get Device statistics information based on specific hour range in a day</p>
+<p>Set keyco device safety zone information </p>
 <h3 id='http-request-18'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycohourstats?appeui={appeui}&amp;deveui={deveui}&amp;beginedate={begindatae}&amp;enddate={enddate}
-&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
+<p><code>PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/setkeycodevicesafezone?appeui=0220731000000127&amp;deveui=d02544fffef4bd21&amp;safetyzone_name=test&amp;safetyzone_limit=1500&amp;safetyzone_status=1&amp;safetyzone_latitude=13&amp;safetyzone_longitude=17 &amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222</code></p>
 <h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1414,23 +1399,31 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </thead><tbody>
 <tr>
 <td>appeui</td>
-<td>Application eui of the device</td>
+<td>Application eui of the device.</td>
 </tr>
 <tr>
-<td>begindate</td>
-<td>Begin date in the format YYYYMMDDHH.</td>
+<td>deveui</td>
+<td>Device eui of the device.</td>
 </tr>
 <tr>
-<td>enddate</td>
-<td>end date in the format YYYYMMDDHH.</td>
+<td>safetyzone_name</td>
+<td>Safety zone name</td>
 </tr>
 <tr>
-<td>pgindex</td>
-<td>Page index for the pagination support.</td>
+<td>safetyzone_limit</td>
+<td>Safetyzone distance eg:200m</td>
 </tr>
 <tr>
-<td>offset</td>
-<td>Offset to get no of device information.</td>
+<td>safetyzone_status</td>
+<td>Safetyzone type for entry/exit eg:1,2</td>
+</tr>
+<tr>
+<td>safetyzone_latitude</td>
+<td>Safety zone current latitude location</td>
+</tr>
+<tr>
+<td>safetyzone_longitude</td>
+<td>Safety zone current longitude location</td>
 </tr>
 <tr>
 <td>access_token</td>
@@ -1523,81 +1516,6 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrest
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h2 id='update-the-keyco-user-settings'>Update the keyco user settings</h2><pre class="highlight shell tab-shell"><code>
-curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycousersettings/'</span> --data <span class="s1">'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&amp;devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&amp;push_notification_state=1&amp;periodic_notification_state=1&amp;weather_notification_state=1&amp;notification_time_start=21&amp;notification_time_end=22&amp;notification_period=1&amp;notification_interval=1&amp;refresh_interval=1&amp; one_signal_key=dea0c442-090a-4835-83a9-c1a276117b32&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,User Settings updated"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid userkey"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>Update the keyco user settings</p>
-<h3 id='http-request-21'>HTTP Request</h3>
-<p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycousersettings?userkey={userkey}&amp;devicekey={devicekey}&amp; push_notification_state={push_notification_state}&amp;weather_notification_state ={ weather_notification_state }&amp; notification_time_start ={ notification_time_start
-}&amp;notification_time_end={notification_time_end}&amp;notification_period=={ notification_period}&amp;notification_interval ={notification_interval}&amp;refresh_interval ={refresh_interval }&amp; one_signal_key={one_signal_key}access_token={access_token}</code></p>
-<h3 id='query-parameters-21'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userkey</td>
-<td>Userkey of the user.</td>
-</tr>
-<tr>
-<td>devicekey</td>
-<td>Device key of the device</td>
-</tr>
-<tr>
-<td>push_notification_state</td>
-<td>Enable/Disable optional push notification state 1/0.</td>
-</tr>
-<tr>
-<td>weather_notification_state</td>
-<td>Enable/Disable optional weather notification state 1/0</td>
-</tr>
-<tr>
-<td>notification_time_start</td>
-<td>Set optional notification time start in hour</td>
-</tr>
-<tr>
-<td>notification_time_end</td>
-<td>Set optional notification time end in hour</td>
-</tr>
-<tr>
-<td>notification_period</td>
-<td>set values for optional notification period</td>
-</tr>
-<tr>
-<td>notification_interval</td>
-<td>set values for optional notification interval</td>
-</tr>
-<tr>
-<td>refresh_interval</td>
-<td>set values for optional refresh interval</td>
-</tr>
-<tr>
-<td>one_signal_key</td>
-<td>set one_signal_key</td>
-</tr>
-<tr>
-<td>access_token</td>
-<td>Access token to be used with api.</td>
-</tr>
-</tbody></table>
 <h2 id='get-keyco-user-count'>Get keyco user count</h2><pre class="highlight shell tab-shell"><code>
 curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycousercount/'</span> --data <span class="s1">'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
@@ -1613,9 +1531,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Get total no of keyco user count</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycousercount?access_token={access_token}</code></p>
-<h3 id='query-parameters-22'>Query Parameters</h3>
+<h3 id='query-parameters-21'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1669,10 +1587,10 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Get keyco user list by condition</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserlistbycondition?appeui={appeui}&amp;pgindex={pgindex}&amp;offset={offset}&amp;
 &amp;register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword={keyword&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-23'>Query Parameters</h3>
+<h3 id='query-parameters-22'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1706,7 +1624,7 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </tbody></table>
 <h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h2 id='push-serious-warning-notification-to-mobile-device'>Push Serious/Warning notification to mobile device</h2><pre class="highlight shell tab-shell"><code>
 curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification/'</span> --data <span class="s1">'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&amp;message=Alert keyco&amp;severity=12 
-&amp;deveui=d02544fffef4bd20&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&amp;state=0'</span>
+&amp;deveui=d02544fffef4bd20&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32'</span>
 
 </code></pre>
 <blockquote>
@@ -1726,10 +1644,10 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Push notification to the keyco user mobile device</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification?userkey={userkey&amp;onesignalkey={onesignalkey}&amp;message
  ={ message }&amp;severity={severity}access_token={access_token}</code></p>
-<h3 id='query-parameters-24'>Query Parameters</h3>
+<h3 id='query-parameters-23'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1780,9 +1698,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>update one signal key of the keyco user</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;onesignalkey ={onesignalkey }&amp;state={state}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-25'>Query Parameters</h3>
+<h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1826,9 +1744,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>update keyco active login user for push notification</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoactivelogin?userkey={userkey}&amp;onesignalkey={onesignalkey }&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-26'>Query Parameters</h3>
+<h3 id='query-parameters-25'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1870,10 +1788,10 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Get one signal key of the keyco user</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
 {access_token}</code></p>
-<h3 id='query-parameters-27'>Query Parameters</h3>
+<h3 id='query-parameters-26'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1893,137 +1811,15 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
-<h1 id='weather-notification'>Weather Notification</h1><h2 id='get-weather-information'>Get Weather Information</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoweather/'</span> --data <span class="s1">'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&amp;devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&amp;language=kor
-&amp;access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoweather/'</span> --data <span class="s1">'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&amp;devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&amp;language=eng&amp;
-access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
-
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.4831368714460851"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.132857792502961"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1567c7a74d13f2441876b1f7558afaee4b249627"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d14f0a82310144f410019cbe92eb17ea87871435"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"grid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">city</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">서울</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">latitude</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">37.48645</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">county</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">송파구</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">village</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">문정2동</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">longitude</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">127.10414</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentTemp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">tmax</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0.00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">tmin</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">-6.00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">tc</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">-0.40</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentSky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_O01</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Sunny</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentHumidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.00"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentWind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">wdir</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">297.00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">wspd</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">1.60</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"rainForecast"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentPm25"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">grade</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Moderate</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">17</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentPm10"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">grade</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Moderate</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">33</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"currentO3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">grade</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Good</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0.023</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast2dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast2dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-7.00"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast2daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_M04</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">흐림</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast3dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.00"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast3dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-4.00"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast3daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_M04</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">흐림</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast4dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast4dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-6"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast4daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_W02</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Partly Cloudy</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast5dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast5dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast5daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_W03</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Mostly Cloudy</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast6dayTempMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast6dayTempMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"forecast6daySky"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">SKY_W12</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Snow</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"timeRelease"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-03 15:00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>Get the weather of keyco device location by language</p>
-<h3 id='http-request-28'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoweather?userkey={user_key}&amp;devicekey={device_key}&amp;language={language}
-&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-28'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userkey</td>
-<td>Userkey of the user</td>
-</tr>
-<tr>
-<td>devicekey</td>
-<td>Device key of the device</td>
-</tr>
-<tr>
-<td>language</td>
-<td>Language – kor, eng</td>
-</tr>
-<tr>
-<td>access_token</td>
-<td>Access token to be used with api.</td>
-</tr>
-</tbody></table>
-<h2 id='push-weather-notification-to-user'>Push weather notification to user</h2><pre class="highlight shell tab-shell"><code>
-curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/pushkeycoWeatherNotification/'</span> --data <span class="s1">'notificationtime=13&amp;access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'</span>
-
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"keyconotification"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"one_signal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30541824-866b-4394-a550-b095abe9128c"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c1479753d82a541a14e75e303c3f08385a19745"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"오늘은 어제보다 0.6°C 높아요.(-1.0°C~5.0°C)"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"keyconotification"</span><span class="p">:[],</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail, SK Plannet API has an error."</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>Push weather notification to the keyco user mobile device at the specified time</p>
-<h3 id='http-request-29'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/pushkeycoWeatherNotification?notificationtime={notification_time}
-&amp;access_token={access_token}
-</code></p>
-<h3 id='query-parameters-29'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>notificationtime</td>
-<td>User specified time</td>
-</tr>
-<tr>
-<td>access_token</td>
-<td>Access token to be used with api.</td>
-</tr>
-</tbody></table>
 <h1 id='firmware-management'>Firmware Management</h1><h2 id='upload-keyco-firmware'>Upload keyco firmware</h2><pre class="highlight shell tab-shell"><code>
-curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware/'</span> --data <span class="s1">'name=KEYCO_keyco0810.zip&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware/'</span> --data <span class="s1">'name=KEYCO_Tracker0810_r4.zip&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">" successfully uploaded file= KEYCO_keyco0810.zip"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="s2">" successfully uploaded file= KEYCO_Tracker0810_r4.zip"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2034,9 +1830,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Upload keyco firmware to server</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware?name={name}?access_token={access_token}</code></p>
-<h3 id='query-parameters-30'>Query Parameters</h3>
+<h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2064,7 +1860,7 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KEYCO_Kitchen0810.zip"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KEYCO_Tracker0810_r4.zip"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a74e93ba98898dbece58dc8d1ff380f2"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"creationtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T11:09:34.649244Z"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"keyco"</span><span class="p">,</span><span class="w">
@@ -2080,9 +1876,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Get the latest keyco firmware information from server</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycofirmwareinfo?&amp;userkey={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2099,14 +1895,14 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 </tr>
 </tbody></table>
 <h2 id='download-latest-keyco-firmware-file'>Download latest keyco firmware file</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware/'</span> --data <span class="s1">'name=KEYCO_Kitchen0810.zip&amp;userkey=025cc868760689c53dca2fd283d960e3af59cb78&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware/'</span> --data <span class="s1">'name=KEYCO_Tracker0810_r4.zip&amp;userkey=025cc868760689c53dca2fd283d960e3af59cb78&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"successfully downloaded file= KEYCO_keyco0810.zip"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"successfully downloaded file= KEYCO_Tracker0810_r4.zip"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="mi">200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2118,9 +1914,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Download keyco firmware file from server</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware?name={KEYCO_keyco0810.zip}&amp;userkey ={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-32'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2182,9 +1978,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Generate keyco device share link.</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/generate_keycosharelink?access_token={access_token}</code></p>
-<h3 id='query-parameters-33'>Query Parameters</h3>
+<h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2245,9 +2041,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Register keyco share device.</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycosharedevice?access_token={access_token}</code></p>
-<h3 id='query-parameters-34'>Query Parameters</h3>
+<h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
