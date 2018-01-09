@@ -112,7 +112,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/latest/ --data 'appeui=0220731000000127&deveui=d02544fffef4bd1d &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/latest/ --data 'appeui=0220731000000127&deveui=d02544fffef447c9 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -120,28 +120,39 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata
 ```json
 {
 "keycolatestdeviceinfo":{
-"receive_time": "2017-09-28 13:57:10",
-"app_eui": "0220731000000127",
-"version": "0.3.2 ",
-"device_id": "d02544fffef4bd20",
-"seq": 4764,
-"resistance": 527,
-"tvoc": 19,
-"temperature": 19115,
-"humidity": 16568,
-"status": 31,
-"created_at": "2017-09-28 13:57:10.040528",
-"ct": "2017-09-28 13:57:08",
-"lt": "2017-09-28 13:57:08",
-"cs": 50,
-"temp_threshold": 50,
-"fw_ver": "0.3.2 "
+"version": "1 ",
+"major": "d11f",
+"minor": "2400",
+"device_id": "d02544fffef447c9",
+"timestamp": "2017-09-28 12:46:55",
+"latitude": 1108807628,
+"longitude": 1123912939,
+"altitude": 31,
+"speed": 160,
+"hdop": 0,
+"gps_num": 8,
+"error": 0,
+"battery": 40,
+"positioning_mode": 1,
+"function_operation": 0,
+"gps_operation": 1,
+"sensor": 1,
+"fw_ver": "0.8.10 ",
+"sensor_x": 1,
+"sensor_y": 8,
+"sensor_z": 120,
+"created_at": "2017-09-28 12:47:10",
+"ct": "2017-09-28 12:47:02",
+"lt": "2017-09-28 12:47:02",
+"cs": 98,
+"location_interval": 12
 },
 "status": "Success"
 }
+
 {
 "keycolatestdeviceinfo": null,
-"status": "Fail,appeui/deveui length/format is wrong"
+"status": "Fail,appeui/deveui format is wrong"
 }
 
 ```
@@ -171,25 +182,63 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata
 ```json
 {
 "status": "Success",
-"total": 137,
-"listkeycodevices":[
+"total": 65,
+"listKeycodevices":[
 {
-"receive_time": "2017-09-27 23:57:10",
-"app_eui": "0220731000000127",
 "version": "1 ",
-"device_id": "d02544fffef4bd20",
-"seq": 4680,
-"resistance": 1773,
-"tvoc": 209,
-"temperature": 19137,
-"humidity": 27560,
-"status": 31,
-"created_at": "2017-09-27 23:57:10.011255",
-"ct": "2017-09-27 23:57:06",
-"lt": "2017-09-27 23:57:06",
-"cs": 50,
-"temp_threshold": 50,
-"fw_ver": "0.3.2 "
+"major": "d033",
+"minor": "6400",
+"device_id": "d02544fffef40cd9",
+"timestamp": "1970-01-01 09:03:58",
+"latitude": 0,
+"longitude": 0,
+"altitude": 0,
+"speed": 0,
+"hdop": 0,
+"gps_num": 0,
+"error": 0,
+"battery": 40,
+"positioning_mode": 1,
+"function_operation": 0,
+"gps_operation": 1,
+"sensor": 1,
+"fw_ver": "0.8.10 ",
+"sensor_x": 1,
+"sensor_y": 0,
+"sensor_z": 128,
+"created_at": "2017-09-27 19:03:50",
+"ct": "2017-09-27 19:03:42",
+"lt": "2017-09-27 19:03:42",
+"cs": 98,
+"location_interval": 12
+},
+{
+"version": "1 ",
+"major": "d033",
+"minor": "6400",
+"device_id": "d02544fffef40cd9",
+"timestamp": "2017-09-27 17:00:17",
+"latitude": 1108747670,
+"longitude": 1123960452,
+"altitude": 61,
+"speed": 10,
+"hdop": 0,
+"gps_num": 8,
+"error": 0,
+"battery": 40,
+"positioning_mode": 1,
+"function_operation": 0,
+"gps_operation": 1,
+"sensor": 1,
+"fw_ver": "0.8.10 ",
+"sensor_x": 1,
+"sensor_y": 4,
+"sensor_z": 55,
+"created_at": "2017-09-27 17:01:40",
+"ct": "2017-09-27 17:01:30",
+"lt": "2017-09-27 17:01:30",
+"cs": 98,
+"location_interval": 12
 }
 ]
 }
@@ -421,7 +470,7 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata
 
 curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&receive_time_begin=20170801&receive_time_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&timestamp_begin=20170801&timestamp_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&clientgroupid=1&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
@@ -433,37 +482,56 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata
 "keycodataAttribute":[
 {
 "appeui": "0220731000000127",
-"device_key": "6cc9afa018259ae5f2ce25c5211913ed0ccaebdc",
-"device_eui": "d02544fffef4bd20",
-"keyco_num": "3456288",
-"register_date": "2017-09-27 19:41:43",
-"valid_date": "2017-12-27 19:41:43",
+"device_key": null,
+"device_eui": "d02544fffef4432b",
+"keyco_num": "",
+"register_date": "2017-09-03 22:30:38",
+"valid_date": "2017-12-03 14:59:59",
+"location_interval": null,
+"location_intervaltype": null,
+"safetyzone_name": null,
+"safetyzone_limit": null,
+"safetyzone_status": null,
 "client_group_id": 0,
-"receive_time": "2017-09-28 16:17:10",
-"seq": 4778,
-"resistance": 466,
-"tvoc": 10,
-"temperature": 19101,
-"humidity": 16861,
-"status": 31,
-"created_at": "2017-09-28 16:17:10.096811",
-"ct": "2017-09-28 16:17:09",
-"lt": "2017-09-28 16:17:09",
-"cs": 50,
-"temp_threshold": 50,
-"fw_ver": "0.3.2 ",
-"version": "1 "
+“safetyzone_latitude": 13,
+"safetyzone_longitude": 17,
+"version": "1 ",
+"major": "d10c",
+"minor": "ac00",
+"device_id": "d02544fffef4432b",
+"timestamp": "2017-09-28 09:02:54",
+"latitude": 1108134101,
+"longitude": 1124081567,
+"altitude": 50,
+"speed": 0,
+"hdop": 1,
+"gps_num": 5,
+"error": 0,
+"battery": 50,
+"positioning_mode": 1,
+"function_operation": 0,
+"gps_operation": 1,
+"sensor": 1,
+"fw_ver": "0.7.9 ",
+"sensor_x": 7,
+"sensor_y": 0,
+"sensor_z": 19,
+"created_at": "2017-09-28 09:03:40",
+"ct": "2017-09-28 09:03:39",
+"lt": "2017-09-28 09:03:39",
+"cs": 0
 }
 ],
 "status": "Success",
-"total": 1
+"total": 28
 }
 
 {
 "keycodataAttribute": null,
-"status": "Fail,deveui length/format is wrong",
-"total": 0
+"status": "Fail,appeui length/format is wrong"
+Total: 0
 }
+
 
 ```
 Get keyco device data attribute information by specifying various condition
@@ -472,7 +540,7 @@ Get keyco device data attribute information by specifying various condition
 
 `GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute?appeui={appeui}&deveui={deveui}& pgindex={pgindex}&offset={offset}&register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword=
 {keyword}&valid_date_begin={valid_date_begin}&valid_date_end={valid_date_end}&clientgroupid
-={ clientgroupid}& receive_time_begin={ receive_time_begin}& receive_time_end ={receive_time_end }
+={ clientgroupid}& timestamp_begin={ timestamp_begin}& timestamp_end ={timestamp_end }
 access_token={access_token}`
 
 ### Query Parameters
@@ -487,8 +555,8 @@ valid_date_begin | valid date begin in YYYYMMDD eg: 20170801
 valid_date_end | valid date end in YYYYMMDD eg: 20170802
 keyword | keyword for device_key, firmware_version, device_eui, device_name and keyco_number. 
 client_group_id | Client group id
-receive_time_begin | Receive time begin date in YYYYMMDD eg: 20170801
-receive_time_end | Receive time end date in YYYYMMDD eg: 20170801
+timestamp_begin | Timestamp begin date in YYYYMMDD eg: 20170801
+timestamp_end | Timestamp end date in YYYYMMDD eg: 20170801
 pgindex | Page index for the pagination support
 offset | Offset to get no of device information
 access_token | Access token to be used with api
@@ -724,34 +792,40 @@ deveui  | Device eui of the device.
 clientgroupid | Client group id  eg:1,2,3
 access_token | Access token to be used with api.
 
-## Update the keyco device settings.
+## Set Reporting/Location Interval
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicesettings/' --data 'deveui=d02544fffef4bd20&appeui=0220731000000127&latitude=13.456&longitude=17.567&temperature_threshold=50&password=123456&client_group_id=1101&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicesettings/' --data 'deveui=d02544fffef4bd20&appeui=0220731000000127&password=123456&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/setinterval/' --data 'deveui=d02544fffef42720&appeui=0220731000000127&interval=2&intervaltype=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
-"statuscode": 200,
-"status": " Success,Setting information updated"
+"appeui": "0220731000000127",
+"deviceeui": "d02544fffef42720",
+"thingplug_resp": 200,
+"status": "Success",
+"ri": "EI00000000000005470485"
 }
 
 {
- "statuscode": 500,
- "Status": "Fail,invalid userkey"
+"appeui": "0220731000000127",
+"deviceeui": "d02544fffef42720",
+"thingplug_resp": 0,
+"status": "Fail:Invalid interval.Valid values are 1,2,5,10,30,60,120",
+"ri": null
 }
 
+
 ```
-Update the keyco device settings.
+Set reporting/location interval for the device
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicesettings?deveui={deveui}&appeui={appeui}&latitude={latitude}&longitude ={longitude}&temperature_threshold = {temperature_threshold}&client_group_id ={client_group_id}&password={paswsword}&access_token={access_token}`
+`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/setinterval?appeui={appeui}&deveui={deveui}&interval={interval}&intervaltype=
+{intervaltype}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -759,139 +833,89 @@ Parameter | Description
 --------- | ------------
 appeui | Application eui of the device.
 deveui  | Device eui of the device.
-latitude | optional latitude of the device
-longitude  | optional longitude  of the device
-temperature_threshold | Set optional temperature_threshold for the device
-client_group_id  | Set optional client_group_id of the device
-password  | Optional Password for the device
+interval | To set interval cycle. Valid values are 1,2,5,10,30,60,120
+intervaltype  | To set location/reporting cycle. Valid values are 1,2
 access_token | Access token to be used with api.
 
-# Device Statistics
-## Get Device Day Statistics
+## Reset the device.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodaystats/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd1d &begindate=20170711&enddate=20170713&pgindex=1&offset=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/resetdevice/' --data 'appeui={appeui}&deveui={deveui}&access_token={access_token}'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
-"keycostatsdaydeviceinfo":[
-{
-"st_date": "2017-09-24",
-"dev_eui": "d02544fffef47f89",
-"min_resistance": 26,
-"min_tvoc": 0,
-"min_temperature": 18998,
-"min_humidity": 29630,
-"max_resistance": 71,
-"max_tvoc": 554,
-"max_temperature": 19176,
-"max_humidity": 36415,
-"avg_resistance": 58,
-"avg_tvoc": 31,
-"avg_humidity": 33424
-}
-],
+"appeui": "0220731000000127",
+"deviceeui": "d02544fffef42720",
+"thingplug_resp": 200,
 "status": "Success",
-"total": 1
+"ri": "EI00000000000005470739"
 }
 
 {
-"keycostatsdaydeviceinfo": null,
-"status": "Fail,appeui/deveui length/format is wrong",
-"total": 0
-}
-
-{
-"keycostatsdaydeviceinfo": null,
-"status": "Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)",
-"total": 0
-}
+"appeui": "0220731000000127",
+"deviceeui": "d02544fffef427201",
+"thingplug_resp": 0,
+"status": "Fail:appeui/deveui length/format is wrong",
+"ri": null}
 
 ```
-Get Device Statistics Information for date range 
+Reset the device.
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodaystats?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
-&pgindex={pgindex}&offset={offset}&access_token={access_token}`
+`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/resetdevice?deveui=d02544fffef42720&appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | ------------
-appeui  | Application eui of the device
-begindate  | Begin date in the format YYYYMMDD.
-enddate  | end date in the format YYYYMMDD.
-pgindex  | Page index for the pagination support.
-offset  | Offset to get no of device information.
+appeui | Application eui of the device.
+deveui  | Device eui of the device.
 access_token | Access token to be used with api.
 
-## Get Device hourly Statistics
+## Set keyco device safety zone information
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycohourstats/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd1d &begindate=2017071116&enddate=2017071320&pgindex=1&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/setkeycodevicesafezone/' --data 'deveui={deveui}&appeui={appeui}&safetyzone_name={ safetyzone_name}&safetyzone_limit={safetyzone_limit}&safetyzone_status={ safetyzone_status}&safetyzone_latitude={safetyzone_latitude}&safetyzone_longitude={ safetyzone_longitude}&access_token={access_token}'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
-"keycostatsdaydeviceinfo":[
-{
-"st_date": "2017-09-24",
-"dev_eui": "d02544fffef47f89",
-"min_resistance": 26,
-"min_tvoc": 0,
-"min_temperature": 18998,
-"min_humidity": 29630,
-"max_resistance": 71,
-"max_tvoc": 554,
-"max_temperature": 19176,
-"max_humidity": 36415,
-"avg_resistance": 58,
-"avg_tvoc": 31,
-"avg_humidity": 33424
-}
-],
-"status": "Success",
-"total": 1
+"status": "Success,updated device d02544fffef4bd21 with safetyzone_name=test safetyzone_limit=1500 safetyzone_status=1 safetyzone_latitude=13safetyzone_longitude=17"
 }
 
 {
-"keycostatsdaydeviceinfo": null,
-"status": "Fail,appeui/deveui length/format is wrong",
-"total": 0
+Status: Fail,appeui/deveui length/format is wrong
 }
 
-{
-"keycostatsdaydeviceinfo": null,
-"status": "Fail,begindate/enddate format is wrong.Valid format(YYYYMMDD)",
-"total": 0
-}
 
 ```
-Get Device statistics information based on specific hour range in a day
+Set keyco device safety zone information 
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycohourstats?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
-&pgindex={pgindex}&offset={offset}&access_token={access_token}`
+`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/setkeycodevicesafezone?appeui=0220731000000127&deveui=d02544fffef4bd21&safetyzone_name=test&safetyzone_limit=1500&safetyzone_status=1&safetyzone_latitude=13&safetyzone_longitude=17 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | ------------
-appeui  | Application eui of the device
-begindate | Begin date in the format YYYYMMDDHH.
-enddate  | end date in the format YYYYMMDDHH.
-pgindex  | Page index for the pagination support.
-offset  | Offset to get no of device information.
+appeui | Application eui of the device.
+deveui  | Device eui of the device.
+safetyzone_name | Safety zone name
+safetyzone_limit | Safetyzone distance eg:200m
+safetyzone_status | Safetyzone type for entry/exit eg:1,2
+safetyzone_latitude | Safety zone current latitude location 
+safetyzone_longitude | Safety zone current longitude location
 access_token | Access token to be used with api.
+
 
 # User Management
 ## Register keyco user
@@ -964,52 +988,6 @@ Parameter | Description
 --------- | ------------
 userkey   | Userkey of the user.
 access_token | Access token to be used with api.
-
-## Update the keyco user settings
-
-```shell
-
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycousersettings/' --data 'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&push_notification_state=1&periodic_notification_state=1&weather_notification_state=1&notification_time_start=21&notification_time_end=22&notification_period=1&notification_interval=1&refresh_interval=1& one_signal_key=dea0c442-090a-4835-83a9-c1a276117b32&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-
-{
-"statuscode": 200,
-"status": "Success,User Settings updated"
-}
-{
-"status": "Fail,invalid userkey",
-"statuscode": 500
-
-}
-
-```
-Update the keyco user settings
-
-### HTTP Request
-
-`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycousersettings?userkey={userkey}&devicekey={devicekey}& push_notification_state={push_notification_state}&weather_notification_state ={ weather_notification_state }& notification_time_start ={ notification_time_start
-}&notification_time_end={notification_time_end}&notification_period=={ notification_period}&notification_interval ={notification_interval}&refresh_interval ={refresh_interval }& one_signal_key={one_signal_key}access_token={access_token}`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-userkey   | Userkey of the user.
-devicekey | Device key of the device
-push_notification_state | Enable/Disable optional push notification state 1/0.
-weather_notification_state | Enable/Disable optional weather notification state 1/0
-notification_time_start | Set optional notification time start in hour
-notification_time_end | Set optional notification time end in hour
-notification_period | set values for optional notification period 
-notification_interval | set values for optional notification interval 
-refresh_interval | set values for optional refresh interval
-one_signal_key | set one_signal_key
-access_token | Access token to be used with api.
-
 
 ## Get keyco user count
 
@@ -1108,7 +1086,7 @@ access_token | Access token to be used with api.
 ```shell
 
 curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&message=Alert keyco&severity=12 
-&deveui=d02544fffef4bd20&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&state=0'
+&deveui=d02544fffef4bd20&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32'
 
 ```
 > The above command includes JSON body and  returns JSON structured like this:
@@ -1256,130 +1234,19 @@ userkey   | Userkey of the user.
 devicekey| One signal key of the keyco user
 access_token | Access token to be used with api.
 
-# Weather Notification
-## Get Weather Information
-
-```shell
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoweather/' --data 'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&language=kor
-&access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoweather/' --data 'userkey=172bc36c250aa965446af93d3a17edd9fe325c4d&devicekey=6cc9afa018259ae5f2ce25c5211913ed0ccaebdc&language=eng&
-access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-{
-"status": "Success",
-"latitude": "37.4831368714460851",
-"longitude": "127.132857792502961",
-"user_key": "1567c7a74d13f2441876b1f7558afaee4b249627",
-"device_key": "d14f0a82310144f410019cbe92eb17ea87871435",
-"grid": "{\"city\":\"서울\",\"latitude\":\"37.48645\",\"county\":\"송파구\",\"village\":\"문정2동\",\"longitude\":\"127.10414\"}",
-"currentTemp": "{\"tmax\":\"0.00\",\"tmin\":\"-6.00\",\"tc\":\"-0.40\"}",
-"currentSky": "{\"code\":\"SKY_O01\",\"name\":\"Sunny\"}",
-"currentHumidity": "30.00",
-"currentWind": "{\"wdir\":\"297.00\",\"wspd\":\"1.60\"}",
-"rainForecast": "10.00",
-"currentPm25": "{\"grade\":\"Moderate\",\"value\":\"17\"}",
-"currentPm10": "{\"grade\":\"Moderate\",\"value\":\"33\"}",
-"currentO3": "{\"grade\":\"Good\",\"value\":\"0.023\"}",
-"forecast2dayTempMax": "0.00",
-"forecast2dayTempMin": "-7.00",
-"forecast2daySky": "{\"code\":\"SKY_M04\",\"name\":\"흐림\"}",
-"forecast3dayTempMax": "2.00",
-"forecast3dayTempMin": "-4.00",
-"forecast3daySky": "{\"code\":\"SKY_M04\",\"name\":\"흐림\"}",
-"forecast4dayTempMax": "2",
-"forecast4dayTempMin": "-6",
-"forecast4daySky": "{\"code\":\"SKY_W02\", \"name\":\"Partly Cloudy\"}",
-"forecast5dayTempMax": "2",
-"forecast5dayTempMin": "-5",
-"forecast5daySky": "{\"code\":\"SKY_W03\", \"name\":\"Mostly Cloudy\"}",
-"forecast6dayTempMax": "2",
-"forecast6dayTempMin": "-2",
-"forecast6daySky": "{\"code\":\"SKY_W12\", \"name\":\"Snow\"}",
-"timeRelease": "2018-01-03 15:00:00"
-}
-
-```
-Get the weather of keyco device location by language
-
-### HTTP Request
-
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoweather?userkey={user_key}&devicekey={device_key}&language={language}
-&access_token={access_token}`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-userkey  | Userkey of the user
-devicekey | Device key of the device
-language | Language – kor, eng
-access_token | Access token to be used with api.
-
-## Push weather notification to user
-
-```shell
-
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/pushkeycoWeatherNotification/' --data 'notificationtime=13&access_token=caf1366e-eb95-4d48-80a7-f8b83e0cf53b'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-{
-"keyconotification":[
-{
-"one_signal_key": "30541824-866b-4394-a550-b095abe9128c",
-"user_key": "1c1479753d82a541a14e75e303c3f08385a19745",
-"message": "오늘은 어제보다 0.6°C 높아요.(-1.0°C~5.0°C)",
-"severity": "0",
-"status": "Success"
-}
-],
-"status": "Success",
-"total": 1
-}
-
-{
-"keyconotification":[],
-"status": "Fail, SK Plannet API has an error.",
-"total": 0
-}
-
-```
-Push weather notification to the keyco user mobile device at the specified time
-
-### HTTP Request
-
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/pushkeycoWeatherNotification?notificationtime={notification_time}
-&access_token={access_token}
-`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-notificationtime  | User specified time
-access_token | Access token to be used with api.
-
 # Firmware Management
 ## Upload keyco firmware
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware/' --data 'name=KEYCO_keyco0810.zip&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware/' --data 'name=KEYCO_Tracker0810_r4.zip&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
-"status":" successfully uploaded file= KEYCO_keyco0810.zip",
+"status":" successfully uploaded file= KEYCO_Tracker0810_r4.zip",
 "statuscode":200
 }
 
@@ -1414,7 +1281,7 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycofir
 
 ```json
 {
-"filename": "KEYCO_Kitchen0810.zip",
+"filename": "KEYCO_Tracker0810_r4.zip",
 "md5": "a74e93ba98898dbece58dc8d1ff380f2",
 "creationtime": "2017-11-24T11:09:34.649244Z",
 "device_type": "keyco",
@@ -1446,14 +1313,14 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware/' --data 'name=KEYCO_Kitchen0810.zip&userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware/' --data 'name=KEYCO_Tracker0810_r4.zip&userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
-"status": "successfully downloaded file= KEYCO_keyco0810.zip",
+"status": "successfully downloaded file= KEYCO_Tracker0810_r4.zip",
 "statuscode":200
 }
 
