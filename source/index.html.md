@@ -1080,6 +1080,54 @@ pgindex | Page index for the pagination support
 offset | Offset to get no of device information
 access_token | Access token to be used with api.
 
+## Get Specific keyco user information
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycouserinfo/' --data 'user_key=bd991840970e8005468094bb160e42845197b565&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycouserinfo/' --data 'user_name=vudamalapati@gmail.com&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+getkeycouserinfo?user_name=vudamalapati@gmail.com
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"keycouserinfo":{
+"user_key": "bd991840970e8005468094bb160e42845197b565",
+"pin_code": "",
+"user_name": "100439623793991393326,vudamalapati@gmail.com",
+"user_phone_num": null,
+"phone_type": "Android",
+"register_date": "2017-12-30 12:19:40",
+"device_alias": "",
+"active_login": "",
+"password": ""
+},
+"status": "Success",
+"statuscode": 200
+}
+
+{
+"keycouserinfo": null,
+"status": "Fail,user_name vudamalapati@gmail.com124 not found",
+"statuscode": 406
+}
+```
+Get Specific keyco user information by user name/user key
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycouserinfo?user_key={user_key}&user_name={user_name}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+user_key | Optional user_key of the user
+user_name | Optional user_name of the user
+access_token | Access token to be used with api.
+
 ## Validate custom keyco user
 
 ```shell
