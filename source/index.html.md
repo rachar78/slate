@@ -1080,6 +1080,140 @@ pgindex | Page index for the pagination support
 offset | Offset to get no of device information
 access_token | Access token to be used with api.
 
+## Validate custom keyco user
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/validate_keycouserlogin/' --data 'user_name=vudamalapati@gmail.com[CUSTOM]&password=vcdbnnbhnnvvb&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"keycouserinfo":{
+"user_key": "ca2f37efaff516b93e6aa87673667cbe30159963",
+"pin_code": "",
+"user_name": "vudamalapati@gmail.com[CUSTOM]",
+"user_phone_num": "",
+"phone_type": "Android",
+"register_date": "2018-01-11 15:20:16",
+"device_alias": "",
+"active_login": "",
+"password": "vcdbnnbhnnvvb"
+},
+"status": "Success,User validated Successfully",
+"statuscode": 200
+}
+
+{
+"keycouserinfo": null,
+"status": "Provided Password is wrong",
+"statuscode": 406
+}
+
+```
+Validate custom keyco user
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/validate_keycouserlogin?user_name={user_name}&password={password}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+user_name | keyco custom user name 
+password | user password 
+access_token | Access token to be used with api.
+
+## Generate custom user forgot password
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword/' --data 'user_name=vudamalapati@gmail.com[CUSTOM]&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"user_name": "vudamalapati@gmail.com[CUSTOM]",
+"password": "P21$Q87zf!",
+"status": "Success,password reset Successfully",
+"statuscode": 200
+}
+
+{
+"user_name": "vudamalapati@gmail.com[CUSTOM]11",
+"password": null,
+"status": "Fail,email id vudamalapati@gmail.com[CUSTOM]11 does not exists",
+"statuscode": 406
+}
+
+```
+Generate and update keyco custom user forgot password
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword?user_name={user_name}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+user_name | keyco custom user name 
+access_token | Access token to be used with api.
+
+
+## Reset/update custom user password
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/reset_keycopassword/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command uses below JSON body and returns JSON structured like this:
+
+```json
+{
+ "user_name":"vudamalapati@gmail.com[CUSTOM]",
+ "old_password" :"1234",
+ "new_password" :"5678"
+}
+{
+"user_name": "vudamalapati@gmail.com[CUSTOM]",
+"old_password": "P21$Q87zf!",
+"new_password": "12345678",
+"status": "Success,password reset Successfully",
+"statuscode": 200
+}
+
+{
+"user_name": "vudamalapati@gmail.com[CUSTOM]1",
+"old_password": "P21$Q87zf!",
+"new_password": "12345678",
+"status": "Fail,Local user with user_name vudamalapati@gmail.com[CUSTOM]1 does not exists",
+"statuscode": 406
+}
+
+```
+Generate and update keyco custom user password
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword?user_name={user_name}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+user_name | keyco custom user name in JSON body
+old_password | old password of the user in json body
+new_password | New password of the user in json body
+access_token | Access token to be used with api.
+
+
 # Serious/Warning Notification
 ## Push Serious/Warning notification to mobile device
 
@@ -1233,6 +1367,65 @@ Parameter | Description
 userkey   | Userkey of the user.
 devicekey| One signal key of the keyco user
 access_token | Access token to be used with api.
+
+## Get Keyco Notification message
+
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&receive_time_begin=20170901&receive_time_end=20171204&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&send_time_begin=20170901&send_time_end=20171204&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&content=poor&pgindex=0&offset=10 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&severity=1&pgindex=0&offset=10 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+
+{
+"one_signal_key": "dea0c442-090a-4835-83a9-c1a276117b32",
+"user_key": "1b1b3e65ca74a45e3525ee7642f4623e6f9800a5",
+"message": "Alert keyco",
+"severity": "12",
+"status": "Success"
+}
+
+{
+"status": "Fail,invalid appeui/deviceeui"
+}
+
+```
+Search notification message of keyco user device
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification?appeui={appeui}&deveui={deveui}&pgindex
+ ={pgindex}&offset={offset}& receive_time_begin={ receive_time_begin
+}&receive_time_end ={receive_time_end}& send_time_begin={send_time_begin
+}&send_time_end ={send_time_end} content ={content}& severity={severity}
+&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+appeui | Application eui of the device
+deveui | Device eui of the device
+receive_date_begin | receive date begin in YYYYMMDD eg: 20170801
+receive_date_end | receive date end in YYYYMMDD eg: 20170802
+send_date_begin | send date begin in YYYYMMDD eg: 20170801
+send_date_end | send date end in YYYYMMDD eg: 20170802
+content | content to be searched in message 
+severity | Severity of the message, 12,3,14 etc
+pgindex | Page index for the pagination support
+offset | Offset to get no of device information
+access_token | Access token to be used with api
+
 
 # Firmware Management
 ## Upload keyco firmware
@@ -1459,6 +1652,46 @@ deveui  | Device eui
 userkey | Userkey of the user
 app_eui | App eui of the device
 access_token | Access token to be used with api.
+
+## Update keyco branch key
+
+```shell
+
+curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycobranchkey/' --data 'link=4NsmhzWc&branch_key=BHrRYR05rJ&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command includes JSON body and  returns JSON structured like this:
+
+```json
+
+{
+"status": "Success,link 4NsmhzWc branch_key BHrRYR05rJ updated Successfully",
+"statuscode": 200
+}
+
+{
+  "status": " Fail,invalid branch/link key", 
+  "statuscode": 500
+}
+
+```
+Update keyco branch key for sharing device
+
+### HTTP Request
+
+`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycobranchkey?link={link}&branch_key={branch_key}&access_token={access_token}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+link  | link key for share device
+branch_key | branch key for share device
+access_token | Access token to be used with api.
+
+
+
+
 
 
 
