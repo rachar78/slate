@@ -837,7 +837,7 @@ interval | To set interval cycle. Valid values are 1,2,5,10,30,60,120
 intervaltype  | To set location/reporting cycle. Valid values are 1,2
 access_token | Access token to be used with api.
 
-## Reset the device.
+## Reset the device
 
 ```shell
 
