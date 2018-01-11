@@ -305,6 +305,15 @@
                   <li>
                     <a href="#get-keyco-user-list" class="toc-h2 toc-link" data-title="Get keyco user list">Get keyco user list</a>
                   </li>
+                  <li>
+                    <a href="#validate-custom-keyco-user" class="toc-h2 toc-link" data-title="Validate custom keyco user">Validate custom keyco user</a>
+                  </li>
+                  <li>
+                    <a href="#generate-custom-user-forgot-password" class="toc-h2 toc-link" data-title="Generate custom user forgot password">Generate custom user forgot password</a>
+                  </li>
+                  <li>
+                    <a href="#reset-update-custom-user-password" class="toc-h2 toc-link" data-title="Reset/update custom user password">Reset/update custom user password</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -321,6 +330,9 @@
                   </li>
                   <li>
                     <a href="#get-one-signal-key-of-the-keyco-user" class="toc-h2 toc-link" data-title="Get one signal key of the keyco user">Get one signal key of the keyco user</a>
+                  </li>
+                  <li>
+                    <a href="#get-keyco-notification-message" class="toc-h2 toc-link" data-title="Get Keyco Notification message">Get Keyco Notification message</a>
                   </li>
               </ul>
           </li>
@@ -346,6 +358,9 @@
                   </li>
                   <li>
                     <a href="#register-keyco-share-device" class="toc-h2 toc-link" data-title="Register keyco share device">Register keyco share device</a>
+                  </li>
+                  <li>
+                    <a href="#update-keyco-branch-key" class="toc-h2 toc-link" data-title="Update keyco branch key">Update keyco branch key</a>
                   </li>
               </ul>
           </li>
@@ -1622,6 +1637,156 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 <td>Access token to be used with api.</td>
 </tr>
 </tbody></table>
+<h2 id='validate-custom-keyco-user'>Validate custom keyco user</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/validate_keycouserlogin/'</span> --data <span class="s1">'user_name=vudamalapati@gmail.com[CUSTOM]&amp;password=vcdbnnbhnnvvb&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"keycouserinfo"</span><span class="p">:{</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca2f37efaff516b93e6aa87673667cbe30159963"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vudamalapati@gmail.com[CUSTOM]"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Android"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-11 15:20:16"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"active_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+</span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vcdbnnbhnnvvb"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,User validated Successfully"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"keycouserinfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Provided Password is wrong"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">406</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Validate custom keyco user</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/validate_keycouserlogin?user_name={user_name}&amp;password={password}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-23'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_name</td>
+<td>keyco custom user name</td>
+</tr>
+<tr>
+<td>password</td>
+<td>user password</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='generate-custom-user-forgot-password'>Generate custom user forgot password</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword/'</span> --data <span class="s1">'user_name=vudamalapati@gmail.com[CUSTOM]&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vudamalapati@gmail.com[CUSTOM]"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P21$Q87zf!"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,password reset Successfully"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vudamalapati@gmail.com[CUSTOM]11"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,email id vudamalapati@gmail.com[CUSTOM]11 does not exists"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">406</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Generate and update keyco custom user forgot password</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword?user_name={user_name}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-24'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_name</td>
+<td>keyco custom user name</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='reset-update-custom-user-password'>Reset/update custom user password</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/reset_keycopassword/'</span> --data <span class="s1">'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command uses below JSON body and returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"user_name"</span><span class="p">:</span><span class="s2">"vudamalapati@gmail.com[CUSTOM]"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"old_password"</span><span class="w"> </span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"new_password"</span><span class="w"> </span><span class="p">:</span><span class="s2">"5678"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vudamalapati@gmail.com[CUSTOM]"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"old_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P21$Q87zf!"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,password reset Successfully"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vudamalapati@gmail.com[CUSTOM]1"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"old_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P21$Q87zf!"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,Local user with user_name vudamalapati@gmail.com[CUSTOM]1 does not exists"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">406</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Generate and update keyco custom user password</p>
+<h3 id='http-request-25'>HTTP Request</h3>
+<p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword?user_name={user_name}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-25'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_name</td>
+<td>keyco custom user name in JSON body</td>
+</tr>
+<tr>
+<td>old_password</td>
+<td>old password of the user in json body</td>
+</tr>
+<tr>
+<td>new_password</td>
+<td>New password of the user in json body</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
 <h1 id='serious-warning-notification'>Serious/Warning Notification</h1><h2 id='push-serious-warning-notification-to-mobile-device'>Push Serious/Warning notification to mobile device</h2><pre class="highlight shell tab-shell"><code>
 curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification/'</span> --data <span class="s1">'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&amp;message=Alert keyco&amp;severity=12 
 &amp;deveui=d02544fffef4bd20&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&amp;onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32'</span>
@@ -1644,10 +1809,10 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Push notification to the keyco user mobile device</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification?userkey={userkey&amp;onesignalkey={onesignalkey}&amp;message
  ={ message }&amp;severity={severity}access_token={access_token}</code></p>
-<h3 id='query-parameters-23'>Query Parameters</h3>
+<h3 id='query-parameters-26'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1698,9 +1863,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>update one signal key of the keyco user</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;onesignalkey ={onesignalkey }&amp;state={state}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-24'>Query Parameters</h3>
+<h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1744,9 +1909,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>update keyco active login user for push notification</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoactivelogin?userkey={userkey}&amp;onesignalkey={onesignalkey }&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-25'>Query Parameters</h3>
+<h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1788,10 +1953,10 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Get one signal key of the keyco user</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
 {access_token}</code></p>
-<h3 id='query-parameters-26'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1809,6 +1974,94 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 <tr>
 <td>access_token</td>
 <td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='get-keyco-notification-message'>Get Keyco Notification message</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd20&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd20&amp;receive_time_begin=20170901&amp;receive_time_end=20171204&amp;pgindex=0&amp;offset=10&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd20&amp;send_time_begin=20170901&amp;send_time_end=20171204&amp;pgindex=0&amp;offset=10&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd20&amp;content=poor&amp;pgindex=0&amp;offset=10 &amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/'</span> --data <span class="s1">'appeui=0220731000000127&amp;deveui=d02544fffef4bd20&amp;severity=1&amp;pgindex=0&amp;offset=10 &amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"one_signal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dea0c442-090a-4835-83a9-c1a276117b32"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b1b3e65ca74a45e3525ee7642f4623e6f9800a5"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alert keyco"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fail,invalid appeui/deviceeui"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Search notification message of keyco user device</p>
+<h3 id='http-request-30'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification?appeui={appeui}&amp;deveui={deveui}&amp;pgindex
+ ={pgindex}&amp;offset={offset}&amp; receive_time_begin={ receive_time_begin
+}&amp;receive_time_end ={receive_time_end}&amp; send_time_begin={send_time_begin
+}&amp;send_time_end ={send_time_end} content ={content}&amp; severity={severity}
+&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-30'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appeui</td>
+<td>Application eui of the device</td>
+</tr>
+<tr>
+<td>deveui</td>
+<td>Device eui of the device</td>
+</tr>
+<tr>
+<td>receive_date_begin</td>
+<td>receive date begin in YYYYMMDD eg: 20170801</td>
+</tr>
+<tr>
+<td>receive_date_end</td>
+<td>receive date end in YYYYMMDD eg: 20170802</td>
+</tr>
+<tr>
+<td>send_date_begin</td>
+<td>send date begin in YYYYMMDD eg: 20170801</td>
+</tr>
+<tr>
+<td>send_date_end</td>
+<td>send date end in YYYYMMDD eg: 20170802</td>
+</tr>
+<tr>
+<td>content</td>
+<td>content to be searched in message</td>
+</tr>
+<tr>
+<td>severity</td>
+<td>Severity of the message, 12,3,14 etc</td>
+</tr>
+<tr>
+<td>pgindex</td>
+<td>Page index for the pagination support</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Offset to get no of device information</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api</td>
 </tr>
 </tbody></table>
 <h1 id='firmware-management'>Firmware Management</h1><h2 id='upload-keyco-firmware'>Upload keyco firmware</h2><pre class="highlight shell tab-shell"><code>
@@ -1830,9 +2083,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Upload keyco firmware to server</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware?name={name}?access_token={access_token}</code></p>
-<h3 id='query-parameters-27'>Query Parameters</h3>
+<h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1876,9 +2129,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Get the latest keyco firmware information from server</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycofirmwareinfo?&amp;userkey={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-28'>Query Parameters</h3>
+<h3 id='query-parameters-32'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1914,9 +2167,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi
 
 </span></code></pre>
 <p>Download keyco firmware file from server</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware?name={KEYCO_keyco0810.zip}&amp;userkey ={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-29'>Query Parameters</h3>
+<h3 id='query-parameters-33'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1978,9 +2231,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Generate keyco device share link.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/generate_keycosharelink?access_token={access_token}</code></p>
-<h3 id='query-parameters-30'>Query Parameters</h3>
+<h3 id='query-parameters-34'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2041,9 +2294,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 
 </span></code></pre>
 <p>Register keyco share device.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycosharedevice?access_token={access_token}</code></p>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-35'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2061,6 +2314,48 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestap
 <tr>
 <td>app_eui</td>
 <td>App eui of the device</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api.</td>
+</tr>
+</tbody></table>
+<h2 id='update-keyco-branch-key'>Update keyco branch key</h2><pre class="highlight shell tab-shell"><code>
+curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycobranchkey/'</span> --data <span class="s1">'link=4NsmhzWc&amp;branch_key=BHrRYR05rJ&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command includes JSON body and  returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success,link 4NsmhzWc branch_key BHrRYR05rJ updated Successfully"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Fail,invalid branch/link key"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Update keyco branch key for sharing device</p>
+<h3 id='http-request-36'>HTTP Request</h3>
+<p><code>PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycobranchkey?link={link}&amp;branch_key={branch_key}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-36'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>link</td>
+<td>link key for share device</td>
+</tr>
+<tr>
+<td>branch_key</td>
+<td>branch key for share device</td>
 </tr>
 <tr>
 <td>access_token</td>
