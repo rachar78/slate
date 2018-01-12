@@ -17,11 +17,11 @@ Welcome to the Keyco Crowd API!This guide describes how to compose and send comm
 
 # Device Information
 
-## Get total keyco device count
+## Get total keyco finder device count
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodevicecount/' --data 'appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycofinderdevicecount/' --data access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -32,23 +32,18 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkey
 "status": "success"
 }
 
-{
-"total": 0,
-"status": "Fail,appeui length/format is wrong"
-}
 
 ```
-Get total no of of keyco devices count 
+Get total no of of keyco finder device count 
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodevicecount?appeui={appeui}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycofinderdevicecount?access_token={access_token}`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | ------------
-appeui | Application eui of the device.
 access_token | access_token Access token to be used with api
 
 ## Get the user lists of specific device
