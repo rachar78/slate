@@ -46,63 +46,125 @@ Parameter | Description
 --------- | ------------
 access_token | access_token Access token to be used with api
 
-## Get the user lists of specific device
+## Get keyco finder user lists by condition
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycodeviceuserlist/' --data 'appeui=0220731000000127& devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/' --data 'pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/' --data 'keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
+"active_user": null,
 "status": "Success",
-"total": 2,
-"listkeycouserinfo":[
+"total": 130,
+"statuscode": 0,
+"listKeycofinderuserinfo":[
 {
-"user_key": "1567c7a74d13f2441876b1f7558afaee4b249627",
-"pin_code": "",
-"user_name": "567034643",
-"user_phone_num": "",
-"phone_type": "Android",
-"register_date": "2018-01-04 21:50:57",
-"device_alias": "bruce office 1f0e",
-"active_login": "1"
-},
-{
-"user_key": "bd991840970e8005468094bb160e42845197b565",
-"pin_code": "",
-"user_name": "100439623793991393326,vudamalapati@gmail.com",
+"user_key": "2ef2bf005d797df7f278cf2af8c53093ba4a8ebe",
+"pin_code": "12345",
+"user_name": "UrR8OVQGEQgpmqDbP5KIEHBMltJ2_test keyco",
 "user_phone_num": null,
 "phone_type": "Android",
-"register_date": "2017-12-30 12:19:40",
-"device_alias": "bala-office2",
-"active_login": "0"
+"register_date": "2018-01-12 09:31:06",
+"gcmid": "e0e1bccb-b01a-4fb4-8157-52e4ccd8259c",
+"email": "keycotest@gmail.com"
+},
+{
+"user_key": "272a927e06e467adb13175f18829f4f69883e24e",
+"pin_code": "12345",
+"user_name": "7KKISaXErTgW9AuRZAu1iYZmHHu2_Anand Kalagi",
+"user_phone_num": null,
+"phone_type": "Android",
+"register_date": "2018-01-12 09:26:54",
+"gcmid": "1219fd5d-014f-4c75-a411-bd32f80eceef",
+"email": "Anand Kalagi"
 }
 ]
 }
 
 ```
-Get the keyco user lists of specific device
+Get keyco finder user lists by condition
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycodeviceuserlist?{appeui}&devicekey={devicekey}&access_token={access_token`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition?register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword={keyword}&pgindex={pgindex}&offset={offset}&access_token={access_token}`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | ------------
-appeui | Application eui of the device.
-devicekey | Device key of the device
-access_token | access_token Access token to be used with api
+register_date_begin | Register date begin in YYYYMMDD eg: 20170801
+register_date_end | Register date end in YYYYMMDD eg: 20170802
+keyword | keyword for user_key,user_name, phone_number or phone type. 
+pgindex | Page index for the pagination support
+offset | Offset to get no of device information
+access_token | Access token to be used with api
+
+## Get keyco finder user lists of specific device
+```shell
+
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdeviceuserlist/' --data 'deveui=d025d77336adf3ce&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+"active_user": "781792b3f9a3a329e44cdaeda0bd61c28b93b9e1",
+"status": "Success",
+"total": 2,
+"statuscode": 200,
+"listKeycofinderuserinfo":[
+{
+"user_key": "781792b3f9a3a329e44cdaeda0bd61c28b93b9e1",
+"pin_code": null,
+"user_name": "107704090541995454648syamkumar1910@gmail.com",
+"user_phone_num": null,
+"phone_type": "IOS",
+"register_date": "2018-01-11 11:58:00",
+"gcmid": "03af6588-bdfd-4450-a4a6-70cbb8b1e329",
+"email": "syamkumar1910@gmail.com"
+},
+{
+"user_key": "0671fc9a62e39d5098f654042546db0a6aa1edee",
+"pin_code": "12345",
+"user_name": "YAAWP1Ue29ThsiYjiC5Lb1iUNLp1_Syam Kumar",
+"user_phone_num": null,
+"phone_type": "Android",
+"register_date": "2018-01-12 05:41:15",
+"gcmid": "421aeea6-cf48-4acf-9605-ed41e0cb5b59",
+"email": "Syam Kumar"
+}
+]
+}
+```
+Get keyco finder user lists of specific device
+
+### HTTP Request
+
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdeviceuserlist?deveui={deveui}&access_token={access_token`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------------
+deveui | device eui
+access_token | Access token to be used with api
 
 ## Get keyco device lists of specific user
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserdevicelist/' --data 'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserdevicelist/' --data 'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -111,28 +173,38 @@ curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_ke
 {
 "status": "Success",
 "total": 1,
-"listkeycodeviceinfo":[
+"statuscode": 200,
+"listKeycofinderdeviceinfo":[
 {
-"device_key": "b54b6b0a296e996b665f05313a2b87a918691945",
-"device_eui": "d02544fffef71f0f",
-"app_eui": "0190691000000340",
-"device_name": "Bala",
-"keyco_num": "3612431",
-"register_date": "2017-12-05 13:38:14",
-"valid_date": "2018-03-05 13:38:14",
-"fw_ver": "0.5.2 ",
-"client_group_id": 20001,
-"password": null,
-"linking": 1
+"device_key": "8b471703969579b99ba67009f82bfb8fc7823ca3",
+"device_eui": "d025cd0cd5a354a5",
+"device_name": "a5",
+"register_date": "2017-11-29 12:03:13",
+"valid_date": "2018-02-28 12:03:13",
+"device_type": "CARD",
+"latitude": 13.0454197,
+"longitude": 77.6210666,
+"connection_state": 0,
+"active_user": null,
+"linkloss_time": "2017-11-29 05:56:46",
+"version": null,
+"out_into_range": 1110111,
+"phone_alarm": 3,
+"device_alarm": 3,
+"melody_type": 1,
+"notification_state": false,
+"base64": "iVBORw0KGgoA=",
+"device_owner": "PRIMARY"
 }
 ]
 }
+
 ```
 Get the keyco device lists of specific user
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserdevicelist?userkey={userkey}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserdevicelist?userkey={userkey}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -141,113 +213,90 @@ Parameter | Description
 userkey | User key of the user
 access_token | access_token Access token to be used with api
 
-## Get keyco device data attribute
+## Get keyco finder device lists by specific condition
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/' --data 'pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&&deveui=d02544fffef44b98&
-pgindex=0&offset=0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170801&register_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170801&valid_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170901&register_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170901&valid_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&timestamp_begin=20170801&timestamp_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&clientgroupid=1&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/' --data 'keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
 
 ```json
 {
-"keycodataAttribute":[
-{
-"appeui": "0220731000000127",
-"device_key": null,
-"device_eui": "d02544fffef4432b",
-"keyco_num": "",
-"register_date": "2017-09-03 22:30:38",
-"valid_date": "2017-12-03 14:59:59",
-"location_interval": null,
-"location_intervaltype": null,
-"safetyzone_name": null,
-"safetyzone_limit": null,
-"safetyzone_status": null,
-"client_group_id": 0,
-“safetyzone_latitude": 13,
-"safetyzone_longitude": 17,
-"version": "1 ",
-"major": "d10c",
-"minor": "ac00",
-"device_id": "d02544fffef4432b",
-"timestamp": "2017-09-28 09:02:54",
-"latitude": 1108134101,
-"longitude": 1124081567,
-"altitude": 50,
-"speed": 0,
-"hdop": 1,
-"gps_num": 5,
-"error": 0,
-"battery": 50,
-"positioning_mode": 1,
-"function_operation": 0,
-"gps_operation": 1,
-"sensor": 1,
-"fw_ver": "0.7.9 ",
-"sensor_x": 7,
-"sensor_y": 0,
-"sensor_z": 19,
-"created_at": "2017-09-28 09:03:40",
-"ct": "2017-09-28 09:03:39",
-"lt": "2017-09-28 09:03:39",
-"cs": 0
-}
-],
 "status": "Success",
-"total": 28
-}
-
+"total": 81,
+"statuscode": 0,
+"listKeycofinderdeviceinfo":[
 {
-"keycodataAttribute": null,
-"status": "Fail,appeui length/format is wrong"
-Total: 0
+"device_key": "2a2dee583fccfc7ba0c01d2fc5e5a1b0d69087a1",
+"device_eui": "d025ce8785bbd311",
+"device_name": "d311",
+"register_date": "2018-01-12 10:07:32",
+"valid_date": "2018-04-12 10:07:32",
+"device_type": "CARD",
+"latitude": 37.292198,
+"longitude": 127.14841,
+"connection_state": 0,
+"active_user": null,
+"linkloss_time": null,
+"version": null,
+"out_into_range": 1110111,
+"phone_alarm": 3,
+"device_alarm": 3,
+"melody_type": 1,
+"notification_state": true,
+"base64": "iVBORw0KGgoASUVORK5CYII=",
+"device_owner": null,
+"last_receive_time": null,
+"battery": 0
+},
+{
+"device_key": "446a7f1c733589ac3a40e5536268960521d7409c",
+"device_eui": "d025c1fe6e9176ce",
+"device_name": "ce",
+"register_date": "2018-01-12 10:05:57",
+"valid_date": "2018-04-12 10:05:57",
+"device_type": "CARD",
+"latitude": 13.0454512,
+"longitude": 77.6211463,
+"connection_state": 1,
+"active_user": "272a927e06e467adb13175f18829f4f69883e24e",
+"linkloss_time": "2018-01-12 15:37:23",
+"version": null,
+"out_into_range": 1110111,
+"phone_alarm": 3,
+"device_alarm": 3,
+"melody_type": 1,
+"notification_state": true,
+"base64": "iVBORw0KGgoAAASUVORK5CYII=",
+"device_owner": null,
+"last_receive_time": null,
+"battery": 0
 }
-
+]
+}
 
 ```
-Get keyco device data attribute information by specifying various condition
+Get keyco finder device lists by specific condition
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute?appeui={appeui}&deveui={deveui}& pgindex={pgindex}&offset={offset}&register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword=
-{keyword}&valid_date_begin={valid_date_begin}&valid_date_end={valid_date_end}&clientgroupid
-={ clientgroupid}& timestamp_begin={ timestamp_begin}& timestamp_end ={timestamp_end }
-access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition?register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword={keyword}&pgindex={pgindex}&offset={offset}&access_token={access_token}`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | ------------
-appeui | Application eui of the device
-deveui | Device eui of the device
 register_date_begin | Register date begin in YYYYMMDD eg: 20170801
 register_date_end | Register date end in YYYYMMDD eg: 20170802
-valid_date_begin | valid date begin in YYYYMMDD eg: 20170801
-valid_date_end | valid date end in YYYYMMDD eg: 20170802
-keyword | keyword for device_key, firmware_version, device_eui, device_name and keyco_number. 
-client_group_id | Client group id
-timestamp_begin | Timestamp begin date in YYYYMMDD eg: 20170801
-timestamp_end | Timestamp end date in YYYYMMDD eg: 20170801
+keyword | keyword for user_key,user_name, phone_number or phone type. 
 pgindex | Page index for the pagination support
 offset | Offset to get no of device information
 access_token | Access token to be used with api
