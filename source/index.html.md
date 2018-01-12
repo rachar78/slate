@@ -13,319 +13,15 @@ search: true
 ---
 # Introduction
 
-Welcome to the Keyco Tracker API!This guide describes how to compose and send commands and queries to the IOT platform using the keyco REST API. The guide provides examples for a set of common tasks, but it does not describe how to configure the full feature set of the keyco Application and it does not list the classes, methods of the API.We have language bindings in CURL! You can view code examples in the dark area to the right. 
+Welcome to the Keyco Crowd API!This guide describes how to compose and send commands and queries to the IOT platform using the keyco REST API. The guide provides examples for a set of common tasks, but it does not describe how to configure the full feature set of the keyco Finder crowd Application and it does not list the classes, methods of the API.We have language bindings in CURL! You can view code examples in the dark area to the right. 
 
-# Device Subscription/Unsubscription
-
-## Subscription
-
-```shell
-
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/subscribe_device/' --data 'appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-
-{
-"appeui": "0220731000000127",
-"deviceeui": "d02544fffef42720",
-"thingplug_resp": 201,
-"status": "Success"
-}
-{
-"appeui": "0220731000000127",
-"deviceeui": "d02544fffef42720",
-"thingplug_resp": 409,
-"status": "Fail,Please check thingplug response code"
-}
-{
-"appeui": "02207310000001271",
-"deviceeui": " d02544fffef42720",
-"thingplug_resp": 0,
-"status": "Fail:appeui/deveui length/format is wrong"
-}
-{
-"error": "unauthorized",
-"error_description": "An Authentication object was not found in the SecurityContext"
-}
-
-```
-
-This api Subscribe  keyco device 
-
-### HTTP Request
-
-`POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/subscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-appeui | Application eui of the device.
-deveui | Device eui of the device.
-access_token | Access token to be used with api.
-<aside class="success">
-Remember — access_token is an access token to be used only if authentication is enabled!
-</aside>
-
-## Unsubscription
-```shell
-
-curl --request DELETE 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/unsubscribe_device/' --data 'appeui=0220731000000127&deveui=d02544fffef42720&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-
-{
-"appeui": "0220731000000127",
-"deviceeui": "d02544fffef42720",
-"thingplug_resp": 200,
-"status": "Success"
-}
-{
-"appeui": "02207310000001271",
-"deviceeui": " d02544fffef42720",
-"thingplug_resp": 0,
-"status": "Fail:appeui/deveui length/format is wrong"
-}
-
-```
-This API UnSubscribe  keyco device.
-
-<aside class="warning">Unsubscribed devices have to be resubscribed to recieve data</aside>
-### HTTP Request
-
-'DELETE  http://keycoiot.solu-m.com/keyco/iotrestapi/api/unsubscribe_device?appeui={appeui}&deveui={deveui}&access_token={access_token}`
-
-### Query Parameters
-Parameter | Description
---------- |  -----------
-appeui | Application eui of the device.
-deveui | Device eui of the device.
-access_token | Access token to be used with api.
 # Device Information
-## Get Latest Device data
-
-```shell
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/latest/ --data 'appeui=0220731000000127&deveui=d02544fffef447c9 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-{
-"keycolatestdeviceinfo":{
-"version": "1 ",
-"major": "d11f",
-"minor": "2400",
-"device_id": "d02544fffef447c9",
-"timestamp": "2017-09-28 12:46:55",
-"latitude": 1108807628,
-"longitude": 1123912939,
-"altitude": 31,
-"speed": 160,
-"hdop": 0,
-"gps_num": 8,
-"error": 0,
-"battery": 40,
-"positioning_mode": 1,
-"function_operation": 0,
-"gps_operation": 1,
-"sensor": 1,
-"fw_ver": "0.8.10 ",
-"sensor_x": 1,
-"sensor_y": 8,
-"sensor_z": 120,
-"created_at": "2017-09-28 12:47:10",
-"ct": "2017-09-28 12:47:02",
-"lt": "2017-09-28 12:47:02",
-"cs": 98,
-"location_interval": 12
-},
-"status": "Success"
-}
-
-{
-"keycolatestdeviceinfo": null,
-"status": "Fail,appeui/deveui format is wrong"
-}
-
-```
-
-Get Device latest information
-
-### HTTP Request
-
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/latest?appeui={appeui}&deveui={deveui}&access_token={access_token}`
-
-### Query Parameters
-Parameter | Description
---------- | ------------
-appeui | Application eui of the device.
-deveui | Device eui of the device.
-access_token | Access token to be used with api.
-
-## Get Device History data
-
-```shell
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd1f&appeui=0220731000000127&begindate=201707260100&enddate=201707262059&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-{
-"status": "Success",
-"total": 65,
-"listKeycodevices":[
-{
-"version": "1 ",
-"major": "d033",
-"minor": "6400",
-"device_id": "d02544fffef40cd9",
-"timestamp": "1970-01-01 09:03:58",
-"latitude": 0,
-"longitude": 0,
-"altitude": 0,
-"speed": 0,
-"hdop": 0,
-"gps_num": 0,
-"error": 0,
-"battery": 40,
-"positioning_mode": 1,
-"function_operation": 0,
-"gps_operation": 1,
-"sensor": 1,
-"fw_ver": "0.8.10 ",
-"sensor_x": 1,
-"sensor_y": 0,
-"sensor_z": 128,
-"created_at": "2017-09-27 19:03:50",
-"ct": "2017-09-27 19:03:42",
-"lt": "2017-09-27 19:03:42",
-"cs": 98,
-"location_interval": 12
-},
-{
-"version": "1 ",
-"major": "d033",
-"minor": "6400",
-"device_id": "d02544fffef40cd9",
-"timestamp": "2017-09-27 17:00:17",
-"latitude": 1108747670,
-"longitude": 1123960452,
-"altitude": 61,
-"speed": 10,
-"hdop": 0,
-"gps_num": 8,
-"error": 0,
-"battery": 40,
-"positioning_mode": 1,
-"function_operation": 0,
-"gps_operation": 1,
-"sensor": 1,
-"fw_ver": "0.8.10 ",
-"sensor_x": 1,
-"sensor_y": 4,
-"sensor_z": 55,
-"created_at": "2017-09-27 17:01:40",
-"ct": "2017-09-27 17:01:30",
-"lt": "2017-09-27 17:01:30",
-"cs": 98,
-"location_interval": 12
-}
-]
-}
-
-{
-"status": "Fail,appeui/deveui length/format is wrong",
-"total": 0,
-"listkeycodevices": null
-}
-
-{
-"status": "Fail,begindate/enddate format is wrong.Valid format(YYYYMMDDHHMM)",
-"total": 0,
-"listkeycodevices": null
-}
-
-{
-"keycolatestdeviceinfo": null,
-"status": "Fail,appeui/deveui length/format is wrong"
-}
-```
-Get Device history information for a specific date 
-
-### HTTP Request
-
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodata?appeui={appeui}&deveui={deveui}&beginedate={begindatae}&enddate={enddate}
-&pgindex={pgindex}&offset={offset}&access_token={access_token}`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-appeui | Application eui of the device.
-deveui | Device eui of the device.
-access_token | Begin date in the format YYYYMMDDHHMM.
-begindate  | Access token to be used with api.
-enddate  | end date in the format YYYYMMDDHHMM
-pgindex  | Page index for the pagination support
-offset  | Offset to get no of device information
-
-## Get appeui of the keyco device
-
-```shell
-
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoappeui/' --data 'deveui=d02544fffef44b98&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
-
-```
-> The above command returns JSON structured like this:
-
-```json
-{
-"app_eui": "0220731000000127",
-"device_eui": "d02544fffef44b98",
-"status": "success"
-}
-
-{
-"app_eui": null,
-"device_eui": "d02544fffef44b981",
-"status": "Fail,appeui length/format is wrong"
-}
-
-{
-"app_eui": null,
-"device_eui": "d12544fffef44b98",
-"status": "Fail,d12544fffef44b98 not ready for registration"
-}
-
-```
-Get appeui of the specific keyco device 
-
-### HTTP Request
-
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycoappeui?deveui={deveui}access_token={access_token}`
-
-### Query Parameters
-
-Parameter | Description
---------- | ------------
-deveui | Device eui of the device.
-access_token | access_token Access token to be used with api
 
 ## Get total keyco device count
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodevicecount/' --data 'appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodevicecount/' --data 'appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -346,7 +42,7 @@ Get total no of of keyco devices count
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodevicecount?appeui={appeui}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodevicecount?appeui={appeui}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -359,7 +55,7 @@ access_token | access_token Access token to be used with api
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycodeviceuserlist/' --data 'appeui=0220731000000127& devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycodeviceuserlist/' --data 'appeui=0220731000000127& devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -397,7 +93,7 @@ Get the keyco user lists of specific device
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycodeviceuserlist?{appeui}&devicekey={devicekey}&access_token={access_token`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycodeviceuserlist?{appeui}&devicekey={devicekey}&access_token={access_token`
 
 ### Query Parameters
 
@@ -411,7 +107,7 @@ access_token | access_token Access token to be used with api
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserdevicelist/' --data 'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserdevicelist/' --data 'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -441,7 +137,7 @@ Get the keyco device lists of specific user
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserdevicelist?userkey={userkey}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserdevicelist?userkey={userkey}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -454,25 +150,25 @@ access_token | access_token Access token to be used with api
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&&deveui=d02544fffef44b98&
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&&deveui=d02544fffef44b98&
 pgindex=0&offset=0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170801&register_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170801&register_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170801&valid_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170801&valid_date_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170901&register_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&register_date_begin=20170901&register_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170901&valid_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&valid_date_begin=20170901&valid_date_end=20170904&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&keyword=0.7.9&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&timestamp_begin=20170801&timestamp_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&timestamp_begin=20170801&timestamp_end=20171004&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&clientgroupid=1&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/' --data 'appeui=0220731000000127&clientgroupid=1&pgindex=0&offset=2&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -538,7 +234,7 @@ Get keyco device data attribute information by specifying various condition
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycodataattribute?appeui={appeui}&deveui={deveui}& pgindex={pgindex}&offset={offset}&register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword=
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute?appeui={appeui}&deveui={deveui}& pgindex={pgindex}&offset={offset}&register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword=
 {keyword}&valid_date_begin={valid_date_begin}&valid_date_end={valid_date_end}&clientgroupid
 ={ clientgroupid}& timestamp_begin={ timestamp_begin}& timestamp_end ={timestamp_end }
 access_token={access_token}`
@@ -566,7 +262,7 @@ access_token | Access token to be used with api
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycodevice/' --data 'appeui=0220731000000127&deveui=d02544fffef40cc4&devname=test&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+curl --request POST 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycodevice/' --data 'appeui=0220731000000127&deveui=d02544fffef40cc4&devname=test&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 
 ```
 > The above command returns JSON structured like this:
@@ -597,7 +293,7 @@ This api Register keyco device
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycodevice?userkey={userkey}&deveui={deveui}&devname={devname}&  
+`POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycodevice?userkey={userkey}&deveui={deveui}&devname={devname}&  
 access_token={access_token}`
 
 ### Query Parameters
@@ -613,7 +309,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request DELETE 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/unlink_keycodevice/' --data 'userkey==076f7293f63e3eb7bb84c35473a0e457f541e179&devicekey=4390be338981c3971bf9fa82fb4efc90ea9c5c83&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/unlink_keycodevice/' --data 'userkey==076f7293f63e3eb7bb84c35473a0e457f541e179&devicekey=4390be338981c3971bf9fa82fb4efc90ea9c5c83&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 
 ```
 > The above command returns JSON structured like this:
@@ -635,7 +331,7 @@ Unlink registered keyco device mapping information from user
 
 ### HTTP Request
 
-`DELETE  http://keycoiot.solu-m.com/keyco/iotrestapi/api/unlink_keycodevice?userkey={userkey}&devicekey={devicekey}&access_token=
+`DELETE  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/unlink_keycodevice?userkey={userkey}&devicekey={devicekey}&access_token=
 {access_token}`
 
 ### Query Parameters
@@ -650,7 +346,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request DELETE 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/delete_keycodevice/' --data 'deveui =d02544fffef42fc0&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/delete_keycodevice/' --data 'deveui =d02544fffef42fc0&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 
 ```
 > The above command returns JSON structured like this:
@@ -678,7 +374,7 @@ Delete registered keyco device information from device table
 
 ### HTTP Request
 
-`DELETE  http://keycoiot.solu-m.com/keyco/iotrestapi/api/delete_keycodevice?deveui={deveui}&access_token={access_token}`
+`DELETE  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/delete_keycodevice?deveui={deveui}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -692,7 +388,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/changekeycodevicevaliddate/' --data 'deveui =d02544fffef42fc0&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/changekeycodevicevaliddate/' --data 'deveui =d02544fffef42fc0&access_token=19f5ad9e-bf82-493e-aef0-d09daac5522'
 
 ```
 > The above command returns JSON structured like this:
@@ -711,7 +407,7 @@ change keyco valid date of device
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/changekeycodevicevaliddate?deveui={deveui}&appeui={appeui}&numofdays={numofdays}&access_token={access_token}`
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/changekeycodevicevaliddate?deveui={deveui}&appeui={appeui}&numofdays={numofdays}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -726,7 +422,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicename/' --data 'appeui=0220731000000127&userkey=011c945f30ce2cbafc452f39840f025693339c42&devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&devicename=device1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycodevicename/' --data 'appeui=0220731000000127&userkey=011c945f30ce2cbafc452f39840f025693339c42&devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&devicename=device1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -746,7 +442,7 @@ Update keyco device name
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycodevicename?appeui={appeui}&userkey={userkey}&devicekey={devicekey}&devicename={ devicename}&access_token={access_token}`
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycodevicename?appeui={appeui}&userkey={userkey}&devicekey={devicekey}&devicename={ devicename}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -761,7 +457,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/updatekeycodeviceclientgroupid/' --data 'appeui=0220731000000127&deveui=d02544fffef47f85&clientgroupid=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/updatekeycodeviceclientgroupid/' --data 'appeui=0220731000000127&deveui=d02544fffef47f85&clientgroupid=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -781,7 +477,7 @@ Change the value of client group id of keyco device
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/updatekeycodeviceclientgroupid?deveui={deveui}&appeui={appeui}&clientgroupid={clientgroupid }`
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/updatekeycodeviceclientgroupid?deveui={deveui}&appeui={appeui}&clientgroupid={clientgroupid }`
 
 ### Query Parameters
 
@@ -796,7 +492,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/setinterval/' --data 'deveui=d02544fffef42720&appeui=0220731000000127&interval=2&intervaltype=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/setinterval/' --data 'deveui=d02544fffef42720&appeui=0220731000000127&interval=2&intervaltype=1&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -824,7 +520,7 @@ Set reporting/location interval for the device
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/setinterval?appeui={appeui}&deveui={deveui}&interval={interval}&intervaltype=
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/setinterval?appeui={appeui}&deveui={deveui}&interval={interval}&intervaltype=
 {intervaltype}&access_token={access_token}`
 
 ### Query Parameters
@@ -841,7 +537,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/resetdevice/' --data 'appeui={appeui}&deveui={deveui}&access_token={access_token}'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/resetdevice/' --data 'appeui={appeui}&deveui={deveui}&access_token={access_token}'
 
 ```
 > The above command returns JSON structured like this:
@@ -867,7 +563,7 @@ Reset the device.
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/resetdevice?deveui=d02544fffef42720&appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222`
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/resetdevice?deveui=d02544fffef42720&appeui=0220731000000127&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222`
 
 ### Query Parameters
 
@@ -881,7 +577,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/setkeycodevicesafezone/' --data 'deveui={deveui}&appeui={appeui}&safetyzone_name={ safetyzone_name}&safetyzone_limit={safetyzone_limit}&safetyzone_status={ safetyzone_status}&safetyzone_latitude={safetyzone_latitude}&safetyzone_longitude={ safetyzone_longitude}&access_token={access_token}'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/setkeycodevicesafezone/' --data 'deveui={deveui}&appeui={appeui}&safetyzone_name={ safetyzone_name}&safetyzone_limit={safetyzone_limit}&safetyzone_status={ safetyzone_status}&safetyzone_latitude={safetyzone_latitude}&safetyzone_longitude={ safetyzone_longitude}&access_token={access_token}'
 
 ```
 > The above command returns JSON structured like this:
@@ -901,7 +597,7 @@ Set keyco device safety zone information
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco/iotrestapi/api/setkeycodevicesafezone?appeui=0220731000000127&deveui=d02544fffef4bd21&safetyzone_name=test&safetyzone_limit=1500&safetyzone_status=1&safetyzone_latitude=13&safetyzone_longitude=17 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222`
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/setkeycodevicesafezone?appeui=0220731000000127&deveui=d02544fffef4bd21&safetyzone_name=test&safetyzone_limit=1500&safetyzone_status=1&safetyzone_latitude=13&safetyzone_longitude=17 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222`
 
 ### Query Parameters
 
@@ -922,7 +618,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycouser/' --data '{"pin_code":"560018","user_name":"guru","user_phone_num":"9900217610","phone_type":"Android", "email":"r.achar@solu-m.com"}&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request POST 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycouser/' --data '{"pin_code":"560018","user_name":"guru","user_phone_num":"9900217610","phone_type":"Android", "email":"r.achar@solu-m.com"}&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The JSON body and response of JSON structured like this:
@@ -948,7 +644,7 @@ This api Register keyco user
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycouser?&access_token={access_token}`
+`POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycouser?&access_token={access_token}`
 
 ### Query Parameters
 
@@ -964,7 +660,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request DELETE 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/delete_keycouser/' --data 'userkey=a1872e333d0e52644f6125da2276530f7ebe5e77&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request DELETE 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/delete_keycouser/' --data 'userkey=a1872e333d0e52644f6125da2276530f7ebe5e77&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -980,7 +676,7 @@ Delete registered keyco user
 
 ### HTTP Request
 
-`DELETE  http://keycoiot.solu-m.com/keyco/iotrestapi/api/delete_keycouser?userkey={userkey}&access_token={access_token}`
+`DELETE  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/delete_keycouser?userkey={userkey}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -993,7 +689,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycousercount/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycousercount/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1010,7 +706,7 @@ Get total no of keyco user count
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycousercount?access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycousercount?access_token={access_token}`
 
 ### Query Parameters
 
@@ -1022,13 +718,13 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserlistbycondition/' --data 'pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserlistbycondition/' --data 'pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserlistbycondition/' --data 'register_date_begin=20170901&register_date_end=20170904&keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserlistbycondition/' --data 'keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserlistbycondition/' --data 'keyword=IOS&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1066,7 +762,7 @@ Get keyco user list by condition
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycouserlistbycondition?appeui={appeui}&pgindex={pgindex}&offset={offset}&
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserlistbycondition?appeui={appeui}&pgindex={pgindex}&offset={offset}&
 &register_date_begin={register_date_begin}&register_date_end={register_date_end}&keyword={keyword&access_token={access_token}`
 
 ### Query Parameters
@@ -1084,9 +780,9 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycouserinfo/' --data 'user_key=bd991840970e8005468094bb160e42845197b565&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycouserinfo/' --data 'user_key=bd991840970e8005468094bb160e42845197b565&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycouserinfo/' --data 'user_name=vudamalapati@gmail.com&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycouserinfo/' --data 'user_name=vudamalapati@gmail.com&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 getkeycouserinfo?user_name=vudamalapati@gmail.com
 ```
 > The above command returns JSON structured like this:
@@ -1118,7 +814,7 @@ Get Specific keyco user information by user name/user key
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeycouserinfo?user_key={user_key}&user_name={user_name}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycouserinfo?user_key={user_key}&user_name={user_name}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1132,7 +828,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/validate_keycouserlogin/' --data 'user_name=vudamalapati@gmail.com[CUSTOM]&password=vcdbnnbhnnvvb&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/validate_keycouserlogin/' --data 'user_name=vudamalapati@gmail.com[CUSTOM]&password=vcdbnnbhnnvvb&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1165,7 +861,7 @@ Validate custom keyco user
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/validate_keycouserlogin?user_name={user_name}&password={password}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/validate_keycouserlogin?user_name={user_name}&password={password}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1179,7 +875,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword/' --data 'user_name=vudamalapati@gmail.com[CUSTOM]&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycopassword/' --data 'user_name=vudamalapati@gmail.com[CUSTOM]&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1204,7 +900,7 @@ Generate and update keyco custom user forgot password
 
 ### HTTP Request
 
-`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword?user_name={user_name}&access_token={access_token}`
+`PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycopassword?user_name={user_name}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1218,7 +914,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/reset_keycopassword/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/reset_keycopassword/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command uses below JSON body and returns JSON structured like this:
@@ -1250,7 +946,7 @@ Generate and update keyco custom user password
 
 ### HTTP Request
 
-`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycopassword?user_name={user_name}&access_token={access_token}`
+`PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycopassword?user_name={user_name}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1267,7 +963,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&message=Alert keyco&severity=12 
+curl --request POST 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/push_keyconotification/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&message=Alert keyco&severity=12 
 &deveui=d02544fffef4bd20&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32'
 
 ```
@@ -1291,7 +987,7 @@ Push notification to the keyco user mobile device
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/push_keyconotification?userkey={userkey&onesignalkey={onesignalkey}&message
+`POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/push_keyconotification?userkey={userkey&onesignalkey={onesignalkey}&message
  ={ message }&severity={severity}access_token={access_token}`
 
 ### Query Parameters
@@ -1309,7 +1005,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoonesignalkey/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&state=0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycoonesignalkey/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&onesignalkey=dea0c442-090a-4835-83a9-c1a276117b32&state=0&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1330,7 +1026,7 @@ update one signal key of the keyco user
 
 ### HTTP Request
 
-`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoonesignalkey?userkey={userkey}&devicekey={devicekey}&onesignalkey ={onesignalkey }&state={state}&access_token={access_token}`
+`PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycoonesignalkey?userkey={userkey}&devicekey={devicekey}&onesignalkey ={onesignalkey }&state={state}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1345,7 +1041,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoactivelogin/' --data 'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycoactivelogin/' --data 'userkey=c714b1243a731013e18318d46bfc0bb54c39cf33&onesignalkey=79dc9c92-135d-433d-b213-577ee88b7345&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1367,7 +1063,7 @@ update keyco active login user for push notification
 
 ### HTTP Request
 
-`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycoactivelogin?userkey={userkey}&onesignalkey={onesignalkey }&access_token={access_token}`
+`PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycoactivelogin?userkey={userkey}&onesignalkey={onesignalkey }&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1381,7 +1077,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycoonesignalkey/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycoonesignalkey/' --data 'userkey=1b1b3e65ca74a45e3525ee7642f4623e6f9800a5&devicekey=eff56f0745ba3ed892c56eb964a1c34b1ede52c8&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1405,7 +1101,7 @@ Get one signal key of the keyco user
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&devicekey={devicekey}&access_token=
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&devicekey={devicekey}&access_token=
 {access_token}`
 
 ### Query Parameters
@@ -1420,15 +1116,15 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&pgindex=0&offset=5&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&receive_time_begin=20170901&receive_time_end=20171204&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&receive_time_begin=20170901&receive_time_end=20171204&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&send_time_begin=20170901&send_time_end=20171204&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&send_time_begin=20170901&send_time_end=20171204&pgindex=0&offset=10&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&content=poor&pgindex=0&offset=10 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&content=poor&pgindex=0&offset=10 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&severity=1&pgindex=0&offset=10 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification/' --data 'appeui=0220731000000127&deveui=d02544fffef4bd20&severity=1&pgindex=0&offset=10 &access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1452,7 +1148,7 @@ Search notification message of keyco user device
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/getkeyconotification?appeui={appeui}&deveui={deveui}&pgindex
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification?appeui={appeui}&deveui={deveui}&pgindex
  ={pgindex}&offset={offset}& receive_time_begin={ receive_time_begin
 }&receive_time_end ={receive_time_end}& send_time_begin={send_time_begin
 }&send_time_end ={send_time_end} content ={content}& severity={severity}
@@ -1480,7 +1176,7 @@ access_token | Access token to be used with api
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware/' --data 'name=KEYCO_Tracker0810_r4.zip&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request POST 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/upload_keycofirmware/' --data 'name=KEYCO_Tracker0810_r4.zip&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1501,7 +1197,7 @@ Upload keyco firmware to server
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/upload_keycofirmware?name={name}?access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/upload_keycofirmware?name={name}?access_token={access_token}`
 
 ### Query Parameters
 
@@ -1515,7 +1211,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycofirmwareinfo/' --data 'userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofirmwareinfo/' --data 'userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1541,7 +1237,7 @@ Get the latest keyco firmware information from server
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/get_keycofirmwareinfo?&userkey={userkey}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofirmwareinfo?&userkey={userkey}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1554,7 +1250,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request GET 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware/' --data 'name=KEYCO_Tracker0810_r4.zip&userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request GET 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/download_keycofirmware/' --data 'name=KEYCO_Tracker0810_r4.zip&userkey=025cc868760689c53dca2fd283d960e3af59cb78&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command returns JSON structured like this:
@@ -1576,7 +1272,7 @@ Download keyco firmware file from server
 
 ### HTTP Request
 
-`GET  http://keycoiot.solu-m.com/keyco/iotrestapi/api/download_keycofirmware?name={KEYCO_keyco0810.zip}&userkey ={userkey}&access_token={access_token}`
+`GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/download_keycofirmware?name={KEYCO_keyco0810.zip}&userkey ={userkey}&access_token={access_token}`
 
 ### Query Parameters
 
@@ -1592,7 +1288,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/generate_keycosharelink/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request POST 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/generate_keycosharelink/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command includes JSON body and  returns JSON structured like this:
@@ -1636,7 +1332,7 @@ Generate keyco device share link.
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/generate_keycosharelink?access_token={access_token}`
+`POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/generate_keycosharelink?access_token={access_token}`
 
 ### Query Parameters
 
@@ -1651,7 +1347,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request POST 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycosharedevice/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request POST 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycosharedevice/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command includes JSON body and  returns JSON structured like this:
@@ -1690,7 +1386,7 @@ Register keyco share device.
 
 ### HTTP Request
 
-`POST  http://keycoiot.solu-m.com/keyco/iotrestapi/api/register_keycosharedevice?access_token={access_token}`
+`POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycosharedevice?access_token={access_token}`
 
 ### Query Parameters
 
@@ -1705,7 +1401,7 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycobranchkey/' --data 'link=4NsmhzWc&branch_key=BHrRYR05rJ&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycobranchkey/' --data 'link=4NsmhzWc&branch_key=BHrRYR05rJ&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command includes JSON body and  returns JSON structured like this:
@@ -1727,7 +1423,7 @@ Update keyco branch key for sharing device
 
 ### HTTP Request
 
-`PUT  http://keycoiot.solu-m.com/keyco/iotrestapi/api/update_keycobranchkey?link={link}&branch_key={branch_key}&access_token={access_token}`
+`PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycobranchkey?link={link}&branch_key={branch_key}&access_token={access_token}`
 
 ### Query Parameters
 
