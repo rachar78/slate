@@ -228,13 +228,16 @@
                     <a href="#get-total-keyco-finder-device-count" class="toc-h2 toc-link" data-title="Get total keyco finder device count">Get total keyco finder device count</a>
                   </li>
                   <li>
-                    <a href="#get-the-user-lists-of-specific-device" class="toc-h2 toc-link" data-title="Get the user lists of specific device">Get the user lists of specific device</a>
+                    <a href="#get-keyco-finder-user-lists-by-condition" class="toc-h2 toc-link" data-title="Get keyco finder user lists by condition">Get keyco finder user lists by condition</a>
+                  </li>
+                  <li>
+                    <a href="#get-keyco-finder-user-lists-of-specific-device" class="toc-h2 toc-link" data-title="Get keyco finder user lists of specific device">Get keyco finder user lists of specific device</a>
                   </li>
                   <li>
                     <a href="#get-keyco-device-lists-of-specific-user" class="toc-h2 toc-link" data-title="Get keyco device lists of specific user">Get keyco device lists of specific user</a>
                   </li>
                   <li>
-                    <a href="#get-keyco-device-data-attribute" class="toc-h2 toc-link" data-title="Get keyco device data attribute">Get keyco device data attribute</a>
+                    <a href="#get-keyco-finder-device-lists-by-specific-condition" class="toc-h2 toc-link" data-title="Get keyco finder device lists by specific condition">Get keyco finder device lists by specific condition</a>
                   </li>
               </ul>
           </li>
@@ -389,44 +392,52 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 <td>access_token Access token to be used with api</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-user-lists-of-specific-device'>Get the user lists of specific device</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycodeviceuserlist/'</span> --data <span class="s1">'appeui=0220731000000127&amp; devicekey=995f9a9cb2d0ae26562cfbeb4f5b2c69598bc749&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+<h2 id='get-keyco-finder-user-lists-by-condition'>Get keyco finder user lists by condition</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/'</span> --data <span class="s1">'pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/'</span> --data <span class="s1">'register_date_begin=20170901&amp;register_date_end=20170904&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/'</span> --data <span class="s1">'register_date_begin=20170901&amp;register_date_end=20170904&amp;keyword=IOS&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition/'</span> --data <span class="s1">'keyword=IOS&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"active_user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-</span><span class="s2">"listkeycouserinfo"</span><span class="p">:[</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKeycofinderuserinfo"</span><span class="p">:[</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1567c7a74d13f2441876b1f7558afaee4b249627"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"567034643"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Android"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04 21:50:57"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce office 1f0e"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"active_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-</span><span class="p">},</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd991840970e8005468094bb160e42845197b565"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100439623793991393326,vudamalapati@gmail.com"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ef2bf005d797df7f278cf2af8c53093ba4a8ebe"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UrR8OVQGEQgpmqDbP5KIEHBMltJ2_test keyco"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
 </span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Android"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-30 12:19:40"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bala-office2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"active_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-12 09:31:06"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gcmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0e1bccb-b01a-4fb4-8157-52e4ccd8259c"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"keycotest@gmail.com"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"272a927e06e467adb13175f18829f4f69883e24e"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7KKISaXErTgW9AuRZAu1iYZmHHu2_Anand Kalagi"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Android"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-12 09:26:54"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gcmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1219fd5d-014f-4c75-a411-bd32f80eceef"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anand Kalagi"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Get the keyco user lists of specific device</p>
+<p>Get keyco finder user lists by condition</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycodeviceuserlist?{appeui}&amp;devicekey={devicekey}&amp;access_token={access_token</code></p>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserlistbycondition?register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword={keyword}&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -435,20 +446,87 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 </tr>
 </thead><tbody>
 <tr>
-<td>appeui</td>
-<td>Application eui of the device.</td>
+<td>register_date_begin</td>
+<td>Register date begin in YYYYMMDD eg: 20170801</td>
 </tr>
 <tr>
-<td>devicekey</td>
-<td>Device key of the device</td>
+<td>register_date_end</td>
+<td>Register date end in YYYYMMDD eg: 20170802</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>keyword for user_key,user_name, phone_number or phone type.</td>
+</tr>
+<tr>
+<td>pgindex</td>
+<td>Page index for the pagination support</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Offset to get no of device information</td>
 </tr>
 <tr>
 <td>access_token</td>
-<td>access_token Access token to be used with api</td>
+<td>Access token to be used with api</td>
+</tr>
+</tbody></table>
+<h2 id='get-keyco-finder-user-lists-of-specific-device'>Get keyco finder user lists of specific device</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdeviceuserlist/'</span> --data <span class="s1">'deveui=d025d77336adf3ce&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"active_user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"781792b3f9a3a329e44cdaeda0bd61c28b93b9e1"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKeycofinderuserinfo"</span><span class="p">:[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"781792b3f9a3a329e44cdaeda0bd61c28b93b9e1"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"107704090541995454648syamkumar1910@gmail.com"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOS"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-11 11:58:00"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gcmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03af6588-bdfd-4450-a4a6-70cbb8b1e329"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syamkumar1910@gmail.com"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"user_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0671fc9a62e39d5098f654042546db0a6aa1edee"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"pin_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YAAWP1Ue29ThsiYjiC5Lb1iUNLp1_Syam Kumar"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"user_phone_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Android"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-12 05:41:15"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"gcmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"421aeea6-cf48-4acf-9605-ed41e0cb5b59"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Syam Kumar"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get keyco finder user lists of specific device</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdeviceuserlist?deveui={deveui}&amp;access_token={access_token</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deveui</td>
+<td>device eui</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Access token to be used with api</td>
 </tr>
 </tbody></table>
 <h2 id='get-keyco-device-lists-of-specific-user'>Get keyco device lists of specific user</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserdevicelist/'</span> --data <span class="s1">'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserdevicelist/'</span> --data <span class="s1">'userkey=8f9e211ed7eb7f5cdf9712b8a78539d8754a73f0&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 </code></pre>
 <blockquote>
@@ -457,27 +535,37 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-</span><span class="s2">"listkeycodeviceinfo"</span><span class="p">:[</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKeycofinderdeviceinfo"</span><span class="p">:[</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b54b6b0a296e996b665f05313a2b87a918691945"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef71f0f"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"app_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0190691000000340"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bala"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"keyco_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3612431"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-05 13:38:14"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-05 13:38:14"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"fw_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5.2 "</span><span class="p">,</span><span class="w">
-</span><span class="s2">"client_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20001</span><span class="p">,</span><span class="w">
-</span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"linking"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8b471703969579b99ba67009f82bfb8fc7823ca3"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d025cd0cd5a354a5"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a5"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-29 12:03:13"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-28 12:03:13"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.0454197</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6210666</span><span class="p">,</span><span class="w">
+</span><span class="s2">"connection_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"active_user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"linkloss_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-29 05:56:46"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"out_into_range"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110111</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_alarm"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_alarm"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="s2">"melody_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"notification_state"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="s2">"base64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoA="</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRIMARY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <p>Get the keyco device lists of specific user</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserdevicelist?userkey={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderuserdevicelist?userkey={userkey}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -493,108 +581,84 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 <td>access_token Access token to be used with api</td>
 </tr>
 </tbody></table>
-<h2 id='get-keyco-device-data-attribute'>Get keyco device data attribute</h2><pre class="highlight shell tab-shell"><code>
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+<h2 id='get-keyco-finder-device-lists-by-specific-condition'>Get keyco finder device lists by specific condition</h2><pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/'</span> --data <span class="s1">'pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/'</span> --data <span class="s1">'register_date_begin=20170901&amp;register_date_end=20170904&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;&amp;deveui=d02544fffef44b98&amp;
-pgindex=0&amp;offset=0&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/'</span> --data <span class="s1">'register_date_begin=20170901&amp;register_date_end=20170904&amp;keyword=IOS&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;register_date_begin=20170801&amp;register_date_end=20171004&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;valid_date_begin=20170801&amp;valid_date_end=20171004&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;register_date_begin=20170901&amp;register_date_end=20170904&amp;keyword=0.7.9&amp;pgindex=0&amp;offset=10&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;valid_date_begin=20170901&amp;valid_date_end=20170904&amp;keyword=0.7.9&amp;pgindex=0&amp;offset=10&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;keyword=0.7.9&amp;pgindex=0&amp;offset=10&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;timestamp_begin=20170801&amp;timestamp_end=20171004&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
-
-curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute/'</span> --data <span class="s1">'appeui=0220731000000127&amp;clientgroupid=1&amp;pgindex=0&amp;offset=2&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
+curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition/'</span> --data <span class="s1">'keyword=IOS&amp;pgindex=0&amp;offset=5&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'</span>
 
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"keycodataAttribute"</span><span class="p">:[</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">81</span><span class="p">,</span><span class="w">
+</span><span class="s2">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"listKeycofinderdeviceinfo"</span><span class="p">:[</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"appeui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0220731000000127"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02544fffef4432b"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"keyco_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-03 22:30:38"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-03 14:59:59"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"location_interval"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"location_intervaltype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"safetyzone_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"safetyzone_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"safetyzone_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"client_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-</span><span class="err">“safetyzone_latitude</span><span class="s2">": 13,
-"</span><span class="err">safetyzone_longitude</span><span class="s2">": 17,
-"</span><span class="err">version</span><span class="s2">": "</span><span class="mi">1</span><span class="w"> </span><span class="s2">",
-"</span><span class="err">major</span><span class="s2">": "</span><span class="err">d</span><span class="mi">10</span><span class="err">c</span><span class="s2">",
-"</span><span class="err">minor</span><span class="s2">": "</span><span class="err">ac</span><span class="mi">00</span><span class="s2">",
-"</span><span class="err">device_id</span><span class="s2">": "</span><span class="err">d</span><span class="mi">02544</span><span class="err">fffef</span><span class="mi">4432</span><span class="err">b</span><span class="s2">",
-"</span><span class="err">timestamp</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">54</span><span class="s2">",
-"</span><span class="err">latitude</span><span class="s2">": 1108134101,
-"</span><span class="err">longitude</span><span class="s2">": 1124081567,
-"</span><span class="err">altitude</span><span class="s2">": 50,
-"</span><span class="err">speed</span><span class="s2">": 0,
-"</span><span class="err">hdop</span><span class="s2">": 1,
-"</span><span class="err">gps_num</span><span class="s2">": 5,
-"</span><span class="err">error</span><span class="s2">": 0,
-"</span><span class="err">battery</span><span class="s2">": 50,
-"</span><span class="err">positioning_mode</span><span class="s2">": 1,
-"</span><span class="err">function_operation</span><span class="s2">": 0,
-"</span><span class="err">gps_operation</span><span class="s2">": 1,
-"</span><span class="err">sensor</span><span class="s2">": 1,
-"</span><span class="err">fw_ver</span><span class="s2">": "</span><span class="mf">0.7</span><span class="err">.</span><span class="mi">9</span><span class="w"> </span><span class="s2">",
-"</span><span class="err">sensor_x</span><span class="s2">": 7,
-"</span><span class="err">sensor_y</span><span class="s2">": 0,
-"</span><span class="err">sensor_z</span><span class="s2">": 19,
-"</span><span class="err">created_at</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">40</span><span class="s2">",
-"</span><span class="err">ct</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">39</span><span class="s2">",
-"</span><span class="err">lt</span><span class="s2">": "</span><span class="mi">2017-09-28</span><span class="w"> </span><span class="mi">09</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">39</span><span class="s2">",
-"</span><span class="err">cs</span><span class="s2">": 0
-}
-],
-"</span><span class="err">status</span><span class="s2">": "</span><span class="err">Success</span><span class="s2">",
-"</span><span class="err">total</span><span class="s2">": 28
-}
-
-{
-"</span><span class="err">keycodataAttribute</span><span class="s2">": null,
-"</span><span class="err">status</span><span class="s2">": "</span><span class="err">Fail</span><span class="p">,</span><span class="err">appeui</span><span class="w"> </span><span class="err">length/format</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">wrong</span><span class="s2">"
-Total: 0
-}
-
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a2dee583fccfc7ba0c01d2fc5e5a1b0d69087a1"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d025ce8785bbd311"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d311"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-12 10:07:32"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-12 10:07:32"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">37.292198</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">127.14841</span><span class="p">,</span><span class="w">
+</span><span class="s2">"connection_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="s2">"active_user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"linkloss_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"out_into_range"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110111</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_alarm"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_alarm"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="s2">"melody_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"notification_state"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+</span><span class="s2">"base64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoASUVORK5CYII="</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"last_receive_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"device_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"446a7f1c733589ac3a40e5536268960521d7409c"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_eui"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d025c1fe6e9176ce"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ce"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"register_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-12 10:05:57"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"valid_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-12 10:05:57"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.0454512</span><span class="p">,</span><span class="w">
+</span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6211463</span><span class="p">,</span><span class="w">
+</span><span class="s2">"connection_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"active_user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"272a927e06e467adb13175f18829f4f69883e24e"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"linkloss_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-12 15:37:23"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"out_into_range"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110111</span><span class="p">,</span><span class="w">
+</span><span class="s2">"phone_alarm"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_alarm"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="s2">"melody_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"notification_state"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+</span><span class="s2">"base64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAASUVORK5CYII="</span><span class="p">,</span><span class="w">
+</span><span class="s2">"device_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"last_receive_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Get keyco device data attribute information by specifying various condition</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycodataattribute?appeui={appeui}&amp;deveui={deveui}&amp; pgindex={pgindex}&amp;offset={offset}&amp;register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword=
-{keyword}&amp;valid_date_begin={valid_date_begin}&amp;valid_date_end={valid_date_end}&amp;clientgroupid
-={ clientgroupid}&amp; timestamp_begin={ timestamp_begin}&amp; timestamp_end ={timestamp_end }
-access_token={access_token}</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<p>Get keyco finder device lists by specific condition</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofinderdevicelistbycondition?register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword={keyword}&amp;pgindex={pgindex}&amp;offset={offset}&amp;access_token={access_token}</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>appeui</td>
-<td>Application eui of the device</td>
-</tr>
-<tr>
-<td>deveui</td>
-<td>Device eui of the device</td>
-</tr>
 <tr>
 <td>register_date_begin</td>
 <td>Register date begin in YYYYMMDD eg: 20170801</td>
@@ -604,28 +668,8 @@ access_token={access_token}</code></p>
 <td>Register date end in YYYYMMDD eg: 20170802</td>
 </tr>
 <tr>
-<td>valid_date_begin</td>
-<td>valid date begin in YYYYMMDD eg: 20170801</td>
-</tr>
-<tr>
-<td>valid_date_end</td>
-<td>valid date end in YYYYMMDD eg: 20170802</td>
-</tr>
-<tr>
 <td>keyword</td>
-<td>keyword for device_key, firmware_version, device_eui, device_name and keyco_number.</td>
-</tr>
-<tr>
-<td>client_group_id</td>
-<td>Client group id</td>
-</tr>
-<tr>
-<td>timestamp_begin</td>
-<td>Timestamp begin date in YYYYMMDD eg: 20170801</td>
-</tr>
-<tr>
-<td>timestamp_end</td>
-<td>Timestamp end date in YYYYMMDD eg: 20170801</td>
+<td>keyword for user_key,user_name, phone_number or phone type.</td>
 </tr>
 <tr>
 <td>pgindex</td>
@@ -668,10 +712,10 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iot
 
 </span></code></pre>
 <p>This api Register keyco device</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycodevice?userkey={userkey}&amp;deveui={deveui}&amp;devname={devname}&amp;  
 access_token={access_token}</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -714,10 +758,10 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/i
 
 </span></code></pre>
 <p>Unlink registered keyco device mapping information from user</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>DELETE  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/unlink_keycodevice?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
 {access_token}</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -762,9 +806,9 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/i
 
 </span></code></pre>
 <p>Delete registered keyco device information from device table</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>DELETE  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/delete_keycodevice?deveui={deveui}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -797,9 +841,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>change keyco valid date of device</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/changekeycodevicevaliddate?deveui={deveui}&amp;appeui={appeui}&amp;numofdays={numofdays}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -841,9 +885,9 @@ Successfully"</span><span class="w">
 
 </span></code></pre>
 <p>Update keyco device name</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycodevicename?appeui={appeui}&amp;userkey={userkey}&amp;devicekey={devicekey}&amp;devicename={ devicename}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -885,9 +929,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Change the value of client group id of keyco device</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/updatekeycodeviceclientgroupid?deveui={deveui}&amp;appeui={appeui}&amp;clientgroupid={clientgroupid }</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -937,10 +981,10 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Set reporting/location interval for the device</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/setinterval?appeui={appeui}&amp;deveui={deveui}&amp;interval={interval}&amp;intervaltype=
 {intervaltype}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -992,9 +1036,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Reset the device.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/resetdevice?deveui=d02544fffef42720&amp;appeui=0220731000000127&amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222</code></p>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1032,9 +1076,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Set keyco device safety zone information </p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/setkeycodevicesafezone?appeui=0220731000000127&amp;deveui=d02544fffef4bd21&amp;safetyzone_name=test&amp;safetyzone_limit=1500&amp;safetyzone_status=1&amp;safetyzone_latitude=13&amp;safetyzone_longitude=17 &amp;access_token=19f5ad9e-bf82-493e-aef0-d09daac55222</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1098,9 +1142,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iot
 
 </span></code></pre>
 <p>This api Register keyco user</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycouser?&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1142,9 +1186,9 @@ curl --request DELETE <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/i
 
 </span></code></pre>
 <p>Delete registered keyco user</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>DELETE  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/delete_keycouser?userkey={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-15'>Query Parameters</h3>
+<h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1175,9 +1219,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Get total no of keyco user count</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycousercount?access_token={access_token}</code></p>
-<h3 id='query-parameters-16'>Query Parameters</h3>
+<h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1231,10 +1275,10 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Get keyco user list by condition</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycouserlistbycondition?appeui={appeui}&amp;pgindex={pgindex}&amp;offset={offset}&amp;
 &amp;register_date_begin={register_date_begin}&amp;register_date_end={register_date_end}&amp;keyword={keyword&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-17'>Query Parameters</h3>
+<h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1298,9 +1342,9 @@ getkeycouserinfo?user_name<span class="o">=</span>vudamalapati@gmail.com
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Get Specific keyco user information by user name/user key</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeycouserinfo?user_key={user_key}&amp;user_name={user_name}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-18'>Query Parameters</h3>
+<h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1351,9 +1395,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Validate custom keyco user</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/validate_keycouserlogin?user_name={user_name}&amp;password={password}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-19'>Query Parameters</h3>
+<h3 id='query-parameters-20'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1396,9 +1440,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Generate and update keyco custom user forgot password</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycopassword?user_name={user_name}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-20'>Query Parameters</h3>
+<h3 id='query-parameters-21'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1444,9 +1488,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Generate and update keyco custom user password</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycopassword?user_name={user_name}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-21'>Query Parameters</h3>
+<h3 id='query-parameters-22'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1492,10 +1536,10 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iot
 
 </span></code></pre>
 <p>Push notification to the keyco user mobile device</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/push_keyconotification?userkey={userkey&amp;onesignalkey={onesignalkey}&amp;message
  ={ message }&amp;severity={severity}access_token={access_token}</code></p>
-<h3 id='query-parameters-22'>Query Parameters</h3>
+<h3 id='query-parameters-23'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1546,9 +1590,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>update one signal key of the keyco user</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;onesignalkey ={onesignalkey }&amp;state={state}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-23'>Query Parameters</h3>
+<h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1592,9 +1636,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>update keyco active login user for push notification</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycoactivelogin?userkey={userkey}&amp;onesignalkey={onesignalkey }&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-24'>Query Parameters</h3>
+<h3 id='query-parameters-25'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1636,10 +1680,10 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Get one signal key of the keyco user</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycoonesignalkey?userkey={userkey}&amp;devicekey={devicekey}&amp;access_token=
 {access_token}</code></p>
-<h3 id='query-parameters-25'>Query Parameters</h3>
+<h3 id='query-parameters-26'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1689,13 +1733,13 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Search notification message of keyco user device</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/getkeyconotification?appeui={appeui}&amp;deveui={deveui}&amp;pgindex
  ={pgindex}&amp;offset={offset}&amp; receive_time_begin={ receive_time_begin
 }&amp;receive_time_end ={receive_time_end}&amp; send_time_begin={send_time_begin
 }&amp;send_time_end ={send_time_end} content ={content}&amp; severity={severity}
 &amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-26'>Query Parameters</h3>
+<h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1766,9 +1810,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iot
 
 </span></code></pre>
 <p>Upload keyco firmware to server</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/upload_keycofirmware?name={name}?access_token={access_token}</code></p>
-<h3 id='query-parameters-27'>Query Parameters</h3>
+<h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1812,9 +1856,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Get the latest keyco firmware information from server</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/get_keycofirmwareinfo?&amp;userkey={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-28'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1850,9 +1894,9 @@ curl --request GET <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Download keyco firmware file from server</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/download_keycofirmware?name={KEYCO_keyco0810.zip}&amp;userkey ={userkey}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-29'>Query Parameters</h3>
+<h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1914,9 +1958,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iot
 
 </span></code></pre>
 <p>Generate keyco device share link.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/generate_keycosharelink?access_token={access_token}</code></p>
-<h3 id='query-parameters-30'>Query Parameters</h3>
+<h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1977,9 +2021,9 @@ curl --request POST <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iot
 
 </span></code></pre>
 <p>Register keyco share device.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>POST  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/register_keycosharedevice?access_token={access_token}</code></p>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-32'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2023,9 +2067,9 @@ curl --request PUT <span class="s1">'http://keycoiot.solu-m.com/keyco-crowd/iotr
 
 </span></code></pre>
 <p>Update keyco branch key for sharing device</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>PUT  http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycobranchkey?link={link}&amp;branch_key={branch_key}&amp;access_token={access_token}</code></p>
-<h3 id='query-parameters-32'>Query Parameters</h3>
+<h3 id='query-parameters-33'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
