@@ -387,7 +387,17 @@ access_token | Access token to be used with api.
 
 ```shell
 
-curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycofindersettings/' --data 'access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
+curl --request PUT 'http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycofindersettings/' --data '{"user_key":"8f2721dde4e67a8c931fbc67ba76f713bc8cb56b",
+ "deveui":"d025e99c966530bd",
+ "device_alias":"test2",
+ "out_into_range":"1",
+ "phone_alarm":"1",
+ "device_alarm":"1", 
+ "melody_type":"2",
+ "notification_state":"1",
+ "version":"0.1.10",
+ "base64":"iVBOCC"
+}&access_token=19f5ad9e-bf82-493e-aef0-d09daac55222'
 
 ```
 > The above command takes JSON body as below and returns JSON structured like this:
@@ -422,7 +432,7 @@ Update keyco finder user settings. Each fields are optional except userkey and d
 
 ### HTTP Request
 
-`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/uupdate_keycofindersettings?access_token={access_token`
+`PUT http://keycoiot.solu-m.com/keyco-crowd/iotrestapi/api/update_keycofindersettings?access_token={access_token`
 
 ### Query Parameters
 
